@@ -1,0 +1,196 @@
+{
+  "block.metalmancy.copper_ore": "Minério de Cobre",
+  "block.metalmancy.tin_ore": "Minério de Estanho",
+  "block.metalmancy.silver_ore": "Minério de Prata",
+  "block.metalmancy.titanium_ore": "Minério de Titânio",
+  "block.metalmancy.platinum_ore": "Minério de Platina",
+  "block.metalmancy.mithril_ore": "Minério de Mithril",
+  "block.metalmancy.orichalcum_ore": "Minério de Orichalcum",
+  "block.metalmancy.amethyst_ore": "Minério de Ametista",
+  "block.metalmancy.topaz_ore": "Minério de Topázio",
+  "block.metalmancy.sapphire_ore": "Minério de Safira",
+  "block.metalmancy.ruby_ore": "Minério de Rubi",
+
+  "block.metalmancy.copper_block": "Bloco de Cobre",
+  "block.metalmancy.tin_block": "Bloco de Estanho",
+  "block.metalmancy.silver_block": "Bloco de Prata",
+  "block.metalmancy.titanium_block": "Bloco de Titânio",
+  "block.metalmancy.platinum_block": "Bloco de Platina",
+  "block.metalmancy.mithril_block": "Bloco de Mithril",
+  "block.metalmancy.orichalcum_block": "Bloco de Orichalcum",
+  "block.metalmancy.amethyst_block": "Bloco de Ametista",
+  "block.metalmancy.topaz_block": "Bloco de Topázio",
+  "block.metalmancy.sapphire_block": "Bloco de Safira",
+  "block.metalmancy.ruby_block": "Bloco de Rubi",
+
+  "block.metalmancy.bronze_block": "Bloco de Bronze",
+  "block.metalmancy.steel_block": "Bloco de Aço",
+
+
+  "item.metalmancy.amethyst_gem": "Ametista",
+  "item.metalmancy.topaz_gem": "Topázio",
+  "item.metalmancy.sapphire_gem": "Safira",
+  "item.metalmancy.ruby_gem": "Rubi",
+
+
+  "item.metalmancy.copper_ingot": "Barra de Cobre",
+  "item.metalmancy.copper_nugget": "Nugget de Cobre",
+  "item.metalmancy.copper_dust": "Pó de Cobre",
+  "item.metalmancy.copper_plate": "Placa de Cobre",
+
+  "item.metalmancy.copper_helmet": "Capacete de Cobre",
+  "item.metalmancy.copper_chestplate": "Armadura de Cobre",
+  "item.metalmancy.copper_leggings": "Calça de Cobre",
+  "item.metalmancy.copper_boots": "Botas de Cobre",
+
+  "item.metalmancy.copper_sword": "Espada de Cobre",
+  "item.metalmancy.copper_pickaxe": "Picareta de Cobre",
+  "item.metalmancy.copper_axe": "Machado de Cobre",
+  "item.metalmancy.copper_shovel": "Pá de Cobre",
+  "item.metalmancy.copper_hoe": "Enxada de Cobre",
+  "item.metalmancy.copper_hammer": "Martelo de Cobre",
+
+
+  "item.metalmancy.tin_ingot": "Barra de Estanho",
+  "item.metalmancy.tin_nugget": "Nugget de Estanho",
+  "item.metalmancy.tin_dust": "Pó de Estanho",
+  "item.metalmancy.tin_plate": "Placa de Estanho",
+
+  "item.metalmancy.tin_helmet": "Capacete de Estanho",
+  "item.metalmancy.tin_chestplate": "Armadura de Estanho",
+  "item.metalmancy.tin_leggings": "Calça de Estanho",
+  "item.metalmancy.tin_boots": "Botas de Estanho",
+
+  "item.metalmancy.tin_sword": "Espada de Estanho",
+  "item.metalmancy.tin_pickaxe": "Picareta de Estanho",
+  "item.metalmancy.tin_axe": "Machado de Estanho",
+  "item.metalmancy.tin_shovel": "Pá de Estanho",
+  "item.metalmancy.tin_hoe": "Enxada de Estanho",
+  "item.metalmancy.tin_hammer": "Martelo de Estanho",
+
+
+  "item.metalmancy.silver_ingot": "Barra de Prata",
+  "item.metalmancy.silver_nugget": "Nugget de Prata",
+  "item.metalmancy.silver_dust": "Pó de Prata",
+  "item.metalmancy.silver_plate": "Placa de Prata",
+
+  "item.metalmancy.silver_helmet": "Capacete de Prata",
+  "item.metalmancy.silver_chestplate": "Armadura de Prata",
+  "item.metalmancy.silver_leggings": "Calça de Prata",
+  "item.metalmancy.silver_boots": "Botas de Prata",
+
+  "item.metalmancy.silver_sword": "Espada de Prata",
+  "item.metalmancy.silver_pickaxe": "Picareta de Prata",
+  "item.metalmancy.silver_axe": "Machado de Prata",
+  "item.metalmancy.silver_shovel": "Pá de Prata",
+  "item.metalmancy.silver_hoe": "Enxada de Prata",
+  "item.metalmancy.silver_hammer": "Martelo de Prata",
+
+
+  "item.metalmancy.titanium_ingot": "Barra de Titânio",
+  "item.metalmancy.titanium_nugget": "Nugget de Titânio",
+  "item.metalmancy.titanium_dust": "Pó de Titânio",
+  "item.metalmancy.titanium_plate": "Placa de Titânio",
+
+  "item.metalmancy.titanium_helmet": "Capacete de Titânio",
+  "item.metalmancy.titanium_chestplate": "Armadura de Titânio",
+  "item.metalmancy.titanium_leggings": "Calça de Titânio",
+  "item.metalmancy.titanium_boots": "Botas de Titânio",
+
+  "item.metalmancy.titanium_sword": "Espada de Titânio",
+  "item.metalmancy.titanium_pickaxe": "Picareta de Titânio",
+  "item.metalmancy.titanium_axe": "Machado de Titânio",
+  "item.metalmancy.titanium_shovel": "Pá de Titânio",
+  "item.metalmancy.titanium_hoe": "Enxada de Titânio",
+  "item.metalmancy.titanium_hammer": "Martelo de Titânio",
+
+
+  "item.metalmancy.platinum_ingot": "Barra de Platina",
+  "item.metalmancy.platinum_nugget": "Nugget de Platina",
+  "item.metalmancy.platinum_dust": "Pó de Platina",
+  "item.metalmancy.platinum_plate": "Placa de Platina",
+
+  "item.metalmancy.platinum_helmet": "Capacete de Platina",
+  "item.metalmancy.platinum_chestplate": "Armadura de Platina",
+  "item.metalmancy.platinum_leggings": "Calça de Platina",
+  "item.metalmancy.platinum_boots": "Botas de Platina",
+
+  "item.metalmancy.platinum_sword": "Espada de Platina",
+  "item.metalmancy.platinum_pickaxe": "Picareta de Platina",
+  "item.metalmancy.platinum_axe": "Machado de Platina",
+  "item.metalmancy.platinum_shovel": "Pá de Platina",
+  "item.metalmancy.platinum_hoe": "Enxada de Platina",
+  "item.metalmancy.platinum_hammer": "Martelo de Platina",
+
+
+  "item.metalmancy.bronze_ingot": "Barra de Bronze",
+  "item.metalmancy.bronze_nugget": "Nugget de Bronze",
+  "item.metalmancy.bronze_dust": "Pó de Bronze",
+  "item.metalmancy.bronze_plate": "Placa de Bronze",
+
+  "item.metalmancy.bronze_helmet": "Capacete de Bronze",
+  "item.metalmancy.bronze_chestplate": "Armadura de Bronze",
+  "item.metalmancy.bronze_leggings": "Calça de Bronze",
+  "item.metalmancy.bronze_boots": "Botas de Bronze",
+
+  "item.metalmancy.bronze_sword": "Espada de Bronze",
+  "item.metalmancy.bronze_pickaxe": "Picareta de Bronze",
+  "item.metalmancy.bronze_axe": "Machado de Bronze",
+  "item.metalmancy.bronze_shovel": "Pá de Bronze",
+  "item.metalmancy.bronze_hoe": "Enxada de Bronze",
+  "item.metalmancy.bronze_hammer": "Martelo de Bronze",
+
+
+  "item.metalmancy.steel_ingot": "Barra de Aço",
+  "item.metalmancy.steel_nugget": "Nugget de Aço",
+  "item.metalmancy.steel_dust": "Pó de Aço",
+  "item.metalmancy.steel_plate": "Placa de Aço",
+
+  "item.metalmancy.steel_helmet": "Capacete de Aço",
+  "item.metalmancy.steel_chestplate": "Armadura de Aço",
+  "item.metalmancy.steel_leggings": "Calça de Aço",
+  "item.metalmancy.steel_boots": "Botas de Aço",
+
+  "item.metalmancy.steel_sword": "Espada de Aço",
+  "item.metalmancy.steel_pickaxe": "Picareta de Aço",
+  "item.metalmancy.steel_axe": "Machado de Aço",
+  "item.metalmancy.steel_shovel": "Pá de Aço",
+  "item.metalmancy.steel_hoe": "Enxada de Aço",
+  "item.metalmancy.steel_hammer": "Martelo de Aço",
+
+
+  "item.metalmancy.mithril_ingot": "Barra de Mithril",
+  "item.metalmancy.mithril_nugget": "Nugget de Mithril",
+  "item.metalmancy.mithril_dust": "Pó de Mithril",
+  "item.metalmancy.mithril_plate": "Placa de Mithril",
+
+  "item.metalmancy.mithril_helmet": "Capacete de Mithril",
+  "item.metalmancy.mithril_chestplate": "Armadura de Mithril",
+  "item.metalmancy.mithril_leggings": "Calça de Mithril",
+  "item.metalmancy.mithril_boots": "Botas de Mithril",
+
+  "item.metalmancy.mithril_sword": "Espada de Mithril",
+  "item.metalmancy.mithril_pickaxe": "Picareta de Mithril",
+  "item.metalmancy.mithril_axe": "Machado de Mithril",
+  "item.metalmancy.mithril_shovel": "Pá de Mithril",
+  "item.metalmancy.mithril_hoe": "Enxada de Mithril",
+  "item.metalmancy.mithril_hammer": "Martelo de Mithril",
+
+
+  "item.metalmancy.orichalcum_ingot": "Barra de Orichalcum",
+  "item.metalmancy.orichalcum_nugget": "Nugget de Orichalcum",
+  "item.metalmancy.orichalcum_dust": "Pó de Orichalcum",
+  "item.metalmancy.orichalcum_plate": "Placa de Orichalcum",
+
+  "item.metalmancy.orichalcum_helmet": "Capacete de Orichalcum",
+  "item.metalmancy.orichalcum_chestplate": "Armadura de Orichalcum",
+  "item.metalmancy.orichalcum_leggings": "Calça de Orichalcum",
+  "item.metalmancy.orichalcum_boots": "Botas de Orichalcum",
+
+  "item.metalmancy.orichalcum_sword": "Espada de Orichalcum",
+  "item.metalmancy.orichalcum_pickaxe": "Picareta de Orichalcum",
+  "item.metalmancy.orichalcum_axe": "Machado de Orichalcum",
+  "item.metalmancy.orichalcum_shovel": "Pá de Orichalcum",
+  "item.metalmancy.orichalcum_hoe": "Enxada de Orichalcum",
+  "item.metalmancy.orichalcum_hammer": "Martelo de Orichalcum"
+}
