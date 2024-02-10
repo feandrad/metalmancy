@@ -14,14 +14,14 @@ class ModBlocks {
         val SAPPHIRE_ORE = registerBlock("sapphire_ore", Block(FabricBlockSettings.copy(Blocks.EMERALD_ORE)))
         val TOPAZ_ORE = registerBlock("topaz_ore", Block(FabricBlockSettings.copy(Blocks.EMERALD_ORE)))
 
-        val ZINC_ORE = registerBlock("zinc_ore", Block(FabricBlockSettings.copy(Blocks.IRON_ORE)))
-        val TIN_ORE = registerBlock("tin_ore", Block(FabricBlockSettings.copy(Blocks.IRON_ORE)))
+        val ZINC_ORE = registerBlock("zinc_ore", Block(FabricBlockSettings.copy(Blocks.COPPER_ORE)))
+        val TIN_ORE = registerBlock("tin_ore", Block(FabricBlockSettings.copy(Blocks.COPPER_ORE)))
         val SILVER_ORE = registerBlock("silver_ore", Block(FabricBlockSettings.copy(Blocks.IRON_ORE)))
-        val PLATINUM_ORE = registerBlock("platinum_ore", Block(FabricBlockSettings.copy(Blocks.IRON_ORE)))
-        val TITANIUM_ORE = registerBlock("titanium_ore", Block(FabricBlockSettings.copy(Blocks.IRON_ORE)))
-        val COBALT_ORE = registerBlock("cobalt_ore", Block(FabricBlockSettings.copy(Blocks.IRON_ORE)))
-        val MITHRIL_ORE = registerBlock("mithril_ore", Block(FabricBlockSettings.copy(Blocks.IRON_ORE)))
-        val ORICHALCUM_ORE = registerBlock("orichalcum_ore", Block(FabricBlockSettings.copy(Blocks.IRON_ORE)))
+        val PLATINUM_ORE = registerBlock("platinum_ore", Block(FabricBlockSettings.copy(Blocks.DIAMOND_ORE)))
+        val TITANIUM_ORE = registerBlock("titanium_ore", Block(FabricBlockSettings.copy(Blocks.DIAMOND_ORE)))
+        val COBALT_ORE = registerBlock("cobalt_ore", Block(FabricBlockSettings.copy(Blocks.DIAMOND_ORE)))
+        val MITHRIL_ORE = registerBlock("mithril_ore", Block(FabricBlockSettings.copy(Blocks.DIAMOND_ORE)))
+        val ORICHALCUM_ORE = registerBlock("orichalcum_ore", Block(FabricBlockSettings.copy(Blocks.DIAMOND_ORE)))
 
         // Deepslate Ore
         val RUBY_DEEPSLATE_ORE =
@@ -32,25 +32,25 @@ class ModBlocks {
             registerBlock("topaz_deepslate_ore", Block(FabricBlockSettings.copy(Blocks.DEEPSLATE_EMERALD_ORE)))
 
         val ZINC_DEEPSLATE_ORE =
-            registerBlock("zinc_deepslate_ore", Block(FabricBlockSettings.copy(Blocks.DEEPSLATE_IRON_ORE)))
+            registerBlock("zinc_deepslate_ore", Block(FabricBlockSettings.copy(Blocks.DEEPSLATE_COPPER_ORE)))
         val TIN_DEEPSLATE_ORE =
-            registerBlock("tin_deepslate_ore", Block(FabricBlockSettings.copy(Blocks.DEEPSLATE_IRON_ORE)))
+            registerBlock("tin_deepslate_ore", Block(FabricBlockSettings.copy(Blocks.DEEPSLATE_COPPER_ORE)))
         val SILVER_DEEPSLATE_ORE =
             registerBlock("silver_deepslate_ore", Block(FabricBlockSettings.copy(Blocks.DEEPSLATE_IRON_ORE)))
         val PLATINUM_DEEPSLATE_ORE =
-            registerBlock("platinum_deepslate_ore", Block(FabricBlockSettings.copy(Blocks.DEEPSLATE_IRON_ORE)))
+            registerBlock("platinum_deepslate_ore", Block(FabricBlockSettings.copy(Blocks.DEEPSLATE_DIAMOND_ORE)))
         val TITANIUM_DEEPSLATE_ORE =
-            registerBlock("titanium_deepslate_ore", Block(FabricBlockSettings.copy(Blocks.DEEPSLATE_IRON_ORE)))
+            registerBlock("titanium_deepslate_ore", Block(FabricBlockSettings.copy(Blocks.DEEPSLATE_DIAMOND_ORE)))
         val COBALT_DEEPSLATE_ORE =
-            registerBlock("cobalt_deepslate_ore", Block(FabricBlockSettings.copy(Blocks.DEEPSLATE_IRON_ORE)))
+            registerBlock("cobalt_deepslate_ore", Block(FabricBlockSettings.copy(Blocks.DEEPSLATE_DIAMOND_ORE)))
         val MITHRIL_DEEPSLATE_ORE =
-            registerBlock("mithril_deepslate_ore", Block(FabricBlockSettings.copy(Blocks.DEEPSLATE_IRON_ORE)))
+            registerBlock("mithril_deepslate_ore", Block(FabricBlockSettings.copy(Blocks.DEEPSLATE_DIAMOND_ORE)))
         val ORICHALCUM_DEEPSLATE_ORE =
-            registerBlock("orichalcum_deepslate_ore", Block(FabricBlockSettings.copy(Blocks.DEEPSLATE_IRON_ORE)))
+            registerBlock("orichalcum_deepslate_ore", Block(FabricBlockSettings.copy(Blocks.DEEPSLATE_DIAMOND_ORE)))
 
         // Raw
-        val ZINC_RAW_BLOCK = registerBlock("zinc_raw_block", Block(FabricBlockSettings.copy(Blocks.RAW_IRON_BLOCK)))
-        val TIN_RAW_BLOCK = registerBlock("tin_raw_block", Block(FabricBlockSettings.copy(Blocks.RAW_IRON_BLOCK)))
+        val ZINC_RAW_BLOCK = registerBlock("zinc_raw_block", Block(FabricBlockSettings.copy(Blocks.RAW_COPPER_BLOCK)))
+        val TIN_RAW_BLOCK = registerBlock("tin_raw_block", Block(FabricBlockSettings.copy(Blocks.RAW_COPPER_BLOCK)))
         val SILVER_RAW_BLOCK = registerBlock("silver_raw_block", Block(FabricBlockSettings.copy(Blocks.RAW_IRON_BLOCK)))
         val PLATINUM_RAW_BLOCK =
             registerBlock("platinum_raw_block", Block(FabricBlockSettings.copy(Blocks.RAW_IRON_BLOCK)))

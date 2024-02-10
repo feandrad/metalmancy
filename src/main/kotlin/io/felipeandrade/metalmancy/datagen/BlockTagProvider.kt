@@ -1,6 +1,7 @@
 package io.felipeandrade.metalmancy.datagen
 
 import io.felipeandrade.metalmancy.ModBlockTags
+import io.felipeandrade.metalmancy.blocks.ModBlocks
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.COBALT_BLOCK
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.COBALT_DEEPSLATE_ORE
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.COBALT_ORE
@@ -149,6 +150,14 @@ class BlockTagProvider(
             .add(ORICHALCUM_BLOCK)
             .forceAddTag(ModBlockTags.ORICHALCUM_ORES)
 
+        getOrCreateTagBuilder(ModBlockTags.BRASS_BLOCKS)
+            .add(ModBlocks.BRASS_BLOCK)
+
+        getOrCreateTagBuilder(ModBlockTags.BRONZE_BLOCKS)
+            .add(ModBlocks.BRONZE_BLOCK)
+
+        getOrCreateTagBuilder(ModBlockTags.STEEL_BLOCKS)
+            .add(ModBlocks.STEEL_BLOCK)
 
         getOrCreateTagBuilder(ModBlockTags.RUBY_BLOCKS)
             .add(RUBY_BLOCK)

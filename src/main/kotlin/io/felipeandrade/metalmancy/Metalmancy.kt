@@ -2,6 +2,7 @@ package io.felipeandrade.metalmancy
 
 import io.felipeandrade.metalmancy.blocks.ModBlocks
 import io.felipeandrade.metalmancy.items.ModItems
+import io.felipeandrade.metalmancy.world.registerWorldGen
 import net.fabricmc.api.ModInitializer
 import org.slf4j.LoggerFactory
 
@@ -13,5 +14,6 @@ object Metalmancy : ModInitializer {
 		ModItems.initialize()
 		ModBlocks.initialize()
 		ItemGroup.initialize()
+		registerWorldGen()
 	}
 }
