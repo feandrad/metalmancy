@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "metalmancy:zinc_raw_block",
+    "metalmancy:zinc_block",
+    "#c:zinc_ores"
+  ]
+}

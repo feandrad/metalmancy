@@ -1,9 +1,0 @@
-{
-  "parent": "item/handheld",
-  "textures": {
-    "layer0": "metalmancy:item/wooden/sword_handle",
-    "layer1": "metalmancy:item/copper/blade",
-    "layer2": "metalmancy:item/copper/guard",
-    "layer3": "metalmancy:item/copper/pommel"
-  }
-}

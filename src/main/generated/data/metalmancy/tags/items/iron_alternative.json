@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "metalmancy:tin_ingot",
+    "metalmancy:brass_ingot",
+    "metalmancy:bronze_ingot",
+    "metalmancy:silver_ingot"
+  ]
+}

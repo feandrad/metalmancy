@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "#c:silver_blocks",
+    "#c:platinum_blocks",
+    "#c:titanium_blocks",
+    "#c:cobalt_blocks",
+    "#c:bronze_blocks",
+    "#c:bronze_blocks",
+    "#c:steel_blocks",
+    "#c:ruby_blocks",
+    "#c:sapphire_blocks",
+    "#c:topaz_blocks"
+  ]
+}

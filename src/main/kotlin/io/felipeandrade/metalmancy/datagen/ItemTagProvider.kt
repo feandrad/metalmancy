@@ -1,10 +1,10 @@
 package io.felipeandrade.metalmancy.datagen
 
 import io.felipeandrade.metalmancy.ModItemTags.IRON_ALTERNATIVE
-import io.felipeandrade.metalmancy.items.BRASS_INGOT
-import io.felipeandrade.metalmancy.items.BRONZE_INGOT
-import io.felipeandrade.metalmancy.items.SILVER_INGOT
-import io.felipeandrade.metalmancy.items.TIN_INGOT
+import io.felipeandrade.metalmancy.items.ModItems.Companion.BRASS_INGOT
+import io.felipeandrade.metalmancy.items.ModItems.Companion.BRONZE_INGOT
+import io.felipeandrade.metalmancy.items.ModItems.Companion.SILVER_INGOT
+import io.felipeandrade.metalmancy.items.ModItems.Companion.TIN_INGOT
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider.ItemTagProvider
 import net.minecraft.registry.RegistryWrapper.WrapperLookup

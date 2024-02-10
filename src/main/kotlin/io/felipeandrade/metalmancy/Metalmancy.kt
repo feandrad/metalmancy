@@ -1,5 +1,7 @@
 package io.felipeandrade.metalmancy
 
+import io.felipeandrade.metalmancy.blocks.ModBlocks
+import io.felipeandrade.metalmancy.items.ModItems
 import net.fabricmc.api.ModInitializer
 import org.slf4j.LoggerFactory
 
@@ -8,6 +10,8 @@ object Metalmancy : ModInitializer {
     private val logger = LoggerFactory.getLogger(MOD_ID)
 
 	override fun onInitialize() {
-		ItemGroup.registerItemGroups()
+		ModItems.initialize()
+		ModBlocks.initialize()
+		ItemGroup.initialize()
 	}
 }

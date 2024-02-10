@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "metalmancy:mithril_raw_block",
+    "metalmancy:mithril_block",
+    "#c:mithril_ores"
+  ]
+}

@@ -2,8 +2,15 @@ package io.felipeandrade.metalmancy.datagen
 
 import io.felipeandrade.metalmancy.Metalmancy.MOD_ID
 import io.felipeandrade.metalmancy.ModItemTags
-import io.felipeandrade.metalmancy.blocks.*
-import io.felipeandrade.metalmancy.items.*
+import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.TIN_BLOCK
+import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.TIN_DEEPSLATE_ORE
+import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.TIN_ORE
+import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.TIN_RAW_BLOCK
+import io.felipeandrade.metalmancy.items.ModItems.Companion.TIN_CRUSHED
+import io.felipeandrade.metalmancy.items.ModItems.Companion.TIN_DUST
+import io.felipeandrade.metalmancy.items.ModItems.Companion.TIN_INGOT
+import io.felipeandrade.metalmancy.items.ModItems.Companion.TIN_NUGGET
+import io.felipeandrade.metalmancy.items.ModItems.Companion.TIN_RAW
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider
 import net.minecraft.advancement.AdvancementCriterion
@@ -32,36 +39,34 @@ class GSWRecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dat
             ingotSmelts = listOf(TIN_RAW, TIN_DUST, TIN_CRUSHED, TIN_ORE, TIN_DEEPSLATE_ORE)
         )
 
-
-
-        TinMaterial.MATERIAL.generateRecipes(this, exporter)
-        SilverMaterial.MATERIAL.generateRecipes(this, exporter)
-        PlatinumMaterial.MATERIAL.generateRecipes(this, exporter)
-        TitaniumMaterial.MATERIAL.generateRecipes(this, exporter)
-        CobaltMaterial.MATERIAL.generateRecipes(this, exporter)
-        MithrilMaterial.MATERIAL.generateRecipes(this, exporter)
-        OrichalcumMaterial.MATERIAL.generateRecipes(this, exporter)
-
-        BronzeMaterial.MATERIAL.generateRecipes(this, exporter)
-        SteelMaterial.MATERIAL.generateRecipes(this, exporter)
-
-        TopazMaterial.MATERIAL.generateRecipes(this, exporter)
-        SapphireMaterial.MATERIAL.generateRecipes(this, exporter)
-        RubyMaterial.MATERIAL.generateRecipes(this, exporter)
-
-        CopperMaterial.MATERIAL.generateRecipes(this, exporter)
-        IronMaterial.MATERIAL.generateRecipes(this, exporter)
-        GoldMaterial.MATERIAL.generateRecipes(this, exporter)
-        DiamondMaterial.MATERIAL.generateRecipes(this, exporter)
-        NetheriteMaterial.MATERIAL.generateRecipes(this, exporter)
-
-        WoodMaterial.MATERIAL.generateRecipes(this, exporter)
-        StoneMaterial.MATERIAL.generateRecipes(this, exporter)
-        BoneMaterial.MATERIAL.generateRecipes(this, exporter)
-        FlintMaterial.MATERIAL.generateRecipes(this, exporter)
-        CoalMaterial.MATERIAL.generateRecipes(this, exporter)
-        WoolMaterial.MATERIAL.generateRecipes(this, exporter)
-        LeatherMaterial.MATERIAL.generateRecipes(this, exporter)
+//        TinMaterial.MATERIAL.generateRecipes(this, exporter)
+//        SilverMaterial.MATERIAL.generateRecipes(this, exporter)
+//        PlatinumMaterial.MATERIAL.generateRecipes(this, exporter)
+//        TitaniumMaterial.MATERIAL.generateRecipes(this, exporter)
+//        CobaltMaterial.MATERIAL.generateRecipes(this, exporter)
+//        MithrilMaterial.MATERIAL.generateRecipes(this, exporter)
+//        OrichalcumMaterial.MATERIAL.generateRecipes(this, exporter)
+//
+//        BronzeMaterial.MATERIAL.generateRecipes(this, exporter)
+//        SteelMaterial.MATERIAL.generateRecipes(this, exporter)
+//
+//        TopazMaterial.MATERIAL.generateRecipes(this, exporter)
+//        SapphireMaterial.MATERIAL.generateRecipes(this, exporter)
+//        RubyMaterial.MATERIAL.generateRecipes(this, exporter)
+//
+//        CopperMaterial.MATERIAL.generateRecipes(this, exporter)
+//        IronMaterial.MATERIAL.generateRecipes(this, exporter)
+//        GoldMaterial.MATERIAL.generateRecipes(this, exporter)
+//        DiamondMaterial.MATERIAL.generateRecipes(this, exporter)
+//        NetheriteMaterial.MATERIAL.generateRecipes(this, exporter)
+//
+//        WoodMaterial.MATERIAL.generateRecipes(this, exporter)
+//        StoneMaterial.MATERIAL.generateRecipes(this, exporter)
+//        BoneMaterial.MATERIAL.generateRecipes(this, exporter)
+//        FlintMaterial.MATERIAL.generateRecipes(this, exporter)
+//        CoalMaterial.MATERIAL.generateRecipes(this, exporter)
+//        WoolMaterial.MATERIAL.generateRecipes(this, exporter)
+//        LeatherMaterial.MATERIAL.generateRecipes(this, exporter)
 
         offerIronAlternatives(exporter)
     }

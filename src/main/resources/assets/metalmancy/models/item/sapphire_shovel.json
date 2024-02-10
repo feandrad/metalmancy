@@ -1,7 +1,0 @@
-{
-  "parent": "item/handheld",
-  "textures": {
-    "layer0": "metalmancy:item/wooden/shovel_handle",
-    "layer1": "metalmancy:item/sapphire/shovel"
-  }
-}

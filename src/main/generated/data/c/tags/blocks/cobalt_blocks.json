@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "metalmancy:cobalt_raw_block",
+    "metalmancy:cobalt_block",
+    "#c:cobalt_ores"
+  ]
+}
