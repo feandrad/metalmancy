@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "mithril_raw_block",
+  "key": {
+    "#": {
+      "item": "metalmancy:mithril_raw"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "metalmancy:mithril_raw_block"
+  }
+}

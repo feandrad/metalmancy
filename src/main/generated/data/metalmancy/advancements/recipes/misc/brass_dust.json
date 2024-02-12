@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "metalmancy:brass_dust"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_zinc_dust": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "metalmancy:zinc_dust"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_zinc_dust"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "metalmancy:brass_dust"
+    ]
+  }
+}

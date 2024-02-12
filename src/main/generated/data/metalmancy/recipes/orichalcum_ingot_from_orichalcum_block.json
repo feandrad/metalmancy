@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "orichalcum_ingot",
+  "ingredients": [
+    {
+      "item": "metalmancy:orichalcum_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "metalmancy:orichalcum_ingot"
+  }
+}

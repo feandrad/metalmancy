@@ -23,6 +23,12 @@ class ItemGroup {
                 .displayName(Text.translatable("itemGroup.metalmancy.materials"))
                 .entries { _, entries ->
                     with(entries) {
+                        add(ModItems.COPPER_NUGGET)
+                        add(ModItems.COPPER_DUST)
+                        add(ModItems.COPPER_CRUSHED)
+                        add(ModItems.COAL_DUST)
+                        add(ModItems.COAL_CRUSHED)
+
                         add(ModBlocks.TIN_BLOCK)
                         add(ModBlocks.TIN_ORE)
                         add(ModBlocks.TIN_DEEPSLATE_ORE)

@@ -1,10 +1,10 @@
 {
   "replace": false,
   "values": [
-    "metalmancy:tin_ingot",
-    "metalmancy:zinc_ingot",
-    "metalmancy:brass_ingot",
-    "metalmancy:bronze_ingot",
-    "metalmancy:silver_ingot"
+    "#c:tin_ingots",
+    "#c:zinc_ingots",
+    "#c:brass_ingots",
+    "#c:bronze_ingots",
+    "#c:silver_ingots"
   ]
 }

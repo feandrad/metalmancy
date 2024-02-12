@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "cobalt_raw_block",
+  "key": {
+    "#": {
+      "item": "metalmancy:cobalt_raw"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "metalmancy:cobalt_raw_block"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "metalmancy:zinc_crushed"
+    },
+    {
+      "item": "metalmancy:copper_crushed"
+    },
+    {
+      "item": "metalmancy:copper_crushed"
+    },
+    {
+      "item": "metalmancy:copper_crushed"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "metalmancy:brass_crushed"
+  }
+}

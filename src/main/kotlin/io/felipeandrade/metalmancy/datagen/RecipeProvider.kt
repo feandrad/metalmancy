@@ -2,21 +2,16 @@ package io.felipeandrade.metalmancy.datagen
 
 import io.felipeandrade.metalmancy.Metalmancy.MOD_ID
 import io.felipeandrade.metalmancy.ModItemTags
-import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.TIN_BLOCK
-import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.TIN_DEEPSLATE_ORE
-import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.TIN_ORE
-import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.TIN_RAW_BLOCK
-import io.felipeandrade.metalmancy.items.ModItems.Companion.TIN_CRUSHED
-import io.felipeandrade.metalmancy.items.ModItems.Companion.TIN_DUST
-import io.felipeandrade.metalmancy.items.ModItems.Companion.TIN_INGOT
-import io.felipeandrade.metalmancy.items.ModItems.Companion.TIN_NUGGET
-import io.felipeandrade.metalmancy.items.ModItems.Companion.TIN_RAW
+import io.felipeandrade.metalmancy.blocks.ModBlocks
+import io.felipeandrade.metalmancy.items.ModItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider
 import net.minecraft.advancement.AdvancementCriterion
 import net.minecraft.data.server.recipe.RecipeExporter
+import net.minecraft.data.server.recipe.RecipeProvider
 import net.minecraft.data.server.recipe.RecipeProvider.*
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder
+import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder
 import net.minecraft.item.Item
 import net.minecraft.item.ItemConvertible
 import net.minecraft.item.Items
@@ -25,49 +20,150 @@ import net.minecraft.registry.tag.ItemTags
 import net.minecraft.registry.tag.TagKey
 import net.minecraft.util.Identifier
 
-class GSWRecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOutput) {
+class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOutput) {
 
     override fun generate(exporter: RecipeExporter) {
 
+        // Vanilla
+        offerCompactingRecipes(exporter, ModItems.COPPER_NUGGET, Items.COPPER_INGOT)
+
+        // Metals
         offerOreMaterial(
             exporter = exporter,
-            ingot = TIN_INGOT,
-            nugget = TIN_NUGGET,
-            block = TIN_BLOCK,
-            raw = TIN_RAW,
-            rawBlock = TIN_RAW_BLOCK,
-            ingotSmelts = listOf(TIN_RAW, TIN_DUST, TIN_CRUSHED, TIN_ORE, TIN_DEEPSLATE_ORE)
+            ingot = ModItems.TIN_INGOT,
+            nugget = ModItems.TIN_NUGGET,
+            block = ModBlocks.TIN_BLOCK,
+            raw = ModItems.TIN_RAW,
+            rawBlock = ModBlocks.TIN_RAW_BLOCK,
+            ingotSmelts = listOf(ModItems.TIN_RAW, ModItems.TIN_DUST, ModItems.TIN_CRUSHED, ModBlocks.TIN_ORE, ModBlocks.TIN_DEEPSLATE_ORE)
+        )
+        offerOreMaterial(
+            exporter = exporter,
+            ingot = ModItems.ZINC_INGOT,
+            nugget = ModItems.ZINC_NUGGET,
+            block = ModBlocks.ZINC_BLOCK,
+            raw = ModItems.ZINC_RAW,
+            rawBlock = ModBlocks.ZINC_RAW_BLOCK,
+            ingotSmelts = listOf(ModItems.ZINC_RAW, ModItems.ZINC_DUST, ModItems.ZINC_CRUSHED, ModBlocks.ZINC_ORE, ModBlocks.ZINC_DEEPSLATE_ORE)
+        )
+        offerOreMaterial(
+            exporter = exporter,
+            ingot = ModItems.SILVER_INGOT,
+            nugget = ModItems.SILVER_NUGGET,
+            block = ModBlocks.SILVER_BLOCK,
+            raw = ModItems.SILVER_RAW,
+            rawBlock = ModBlocks.SILVER_RAW_BLOCK,
+            ingotSmelts = listOf(ModItems.SILVER_RAW, ModItems.SILVER_DUST, ModItems.SILVER_CRUSHED, ModBlocks.SILVER_ORE, ModBlocks.SILVER_DEEPSLATE_ORE)
+        )
+        offerOreMaterial(
+            exporter = exporter,
+            ingot = ModItems.PLATINUM_INGOT,
+            nugget = ModItems.PLATINUM_NUGGET,
+            block = ModBlocks.PLATINUM_BLOCK,
+            raw = ModItems.PLATINUM_RAW,
+            rawBlock = ModBlocks.PLATINUM_RAW_BLOCK,
+            ingotSmelts = listOf(ModItems.PLATINUM_RAW, ModItems.PLATINUM_DUST, ModItems.PLATINUM_CRUSHED, ModBlocks.PLATINUM_ORE, ModBlocks.PLATINUM_DEEPSLATE_ORE)
+        )
+        offerOreMaterial(
+            exporter = exporter,
+            ingot = ModItems.TITANIUM_INGOT,
+            nugget = ModItems.TITANIUM_NUGGET,
+            block = ModBlocks.TITANIUM_BLOCK,
+            raw = ModItems.TITANIUM_RAW,
+            rawBlock = ModBlocks.TITANIUM_RAW_BLOCK,
+            ingotSmelts = listOf(ModItems.TITANIUM_RAW, ModItems.TITANIUM_DUST, ModItems.TITANIUM_CRUSHED, ModBlocks.TITANIUM_ORE, ModBlocks.TITANIUM_DEEPSLATE_ORE)
+        )
+        offerOreMaterial(
+            exporter = exporter,
+            ingot = ModItems.COBALT_INGOT,
+            nugget = ModItems.COBALT_NUGGET,
+            block = ModBlocks.COBALT_BLOCK,
+            raw = ModItems.COBALT_RAW,
+            rawBlock = ModBlocks.COBALT_RAW_BLOCK,
+            ingotSmelts = listOf(ModItems.COBALT_RAW, ModItems.COBALT_DUST, ModItems.COBALT_CRUSHED, ModBlocks.COBALT_ORE, ModBlocks.COBALT_DEEPSLATE_ORE)
+        )
+        offerOreMaterial(
+            exporter = exporter,
+            ingot = ModItems.MITHRIL_INGOT,
+            nugget = ModItems.MITHRIL_NUGGET,
+            block = ModBlocks.MITHRIL_BLOCK,
+            raw = ModItems.MITHRIL_RAW,
+            rawBlock = ModBlocks.MITHRIL_RAW_BLOCK,
+            ingotSmelts = listOf(ModItems.MITHRIL_RAW, ModItems.MITHRIL_DUST, ModItems.MITHRIL_CRUSHED, ModBlocks.MITHRIL_ORE, ModBlocks.MITHRIL_DEEPSLATE_ORE)
+        )
+        offerOreMaterial(
+            exporter = exporter,
+            ingot = ModItems.ORICHALCUM_INGOT,
+            nugget = ModItems.ORICHALCUM_NUGGET,
+            block = ModBlocks.ORICHALCUM_BLOCK,
+            raw = ModItems.ORICHALCUM_RAW,
+            rawBlock = ModBlocks.ORICHALCUM_RAW_BLOCK,
+            ingotSmelts = listOf(ModItems.ORICHALCUM_RAW, ModItems.ORICHALCUM_DUST, ModItems.ORICHALCUM_CRUSHED, ModBlocks.ORICHALCUM_ORE, ModBlocks.ORICHALCUM_DEEPSLATE_ORE)
         )
 
-//        TinMaterial.MATERIAL.generateRecipes(this, exporter)
-//        SilverMaterial.MATERIAL.generateRecipes(this, exporter)
-//        PlatinumMaterial.MATERIAL.generateRecipes(this, exporter)
-//        TitaniumMaterial.MATERIAL.generateRecipes(this, exporter)
-//        CobaltMaterial.MATERIAL.generateRecipes(this, exporter)
-//        MithrilMaterial.MATERIAL.generateRecipes(this, exporter)
-//        OrichalcumMaterial.MATERIAL.generateRecipes(this, exporter)
-//
-//        BronzeMaterial.MATERIAL.generateRecipes(this, exporter)
-//        SteelMaterial.MATERIAL.generateRecipes(this, exporter)
-//
-//        TopazMaterial.MATERIAL.generateRecipes(this, exporter)
-//        SapphireMaterial.MATERIAL.generateRecipes(this, exporter)
-//        RubyMaterial.MATERIAL.generateRecipes(this, exporter)
-//
-//        CopperMaterial.MATERIAL.generateRecipes(this, exporter)
-//        IronMaterial.MATERIAL.generateRecipes(this, exporter)
-//        GoldMaterial.MATERIAL.generateRecipes(this, exporter)
-//        DiamondMaterial.MATERIAL.generateRecipes(this, exporter)
-//        NetheriteMaterial.MATERIAL.generateRecipes(this, exporter)
-//
-//        WoodMaterial.MATERIAL.generateRecipes(this, exporter)
-//        StoneMaterial.MATERIAL.generateRecipes(this, exporter)
-//        BoneMaterial.MATERIAL.generateRecipes(this, exporter)
-//        FlintMaterial.MATERIAL.generateRecipes(this, exporter)
-//        CoalMaterial.MATERIAL.generateRecipes(this, exporter)
-//        WoolMaterial.MATERIAL.generateRecipes(this, exporter)
-//        LeatherMaterial.MATERIAL.generateRecipes(this, exporter)
+        // Alloy
+        offerAlloyMaterial(
+            exporter = exporter,
+            ingot = ModItems.BRONZE_INGOT,
+            nugget = ModItems.BRONZE_NUGGET,
+            block = ModBlocks.BRONZE_BLOCK,
+            ingotSmelts = listOf(ModItems.BRONZE_DUST, ModItems.BRONZE_CRUSHED)
+        )
+        offerAlloyMaterial(
+            exporter = exporter,
+            ingot = ModItems.BRASS_INGOT,
+            nugget = ModItems.BRASS_NUGGET,
+            block = ModBlocks.BRASS_BLOCK,
+            ingotSmelts = listOf(ModItems.BRASS_DUST, ModItems.BRASS_CRUSHED)
+        )
+        offerAlloyMaterial(
+            exporter = exporter,
+            ingot = ModItems.STEEL_INGOT,
+            nugget = ModItems.STEEL_NUGGET,
+            block = ModBlocks.STEEL_BLOCK,
+            ingotSmelts = listOf(ModItems.STEEL_DUST, ModItems.STEEL_CRUSHED)
+        )
 
+        // Bronze
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BRONZE_DUST, 4)
+            .input(ModItems.TIN_DUST, 1)
+            .input(ModItems.COPPER_DUST, 3)
+            .criterion(RecipeProvider.hasItem(ModItems.TIN_DUST), RecipeProvider.conditionsFromItem(ModItems.TIN_DUST))
+            .offerTo(exporter, Identifier(MOD_ID, RecipeProvider.getRecipeName(ModItems.BRONZE_DUST)))
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BRONZE_CRUSHED, 4)
+            .input(ModItems.TIN_CRUSHED, 1)
+            .input(ModItems.COPPER_CRUSHED, 3)
+            .criterion(RecipeProvider.hasItem(ModItems.TIN_CRUSHED), RecipeProvider.conditionsFromItem(ModItems.TIN_CRUSHED))
+            .offerTo(exporter, Identifier(MOD_ID, RecipeProvider.getRecipeName(ModItems.BRONZE_CRUSHED)))
+
+        // TODO: Remove after Hammer crush Recipe is implemented
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BRONZE_INGOT, 4)
+            .input(ModItems.TIN_INGOT, 1)
+            .input(Items.COPPER_INGOT, 3)
+            .criterion(RecipeProvider.hasItem(ModItems.TIN_RAW), RecipeProvider.conditionsFromItem(ModItems.TIN_RAW))
+            .offerTo(exporter, Identifier(MOD_ID, "${RecipeProvider.getRecipeName(ModItems.BRONZE_INGOT)}_temp"))
+
+        // Brass
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BRASS_DUST, 4)
+            .input(ModItems.ZINC_DUST, 1)
+            .input(ModItems.COPPER_DUST, 3)
+            .criterion(RecipeProvider.hasItem(ModItems.ZINC_DUST), RecipeProvider.conditionsFromItem(ModItems.ZINC_DUST))
+            .offerTo(exporter, Identifier(MOD_ID, RecipeProvider.getRecipeName(ModItems.BRASS_DUST)))
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BRASS_CRUSHED, 4)
+            .input(ModItems.ZINC_CRUSHED, 1)
+            .input(ModItems.COPPER_CRUSHED, 3)
+            .criterion(RecipeProvider.hasItem(ModItems.ZINC_CRUSHED), RecipeProvider.conditionsFromItem(ModItems.ZINC_CRUSHED))
+            .offerTo(exporter, Identifier(MOD_ID, RecipeProvider.getRecipeName(ModItems.BRASS_CRUSHED)))
+
+        // TODO: Remove after Hammer crush Recipe is implemented
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BRASS_INGOT, 4)
+            .input(ModItems.ZINC_INGOT, 1)
+            .input(Items.COPPER_INGOT, 3)
+            .criterion(RecipeProvider.hasItem(ModItems.ZINC_RAW), RecipeProvider.conditionsFromItem(ModItems.ZINC_RAW))
+            .offerTo(exporter, Identifier(MOD_ID, "${RecipeProvider.getRecipeName(ModItems.BRASS_INGOT)}_temp"))
+        
         offerIronAlternatives(exporter)
     }
 }
@@ -118,6 +214,28 @@ fun offerOreMaterial(
     recipeCategory: RecipeCategory = RecipeCategory.MISC,
 ) {
     offerCompactingRecipes(exporter, raw, rawBlock, recipeCategory)
+    offerProgressiveCompactingRecipes(exporter, nugget, ingot, block, recipeCategory)
+    if (ingotSmelts.isNotEmpty()) {
+        offerSmeltingAndBlasting(exporter, ingotSmelts, ingot, ingotExp, ingotCookTime, recipeCategory)
+    }
+    if (nuggetSmelts.isNotEmpty()) {
+        offerSmeltingAndBlasting(exporter, nuggetSmelts, nugget, nuggetExp, nuggetCookTime, recipeCategory)
+    }
+}
+
+fun offerAlloyMaterial(
+    exporter: RecipeExporter,
+    ingot: ItemConvertible,
+    nugget: ItemConvertible,
+    block: ItemConvertible,
+    ingotSmelts: List<ItemConvertible> = listOf(),
+    ingotExp: Float = 0.7f,
+    ingotCookTime: Int = 200,
+    nuggetSmelts: List<ItemConvertible> = listOf(),
+    nuggetExp: Float = 0.7f,
+    nuggetCookTime: Int = 200,
+    recipeCategory: RecipeCategory = RecipeCategory.MISC,
+) {
     offerProgressiveCompactingRecipes(exporter, nugget, ingot, block, recipeCategory)
     if (ingotSmelts.isNotEmpty()) {
         offerSmeltingAndBlasting(exporter, ingotSmelts, ingot, ingotExp, ingotCookTime, recipeCategory)

@@ -78,6 +78,13 @@ class ModelProvider(
     }
 
     override fun generateItemModels(itemModelGenerator: ItemModelGenerator): Unit = with(itemModelGenerator) {
+        // Vanilla
+        register(ModItems.COPPER_NUGGET, Models.GENERATED)
+        register(ModItems.COPPER_DUST, Models.GENERATED)
+        register(ModItems.COPPER_CRUSHED, Models.GENERATED)
+        register(ModItems.COAL_DUST, Models.GENERATED)
+        register(ModItems.COAL_CRUSHED, Models.GENERATED)
+
         // Tin
         register(ModItems.TIN_CRUSHED, Models.GENERATED)
         register(ModItems.TIN_DUST, Models.GENERATED)

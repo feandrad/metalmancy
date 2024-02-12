@@ -5,6 +5,14 @@ import io.felipeandrade.metalmancy.common.registerItem
 class ModItems {
 
     companion object {
+        // Vanilla
+        val COPPER_NUGGET = registerItem("copper_nugget")
+        val COPPER_DUST = registerItem("copper_dust")
+        val COPPER_CRUSHED = registerItem("copper_crushed")
+
+        val COAL_DUST = registerItem("coal_dust")
+        val COAL_CRUSHED = registerItem("coal_crushed")
+
         // Raw
         val ZINC_RAW = registerItem("zinc_raw")
         val TIN_RAW = registerItem("tin_raw")

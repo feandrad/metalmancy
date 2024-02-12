@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "metalmancy:brass_crushed"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_zinc_crushed": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "metalmancy:zinc_crushed"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_zinc_crushed"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "metalmancy:brass_crushed"
+    ]
+  }
+}

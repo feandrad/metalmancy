@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "platinum_raw_block",
+  "key": {
+    "#": {
+      "item": "metalmancy:platinum_raw"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "metalmancy:platinum_raw_block"
+  }
+}

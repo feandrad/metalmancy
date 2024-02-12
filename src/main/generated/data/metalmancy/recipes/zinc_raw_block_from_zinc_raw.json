@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "zinc_raw_block",
+  "key": {
+    "#": {
+      "item": "metalmancy:zinc_raw"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "metalmancy:zinc_raw_block"
+  }
+}

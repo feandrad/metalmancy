@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "metalmancy:bronze_ingot_temp"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tin_raw": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "metalmancy:tin_raw"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_tin_raw"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "metalmancy:bronze_ingot_temp"
+    ]
+  }
+}

@@ -10,7 +10,7 @@ object MetalmancyDataGenerator : DataGeneratorEntrypoint {
 			addProvider { output, future -> BlockTagProvider(output, future) }
 			addProvider { output, future -> ItemTagProvider(output, future) }
 			addProvider(FabricDataGenerator.Pack.Factory { BlockLootTableGenerator(it) })
-			addProvider(FabricDataGenerator.Pack.Factory { GSWRecipeProvider(it) })
+			addProvider(FabricDataGenerator.Pack.Factory { RecipeProvider(it) })
 			addProvider(FabricDataGenerator.Pack.Factory { ModelProvider(it) })
 		}
 	}

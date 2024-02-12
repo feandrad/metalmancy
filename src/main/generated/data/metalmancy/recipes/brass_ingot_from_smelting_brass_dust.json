@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "brass_ingot",
+  "ingredient": {
+    "item": "metalmancy:brass_dust"
+  },
+  "result": "metalmancy:brass_ingot"
+}

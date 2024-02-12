@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "mithril_ingot",
+  "key": {
+    "#": {
+      "item": "metalmancy:mithril_nugget"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "metalmancy:mithril_ingot"
+  }
+}

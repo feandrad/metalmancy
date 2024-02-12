@@ -41,9 +41,8 @@ object ModBlockTags {
 }
 
 object ModItemTags {
-    val BRASS_INGOTS = createTag("brass_ingots", "c")
-    val BRONZE_INGOTS = createTag("bronze_ingots", "c")
-    val STEEL_INGOTS = createTag("steel_ingots", "c")
+    val COPPER_INGOTS = createTag("copper_ingots", "c")
+    val COPPER_NUGGETS = createTag("copper_nuggets", "c")
 
     val ZINC_INGOTS = createTag("zinc_ingots", "c")
     val TIN_INGOTS = createTag("tin_ingots", "c")
@@ -54,10 +53,11 @@ object ModItemTags {
     val MITHRIL_INGOTS = createTag("mithril_ingots", "c")
     val ORICHALCUM_INGOTS = createTag("orichalcum_ingots", "c")
 
-    val BRASS_NUGGETS = createTag("brass_nuggets", "c")
-    val BRONZE_NUGGETS = createTag("bronze_nuggets", "c")
-    val STEEL_NUGGETS = createTag("steel_nuggets", "c")
+    val BRASS_INGOTS = createTag("brass_ingots", "c")
+    val BRONZE_INGOTS = createTag("bronze_ingots", "c")
+    val STEEL_INGOTS = createTag("steel_ingots", "c")
 
+    val TIN_NUGGETS = createTag("tin_nuggets", "c")
     val ZINC_NUGGETS = createTag("zinc_nuggets", "c")
     val SILVER_NUGGETS = createTag("silver_nuggets", "c")
     val PLATINUM_NUGGETS = createTag("platinum_nuggets", "c")
@@ -65,6 +65,10 @@ object ModItemTags {
     val COBALT_NUGGETS = createTag("cobalt_nuggets", "c")
     val MITHRIL_NUGGETS = createTag("mithril_nuggets", "c")
     val ORICHALCUM_NUGGETS = createTag("orichalcum_nuggets", "c")
+
+    val BRASS_NUGGETS = createTag("brass_nuggets", "c")
+    val BRONZE_NUGGETS = createTag("bronze_nuggets", "c")
+    val STEEL_NUGGETS = createTag("steel_nuggets", "c")
 
     val IRON_ALTERNATIVE = createTag("iron_alternative")
     val PICKAXES = createTag("pickaxe", "fabric")

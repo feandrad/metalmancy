@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "titanium_ingot",
+  "key": {
+    "#": {
+      "item": "metalmancy:titanium_nugget"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "metalmancy:titanium_ingot"
+  }
+}

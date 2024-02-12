@@ -10,7 +10,7 @@ class DataGeneration : DataGeneratorEntrypoint {
             addProvider { output, future -> BlockTagProvider(output, future) }
             addProvider { output, future -> ItemTagProvider(output, future) }
             addProvider(Pack.Factory { BlockLootTableGenerator(it) })
-            addProvider(Pack.Factory { GSWRecipeProvider(it) })
+            addProvider(Pack.Factory { RecipeProvider(it) })
             addProvider(Pack.Factory { ModelProvider(it) })
         }
     }

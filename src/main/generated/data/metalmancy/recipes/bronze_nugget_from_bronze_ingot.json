@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "bronze_nugget",
+  "ingredients": [
+    {
+      "item": "metalmancy:bronze_ingot"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "metalmancy:bronze_nugget"
+  }
+}
