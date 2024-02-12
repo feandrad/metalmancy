@@ -3,6 +3,7 @@ package io.felipeandrade.metalmancy
 import io.felipeandrade.metalmancy.Metalmancy.MOD_ID
 import io.felipeandrade.metalmancy.blocks.ModBlocks
 import io.felipeandrade.metalmancy.items.ModItems
+import io.felipeandrade.metalmancy.items.armor.ModArmorItems
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
 import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemStack
@@ -209,7 +210,71 @@ class ItemGroup {
                 .icon { ItemStack(Items.DIAMOND_PICKAXE) }
                 .displayName(Text.translatable("itemGroup.metalmancy.tools"))
                 .entries { _, entries ->
+                    with(entries) {
+                        // Vanilla
+                        add(ModArmorItems.WOOLEN_HELMET)
+                        add(ModArmorItems.WOOLEN_CHESTPLATE)
+                        add(ModArmorItems.WOOLEN_LEGGINGS)
+                        add(ModArmorItems.WOOLEN_BOOTS)
 
+                        add(ModArmorItems.WOODEN_HELMET)
+                        add(ModArmorItems.WOODEN_CHESTPLATE)
+                        add(ModArmorItems.WOODEN_LEGGINGS)
+                        add(ModArmorItems.WOODEN_BOOTS)
+
+                        add(ModArmorItems.COPPER_HELMET)
+                        add(ModArmorItems.COPPER_CHESTPLATE)
+                        add(ModArmorItems.COPPER_LEGGINGS)
+                        add(ModArmorItems.COPPER_BOOTS)
+
+                        // Armor
+                        add(ModArmorItems.SILVER_HELMET)
+                        add(ModArmorItems.SILVER_CHESTPLATE)
+                        add(ModArmorItems.SILVER_LEGGINGS)
+                        add(ModArmorItems.SILVER_BOOTS)
+
+                        add(ModArmorItems.PLATINUM_HELMET)
+                        add(ModArmorItems.PLATINUM_CHESTPLATE)
+                        add(ModArmorItems.PLATINUM_LEGGINGS)
+                        add(ModArmorItems.PLATINUM_BOOTS)
+
+                        add(ModArmorItems.TITANIUM_HELMET)
+                        add(ModArmorItems.TITANIUM_CHESTPLATE)
+                        add(ModArmorItems.TITANIUM_LEGGINGS)
+                        add(ModArmorItems.TITANIUM_BOOTS)
+
+                        add(ModArmorItems.COBALT_HELMET)
+                        add(ModArmorItems.COBALT_CHESTPLATE)
+                        add(ModArmorItems.COBALT_LEGGINGS)
+                        add(ModArmorItems.COBALT_BOOTS)
+
+                        add(ModArmorItems.MITHRIL_HELMET)
+                        add(ModArmorItems.MITHRIL_CHESTPLATE)
+                        add(ModArmorItems.MITHRIL_LEGGINGS)
+                        add(ModArmorItems.MITHRIL_BOOTS)
+
+                        add(ModArmorItems.ORICHALCUM_HELMET)
+                        add(ModArmorItems.ORICHALCUM_CHESTPLATE)
+                        add(ModArmorItems.ORICHALCUM_LEGGINGS)
+                        add(ModArmorItems.ORICHALCUM_BOOTS)
+
+                        // Alloys
+                        add(ModArmorItems.BRONZE_HELMET)
+                        add(ModArmorItems.BRONZE_CHESTPLATE)
+                        add(ModArmorItems.BRONZE_LEGGINGS)
+                        add(ModArmorItems.BRONZE_BOOTS)
+
+                        add(ModArmorItems.BRASS_HELMET)
+                        add(ModArmorItems.BRASS_CHESTPLATE)
+                        add(ModArmorItems.BRASS_LEGGINGS)
+                        add(ModArmorItems.BRASS_BOOTS)
+
+                        add(ModArmorItems.STEEL_HELMET)
+                        add(ModArmorItems.STEEL_CHESTPLATE)
+                        add(ModArmorItems.STEEL_LEGGINGS)
+                        add(ModArmorItems.STEEL_BOOTS)
+
+                    }
                 }
                 .build()
         )

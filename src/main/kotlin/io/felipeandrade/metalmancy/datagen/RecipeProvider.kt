@@ -4,6 +4,7 @@ import io.felipeandrade.metalmancy.Metalmancy.MOD_ID
 import io.felipeandrade.metalmancy.ModItemTags
 import io.felipeandrade.metalmancy.blocks.ModBlocks
 import io.felipeandrade.metalmancy.items.ModItems
+import io.felipeandrade.metalmancy.items.armor.ModArmorItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider
 import net.minecraft.advancement.AdvancementCriterion
@@ -163,7 +164,9 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
             .input(Items.COPPER_INGOT, 3)
             .criterion(RecipeProvider.hasItem(ModItems.ZINC_RAW), RecipeProvider.conditionsFromItem(ModItems.ZINC_RAW))
             .offerTo(exporter, Identifier(MOD_ID, "${RecipeProvider.getRecipeName(ModItems.BRASS_INGOT)}_temp"))
-        
+
+        ModArmorItems.offerArmorRecipes(exporter)
+
         offerIronAlternatives(exporter)
     }
 }

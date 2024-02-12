@@ -2,11 +2,13 @@ package io.felipeandrade.metalmancy.datagen
 
 import io.felipeandrade.metalmancy.blocks.ModBlocks
 import io.felipeandrade.metalmancy.items.ModItems
+import io.felipeandrade.metalmancy.items.armor.ModArmorItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
 import net.minecraft.data.client.BlockStateModelGenerator
 import net.minecraft.data.client.ItemModelGenerator
 import net.minecraft.data.client.Models
+import net.minecraft.item.ArmorItem
 
 class ModelProvider(
     output: FabricDataOutput
@@ -165,5 +167,68 @@ class ModelProvider(
         register(ModItems.SAPPHIRE, Models.GENERATED)
         register(ModItems.TOPAZ, Models.GENERATED)
 
+
+        // Armors
+        registerArmor(ModArmorItems.WOOLEN_BOOTS as ArmorItem)
+        registerArmor(ModArmorItems.WOOLEN_LEGGINGS as ArmorItem)
+        registerArmor(ModArmorItems.WOOLEN_CHESTPLATE as ArmorItem)
+        registerArmor(ModArmorItems.WOOLEN_HELMET as ArmorItem)
+
+        registerArmor(ModArmorItems.WOODEN_BOOTS as ArmorItem)
+        registerArmor(ModArmorItems.WOODEN_LEGGINGS as ArmorItem)
+        registerArmor(ModArmorItems.WOODEN_CHESTPLATE as ArmorItem)
+        registerArmor(ModArmorItems.WOODEN_HELMET as ArmorItem)
+
+        registerArmor(ModArmorItems.COPPER_BOOTS as ArmorItem)
+        registerArmor(ModArmorItems.COPPER_LEGGINGS as ArmorItem)
+        registerArmor(ModArmorItems.COPPER_CHESTPLATE as ArmorItem)
+        registerArmor(ModArmorItems.COPPER_HELMET as ArmorItem)
+
+        // Metals
+        registerArmor(ModArmorItems.SILVER_BOOTS as ArmorItem)
+        registerArmor(ModArmorItems.SILVER_LEGGINGS as ArmorItem)
+        registerArmor(ModArmorItems.SILVER_CHESTPLATE as ArmorItem)
+        registerArmor(ModArmorItems.SILVER_HELMET as ArmorItem)
+
+        registerArmor(ModArmorItems.PLATINUM_BOOTS as ArmorItem)
+        registerArmor(ModArmorItems.PLATINUM_LEGGINGS as ArmorItem)
+        registerArmor(ModArmorItems.PLATINUM_CHESTPLATE as ArmorItem)
+        registerArmor(ModArmorItems.PLATINUM_HELMET as ArmorItem)
+
+        registerArmor(ModArmorItems.TITANIUM_BOOTS as ArmorItem)
+        registerArmor(ModArmorItems.TITANIUM_LEGGINGS as ArmorItem)
+        registerArmor(ModArmorItems.TITANIUM_CHESTPLATE as ArmorItem)
+        registerArmor(ModArmorItems.TITANIUM_HELMET as ArmorItem)
+
+        registerArmor(ModArmorItems.COBALT_BOOTS as ArmorItem)
+        registerArmor(ModArmorItems.COBALT_LEGGINGS as ArmorItem)
+        registerArmor(ModArmorItems.COBALT_CHESTPLATE as ArmorItem)
+        registerArmor(ModArmorItems.COBALT_HELMET as ArmorItem)
+
+        registerArmor(ModArmorItems.MITHRIL_BOOTS as ArmorItem)
+        registerArmor(ModArmorItems.MITHRIL_LEGGINGS as ArmorItem)
+        registerArmor(ModArmorItems.MITHRIL_CHESTPLATE as ArmorItem)
+        registerArmor(ModArmorItems.MITHRIL_HELMET as ArmorItem)
+
+        registerArmor(ModArmorItems.ORICHALCUM_BOOTS as ArmorItem)
+        registerArmor(ModArmorItems.ORICHALCUM_LEGGINGS as ArmorItem)
+        registerArmor(ModArmorItems.ORICHALCUM_CHESTPLATE as ArmorItem)
+        registerArmor(ModArmorItems.ORICHALCUM_HELMET as ArmorItem)
+
+        // Alloys
+        registerArmor(ModArmorItems.BRASS_BOOTS as ArmorItem)
+        registerArmor(ModArmorItems.BRASS_LEGGINGS as ArmorItem)
+        registerArmor(ModArmorItems.BRASS_CHESTPLATE as ArmorItem)
+        registerArmor(ModArmorItems.BRASS_HELMET as ArmorItem)
+
+        registerArmor(ModArmorItems.BRONZE_BOOTS as ArmorItem)
+        registerArmor(ModArmorItems.BRONZE_LEGGINGS as ArmorItem)
+        registerArmor(ModArmorItems.BRONZE_CHESTPLATE as ArmorItem)
+        registerArmor(ModArmorItems.BRONZE_HELMET as ArmorItem)
+
+        registerArmor(ModArmorItems.STEEL_BOOTS as ArmorItem)
+        registerArmor(ModArmorItems.STEEL_LEGGINGS as ArmorItem)
+        registerArmor(ModArmorItems.STEEL_CHESTPLATE as ArmorItem)
+        registerArmor(ModArmorItems.STEEL_HELMET as ArmorItem)
     }
 }
