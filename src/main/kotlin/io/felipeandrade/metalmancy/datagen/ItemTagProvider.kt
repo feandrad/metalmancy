@@ -81,8 +81,6 @@ class ItemTagProvider(
 
     private fun ironAlternatives() {
         getOrCreateTagBuilder(ModItemTags.IRON_ALTERNATIVE)
-            .forceAddTag(ModItemTags.TIN_INGOTS)
-            .forceAddTag(ModItemTags.ZINC_INGOTS)
             .forceAddTag(ModItemTags.BRASS_INGOTS)
             .forceAddTag(ModItemTags.BRONZE_INGOTS)
             .forceAddTag(ModItemTags.SILVER_INGOTS)
