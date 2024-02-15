@@ -80,6 +80,61 @@ class ModArmorMaterial(
             repairIngredient = { Ingredient.ofItems(ModItems.SILVER_INGOT) }
         )
 
+        val PLATINUM = ModArmorMaterial(
+            unlocalizedName = "platinum",
+            durabilityMultiplier = 33,
+            protectionAmounts = intArrayOf(3, 6, 8, 3),
+            enchantability = 18,
+            equipSound = SoundEvents.ITEM_ARMOR_EQUIP_GOLD,
+            toughness = 0.5f,
+            knockbackResistance = 0.1f,
+            repairIngredient = { Ingredient.ofItems(ModItems.PLATINUM_INGOT) }
+        )
+
+        val TITANIUM = ModArmorMaterial(
+            unlocalizedName = "titanium",
+            durabilityMultiplier = 35,
+            protectionAmounts = intArrayOf(3, 6, 8, 3),
+            enchantability = 5,
+            equipSound = SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
+            toughness = 2.5f,
+            knockbackResistance = 0.1f,
+            repairIngredient = { Ingredient.ofItems(ModItems.TITANIUM_INGOT) }
+        )
+
+        val COBALT = ModArmorMaterial(
+            unlocalizedName = "cobalt",
+            durabilityMultiplier = 33,
+            protectionAmounts = intArrayOf(3, 6, 8, 3),
+            enchantability = 10,
+            equipSound = SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
+            toughness = 0.2f,
+            knockbackResistance = 0.1f,
+            repairIngredient = { Ingredient.ofItems(ModItems.COBALT_INGOT) }
+        )
+
+        val MITHRIL = ModArmorMaterial(
+            unlocalizedName = "mithril",
+            durabilityMultiplier = 50,
+            protectionAmounts = intArrayOf(3, 6, 8, 3),
+            enchantability = 30,
+            equipSound = SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
+            toughness = 3f,
+            knockbackResistance = 0.2f,
+            repairIngredient = { Ingredient.ofItems(ModItems.MITHRIL_INGOT) }
+        )
+
+        val ORICHALCUM = ModArmorMaterial(
+            unlocalizedName = "orichalcum",
+            durabilityMultiplier = 100,
+            protectionAmounts = intArrayOf(3, 6, 8, 3),
+            enchantability = 1,
+            equipSound = SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
+            toughness = 5f,
+            knockbackResistance = 0.2f,
+            repairIngredient = { Ingredient.ofItems(ModItems.ORICHALCUM_INGOT) }
+        )
+
         // Alloys
         val BRONZE = ModArmorMaterial(
             unlocalizedName = "bronze",

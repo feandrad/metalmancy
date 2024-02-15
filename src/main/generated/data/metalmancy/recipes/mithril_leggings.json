@@ -7,9 +7,9 @@
     }
   },
   "pattern": [
-    "###",
     "# #",
-    "# #"
+    "###",
+    "###"
   ],
   "result": {
     "item": "metalmancy:mithril_leggings"

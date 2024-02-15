@@ -2,10 +2,12 @@ package io.felipeandrade.metalmancy.datagen
 
 import io.felipeandrade.metalmancy.ModItemTags
 import io.felipeandrade.metalmancy.items.ModItems
+import io.felipeandrade.metalmancy.items.armor.ModArmorItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider.ItemTagProvider
 import net.minecraft.item.Items
 import net.minecraft.registry.RegistryWrapper.WrapperLookup
+import net.minecraft.registry.tag.ItemTags
 import java.util.concurrent.CompletableFuture
 
 class ItemTagProvider(
@@ -15,7 +17,7 @@ class ItemTagProvider(
         materialItems()
         ironAlternatives()
 //        pickaxes()
-//        armorTrims()
+        armorTrims()
     }
 
 
@@ -84,5 +86,21 @@ class ItemTagProvider(
             .forceAddTag(ModItemTags.BRASS_INGOTS)
             .forceAddTag(ModItemTags.BRONZE_INGOTS)
             .forceAddTag(ModItemTags.SILVER_INGOTS)
+    }
+
+    private fun armorTrims() {
+        getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
+            .add(ModArmorItems.WOOLEN_BOOTS, ModArmorItems.WOOLEN_LEGGINGS, ModArmorItems.WOOLEN_CHESTPLATE, ModArmorItems.WOOLEN_HELMET)
+            .add(ModArmorItems.WOODEN_BOOTS, ModArmorItems.WOODEN_LEGGINGS, ModArmorItems.WOODEN_CHESTPLATE, ModArmorItems.WOODEN_HELMET)
+            .add(ModArmorItems.COPPER_BOOTS, ModArmorItems.COPPER_LEGGINGS, ModArmorItems.COPPER_CHESTPLATE, ModArmorItems.COPPER_HELMET)
+            .add(ModArmorItems.SILVER_BOOTS, ModArmorItems.SILVER_LEGGINGS, ModArmorItems.SILVER_CHESTPLATE, ModArmorItems.SILVER_HELMET)
+            .add(ModArmorItems.PLATINUM_BOOTS, ModArmorItems.PLATINUM_LEGGINGS, ModArmorItems.PLATINUM_CHESTPLATE, ModArmorItems.PLATINUM_HELMET)
+            .add(ModArmorItems.TITANIUM_BOOTS, ModArmorItems.TITANIUM_LEGGINGS, ModArmorItems.TITANIUM_CHESTPLATE, ModArmorItems.TITANIUM_HELMET)
+            .add(ModArmorItems.COBALT_BOOTS, ModArmorItems.COBALT_LEGGINGS, ModArmorItems.COBALT_CHESTPLATE, ModArmorItems.COBALT_HELMET)
+            .add(ModArmorItems.MITHRIL_BOOTS, ModArmorItems.MITHRIL_LEGGINGS, ModArmorItems.MITHRIL_CHESTPLATE, ModArmorItems.MITHRIL_HELMET)
+            .add(ModArmorItems.ORICHALCUM_BOOTS, ModArmorItems.ORICHALCUM_LEGGINGS, ModArmorItems.ORICHALCUM_CHESTPLATE, ModArmorItems.ORICHALCUM_HELMET)
+            .add(ModArmorItems.BRONZE_BOOTS, ModArmorItems.BRONZE_LEGGINGS, ModArmorItems.BRONZE_CHESTPLATE, ModArmorItems.BRONZE_HELMET)
+            .add(ModArmorItems.BRASS_BOOTS, ModArmorItems.BRASS_LEGGINGS, ModArmorItems.BRASS_CHESTPLATE, ModArmorItems.BRASS_HELMET)
+            .add(ModArmorItems.STEEL_BOOTS, ModArmorItems.STEEL_LEGGINGS, ModArmorItems.STEEL_CHESTPLATE, ModArmorItems.STEEL_HELMET)
     }
 }
