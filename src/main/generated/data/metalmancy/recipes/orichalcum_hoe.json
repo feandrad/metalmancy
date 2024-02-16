@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "tag": "c:orichalcum_ingots"
+    },
+    "|": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "##",
+    " |",
+    " |"
+  ],
+  "result": {
+    "item": "metalmancy:orichalcum_hoe"
+  }
+}

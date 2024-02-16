@@ -7,9 +7,9 @@
     }
   },
   "pattern": [
-    "###",
     "# #",
-    "# #"
+    "###",
+    "###"
   ],
   "result": {
     "item": "metalmancy:silver_chestplate"

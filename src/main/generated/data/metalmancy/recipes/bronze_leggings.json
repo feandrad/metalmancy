@@ -7,9 +7,9 @@
     }
   },
   "pattern": [
-    "# #",
     "###",
-    "###"
+    "# #",
+    "# #"
   ],
   "result": {
     "item": "metalmancy:bronze_leggings"

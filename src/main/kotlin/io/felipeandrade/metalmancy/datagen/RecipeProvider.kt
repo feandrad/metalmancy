@@ -5,11 +5,11 @@ import io.felipeandrade.metalmancy.ModItemTags
 import io.felipeandrade.metalmancy.blocks.ModBlocks
 import io.felipeandrade.metalmancy.items.ModItems
 import io.felipeandrade.metalmancy.items.armor.ModArmorItems
+import io.felipeandrade.metalmancy.items.tools.ModTools
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider
 import net.minecraft.advancement.AdvancementCriterion
 import net.minecraft.data.server.recipe.RecipeExporter
-import net.minecraft.data.server.recipe.RecipeProvider
 import net.minecraft.data.server.recipe.RecipeProvider.*
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder
@@ -211,15 +211,15 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BRONZE_DUST, 4)
             .input(ModItems.TIN_DUST, 1)
             .input(ModItems.COPPER_DUST, 3)
-            .criterion(RecipeProvider.hasItem(ModItems.TIN_DUST), RecipeProvider.conditionsFromItem(ModItems.TIN_DUST))
+            .criterion(hasItem(ModItems.TIN_DUST), conditionsFromItem(ModItems.TIN_DUST))
             .offerTo(exporter, Identifier(MOD_ID, getRecipeName(ModItems.BRONZE_DUST)))
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BRONZE_CRUSHED, 4)
             .input(ModItems.TIN_CRUSHED, 1)
             .input(ModItems.COPPER_CRUSHED, 3)
             .criterion(
-                RecipeProvider.hasItem(ModItems.TIN_CRUSHED),
-                RecipeProvider.conditionsFromItem(ModItems.TIN_CRUSHED)
+                hasItem(ModItems.TIN_CRUSHED),
+                conditionsFromItem(ModItems.TIN_CRUSHED)
             )
             .offerTo(exporter, Identifier(MOD_ID, getRecipeName(ModItems.BRONZE_CRUSHED)))
 
@@ -227,7 +227,7 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BRONZE_INGOT, 4)
             .input(ModItems.TIN_INGOT, 1)
             .input(Items.COPPER_INGOT, 3)
-            .criterion(RecipeProvider.hasItem(ModItems.TIN_RAW), RecipeProvider.conditionsFromItem(ModItems.TIN_RAW))
+            .criterion(hasItem(ModItems.TIN_RAW), conditionsFromItem(ModItems.TIN_RAW))
             .offerTo(exporter, Identifier(MOD_ID, "${getRecipeName(ModItems.BRONZE_INGOT)}_temp"))
 
         // Brass
@@ -235,8 +235,8 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
             .input(ModItems.ZINC_DUST, 1)
             .input(ModItems.COPPER_DUST, 3)
             .criterion(
-                RecipeProvider.hasItem(ModItems.ZINC_DUST),
-                RecipeProvider.conditionsFromItem(ModItems.ZINC_DUST)
+                hasItem(ModItems.ZINC_DUST),
+                conditionsFromItem(ModItems.ZINC_DUST)
             )
             .offerTo(exporter, Identifier(MOD_ID, getRecipeName(ModItems.BRASS_DUST)))
 
@@ -244,8 +244,8 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
             .input(ModItems.ZINC_CRUSHED, 1)
             .input(ModItems.COPPER_CRUSHED, 3)
             .criterion(
-                RecipeProvider.hasItem(ModItems.ZINC_CRUSHED),
-                RecipeProvider.conditionsFromItem(ModItems.ZINC_CRUSHED)
+                hasItem(ModItems.ZINC_CRUSHED),
+                conditionsFromItem(ModItems.ZINC_CRUSHED)
             )
             .offerTo(exporter, Identifier(MOD_ID, getRecipeName(ModItems.BRASS_CRUSHED)))
 
@@ -253,7 +253,7 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BRASS_INGOT, 4)
             .input(ModItems.ZINC_INGOT, 1)
             .input(Items.COPPER_INGOT, 3)
-            .criterion(RecipeProvider.hasItem(ModItems.ZINC_RAW), RecipeProvider.conditionsFromItem(ModItems.ZINC_RAW))
+            .criterion(hasItem(ModItems.ZINC_RAW), conditionsFromItem(ModItems.ZINC_RAW))
             .offerTo(exporter, Identifier(MOD_ID, "${getRecipeName(ModItems.BRASS_INGOT)}_temp"))
 
         // Armors
@@ -272,21 +272,59 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
         offerArmorRecipes(exporter, ModItemTags.BRASS_INGOTS, ModArmorItems.BRASS_BOOTS, ModArmorItems.BRASS_LEGGINGS, ModArmorItems.BRASS_CHESTPLATE, ModArmorItems.BRASS_HELMET)
         offerArmorRecipes(exporter, ModItemTags.STEEL_INGOTS, ModArmorItems.STEEL_BOOTS, ModArmorItems.STEEL_LEGGINGS, ModArmorItems.STEEL_CHESTPLATE, ModArmorItems.STEEL_HELMET)
 
+        // Tools
+        offerToolRecipes(exporter, ModItemTags.BONES, ModTools.BONE_AXE, ModTools.BONE_PICKAXE, ModTools.BONE_SHOVEL, ModTools.BONE_HOE, ModTools.BONE_SWORD)
+        offerToolRecipes(exporter, ModItemTags.FLINTS, ModTools.FLINT_AXE, ModTools.FLINT_PICKAXE, ModTools.FLINT_SHOVEL, ModTools.FLINT_HOE, ModTools.FLINT_SWORD)
+        offerToolRecipes(exporter, ModItemTags.COPPER_INGOTS, ModTools.COPPER_AXE, ModTools.COPPER_PICKAXE, ModTools.COPPER_SHOVEL, ModTools.COPPER_HOE, ModTools.COPPER_SWORD)
+
+        offerToolRecipes(exporter, ModItemTags.SILVER_INGOTS, ModTools.SILVER_AXE, ModTools.SILVER_PICKAXE, ModTools.SILVER_SHOVEL, ModTools.SILVER_HOE, ModTools.SILVER_SWORD)
+        offerToolRecipes(exporter, ModItemTags.PLATINUM_INGOTS, ModTools.PLATINUM_AXE, ModTools.PLATINUM_PICKAXE, ModTools.PLATINUM_SHOVEL, ModTools.PLATINUM_HOE, ModTools.PLATINUM_SWORD)
+        offerToolRecipes(exporter, ModItemTags.TITANIUM_INGOTS, ModTools.TITANIUM_AXE, ModTools.TITANIUM_PICKAXE, ModTools.TITANIUM_SHOVEL, ModTools.TITANIUM_HOE, ModTools.TITANIUM_SWORD)
+        offerToolRecipes(exporter, ModItemTags.COBALT_INGOTS, ModTools.COBALT_AXE, ModTools.COBALT_PICKAXE, ModTools.COBALT_SHOVEL, ModTools.COBALT_HOE, ModTools.COBALT_SWORD)
+        offerToolRecipes(exporter, ModItemTags.MITHRIL_INGOTS, ModTools.MITHRIL_AXE, ModTools.MITHRIL_PICKAXE, ModTools.MITHRIL_SHOVEL, ModTools.MITHRIL_HOE, ModTools.MITHRIL_SWORD)
+        offerToolRecipes(exporter, ModItemTags.ORICHALCUM_INGOTS, ModTools.ORICHALCUM_AXE, ModTools.ORICHALCUM_PICKAXE, ModTools.ORICHALCUM_SHOVEL, ModTools.ORICHALCUM_HOE, ModTools.ORICHALCUM_SWORD)
+
+        offerToolRecipes(exporter, ModItemTags.RUBYS, ModTools.RUBY_AXE, ModTools.RUBY_PICKAXE, ModTools.RUBY_SHOVEL, ModTools.RUBY_HOE, ModTools.RUBY_SWORD)
+        offerToolRecipes(exporter, ModItemTags.SAPPHIRES, ModTools.SAPPHIRE_AXE, ModTools.SAPPHIRE_PICKAXE, ModTools.SAPPHIRE_SHOVEL, ModTools.SAPPHIRE_HOE, ModTools.SAPPHIRE_SWORD)
+        offerToolRecipes(exporter, ModItemTags.TOPAZES, ModTools.TOPAZ_AXE, ModTools.TOPAZ_PICKAXE, ModTools.TOPAZ_SHOVEL, ModTools.TOPAZ_HOE, ModTools.TOPAZ_SWORD)
+
+        offerToolRecipes(exporter, ModItemTags.BRASS_INGOTS, ModTools.BRASS_AXE, ModTools.BRASS_PICKAXE, ModTools.BRASS_SHOVEL, ModTools.BRASS_HOE, ModTools.BRASS_SWORD)
+        offerToolRecipes(exporter, ModItemTags.BRONZE_INGOTS, ModTools.BRONZE_AXE, ModTools.BRONZE_PICKAXE, ModTools.BRONZE_SHOVEL, ModTools.BRONZE_HOE, ModTools.BRONZE_SWORD)
+        offerToolRecipes(exporter, ModItemTags.STEEL_INGOTS, ModTools.STEEL_AXE, ModTools.STEEL_PICKAXE, ModTools.STEEL_SHOVEL, ModTools.STEEL_HOE, ModTools.STEEL_SWORD)
+
+
         offerIronAlternatives(exporter)
     }
 
     private fun offerArmorRecipes(
         exporter: RecipeExporter,
         tag: TagKey<Item>,
-        helmet: Item,
-        chestplate: Item,
-        leggings: Item,
         boots: Item,
+        leggings: Item,
+        chestplate: Item,
+        helmet: Item,
     ) {
-        helmet.offerHelmet(exporter, tag)
-        chestplate.offerChestplate(exporter, tag)
-        leggings.offerLeggings(exporter, tag)
         boots.offerBoots(exporter, tag)
+        leggings.offerLeggings(exporter, tag)
+        chestplate.offerChestplate(exporter, tag)
+        helmet.offerHelmet(exporter, tag)
+    }
+
+
+    private fun offerToolRecipes(
+        exporter: RecipeExporter,
+        tag: TagKey<Item>,
+        axe: Item,
+        pickaxe: Item,
+        shovel: Item,
+        hoe: Item,
+        sword: Item,
+    ) {
+        axe.offerAxe(exporter, tag, Items.STICK)
+        pickaxe.offerPickaxe(exporter, tag, Items.STICK)
+        shovel.offerShovel(exporter, tag, Items.STICK)
+        hoe.offerHoe(exporter, tag, Items.STICK)
+        sword.offerSword(exporter, tag, Items.STICK)
     }
 }
 
@@ -471,14 +509,59 @@ fun Item.offerBoots(exporter: RecipeExporter, tag: TagKey<Item>) {
         .offerTo(exporter, Identifier(MOD_ID, getRecipeName(this)))
 }
 
-fun Item.offerPickaxe(exporter: RecipeExporter, ingot: ItemConvertible, handle: ItemConvertible) {
+// Tools
+fun Item.offerPickaxe(exporter: RecipeExporter, tag: TagKey<Item>, handle: ItemConvertible) {
     ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, this)
         .pattern("###")
         .pattern(" | ")
         .pattern(" | ")
-        .input('#', ingot)
+        .input('#', tag)
         .input('|', handle)
-        .criterion(RecipeProvider.hasItem(ingot), RecipeProvider.conditionsFromItem(ingot))
+        .criterion(HAS_TAG_ITEM, conditionsFromTag(tag) as AdvancementCriterion<*>)
+        .offerTo(exporter, Identifier(MOD_ID, getRecipeName(this)))
+}
+
+fun Item.offerAxe(exporter: RecipeExporter, tag: TagKey<Item>, handle: ItemConvertible) {
+    ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, this)
+        .pattern("##")
+        .pattern("#|")
+        .pattern(" |")
+        .input('#', tag)
+        .input('|', handle)
+        .criterion(HAS_TAG_ITEM, conditionsFromTag(tag) as AdvancementCriterion<*>)
+        .offerTo(exporter, Identifier(MOD_ID, getRecipeName(this)))
+}
+
+fun Item.offerShovel(exporter: RecipeExporter, tag: TagKey<Item>, handle: ItemConvertible) {
+    ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, this)
+        .pattern("#")
+        .pattern("|")
+        .pattern("|")
+        .input('#', tag)
+        .input('|', handle)
+        .criterion(HAS_TAG_ITEM, conditionsFromTag(tag) as AdvancementCriterion<*>)
+        .offerTo(exporter, Identifier(MOD_ID, getRecipeName(this)))
+}
+
+fun Item.offerHoe(exporter: RecipeExporter, tag: TagKey<Item>, handle: ItemConvertible) {
+    ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, this)
+        .pattern("##")
+        .pattern(" |")
+        .pattern(" |")
+        .input('#', tag)
+        .input('|', handle)
+        .criterion(HAS_TAG_ITEM, conditionsFromTag(tag) as AdvancementCriterion<*>)
+        .offerTo(exporter, Identifier(MOD_ID, getRecipeName(this)))
+}
+
+fun Item.offerSword(exporter: RecipeExporter, tag: TagKey<Item>, handle: ItemConvertible) {
+    ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, this)
+        .pattern("#")
+        .pattern("|")
+        .pattern("|")
+        .input('#', tag)
+        .input('|', handle)
+        .criterion(HAS_TAG_ITEM, conditionsFromTag(tag) as AdvancementCriterion<*>)
         .offerTo(exporter, Identifier(MOD_ID, getRecipeName(this)))
 }
 

@@ -41,6 +41,8 @@ object ModBlockTags {
 }
 
 object ModItemTags {
+    val BONES = createTag("bones", "c")
+    val FLINTS = createTag("flints", "c")
     val COPPER_INGOTS = createTag("copper_ingots", "c")
     val COPPER_NUGGETS = createTag("copper_nuggets", "c")
     val DIAMOND_NUGGETS = createTag("diamond_nuggets", "c")
@@ -70,6 +72,10 @@ object ModItemTags {
     val BRASS_NUGGETS = createTag("brass_nuggets", "c")
     val BRONZE_NUGGETS = createTag("bronze_nuggets", "c")
     val STEEL_NUGGETS = createTag("steel_nuggets", "c")
+
+    val RUBYS = createTag("brass_nuggets", "c")
+    val SAPPHIRES = createTag("bronze_nuggets", "c")
+    val TOPAZES = createTag("steel_nuggets", "c")
 
     val IRON_ALTERNATIVE = createTag("iron_alternative")
     val PICKAXES = createTag("pickaxe", "fabric")

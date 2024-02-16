@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "tag": "c:bronze_nuggets"
+    },
+    "|": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "###",
+    " | ",
+    " | "
+  ],
+  "result": {
+    "item": "metalmancy:sapphire_pickaxe"
+  }
+}

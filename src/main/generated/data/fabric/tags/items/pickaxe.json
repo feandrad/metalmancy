@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "metalmancy:bone_pickaxe",
+    "metalmancy:flint_pickaxe",
+    "metalmancy:copper_pickaxe",
+    "metalmancy:bronze_pickaxe",
+    "metalmancy:steel_pickaxe",
+    "metalmancy:silver_pickaxe",
+    "metalmancy:platinum_pickaxe",
+    "metalmancy:titanium_pickaxe",
+    "metalmancy:cobalt_pickaxe",
+    "metalmancy:mithril_pickaxe",
+    "metalmancy:orichalcum_pickaxe",
+    "metalmancy:ruby_pickaxe",
+    "metalmancy:sapphire_pickaxe",
+    "metalmancy:topaz_pickaxe"
+  ]
+}

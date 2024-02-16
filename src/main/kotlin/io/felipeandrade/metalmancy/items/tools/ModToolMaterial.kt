@@ -38,6 +38,10 @@ class ModToolMaterial(
         val BRASS = ModToolMaterial(MiningLevels.IRON, 250, 6.0f, 2.0f, 14, Ingredient.fromTag(ModItemTags.BRASS_INGOTS))
         val STEEL = ModToolMaterial(MiningLevels.DIAMOND, 500, 8.0f, 3.0f, 1, Ingredient.fromTag(ModItemTags.STEEL_INGOTS))
 
+        val RUBY = ModToolMaterial(MiningLevels.DIAMOND, 500, 8.0f, 3.0f, 1, Ingredient.fromTag(ModItemTags.RUBYS))
+        val SAPPHIRE = ModToolMaterial(MiningLevels.DIAMOND, 500, 8.0f, 3.0f, 1, Ingredient.fromTag(ModItemTags.SAPPHIRES))
+        val TOPAZ = ModToolMaterial(MiningLevels.DIAMOND, 500, 8.0f, 3.0f, 1, Ingredient.fromTag(ModItemTags.TOPAZES))
+
         fun initialize() {}
     }
 }

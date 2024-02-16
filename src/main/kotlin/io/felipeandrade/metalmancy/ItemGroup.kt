@@ -319,6 +319,28 @@ class ItemGroup {
                         add(ModTools.STEEL_AXE)
                         add(ModTools.STEEL_HOE)
 
+                        // Ruby
+                        add(ModTools.RUBY_SWORD)
+                        add(ModTools.RUBY_SHOVEL)
+                        add(ModTools.RUBY_PICKAXE)
+                        add(ModTools.RUBY_AXE)
+                        add(ModTools.RUBY_HOE)
+
+                        // Sapphire
+                        add(ModTools.SAPPHIRE_SWORD)
+                        add(ModTools.SAPPHIRE_SHOVEL)
+                        add(ModTools.SAPPHIRE_PICKAXE)
+                        add(ModTools.SAPPHIRE_AXE)
+                        add(ModTools.SAPPHIRE_HOE)
+
+                        // Topaz
+                        add(ModTools.TOPAZ_SWORD)
+                        add(ModTools.TOPAZ_SHOVEL)
+                        add(ModTools.TOPAZ_PICKAXE)
+                        add(ModTools.TOPAZ_AXE)
+                        add(ModTools.TOPAZ_HOE)
+
+
                         // Vanilla
                         add(ModArmorItems.WOOLEN_HELMET)
                         add(ModArmorItems.WOOLEN_CHESTPLATE)

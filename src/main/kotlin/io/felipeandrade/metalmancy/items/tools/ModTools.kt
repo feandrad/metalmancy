@@ -90,6 +90,30 @@ class ModTools {
         val BRASS_SWORD = registerItem("brass_sword", SwordItem(ModToolMaterial.BRASS, 1, -2.8f, Item.Settings()) as Item )
         val STEEL_SWORD = registerItem("steel_sword", SwordItem(ModToolMaterial.STEEL, 1, -2.8f, Item.Settings()) as Item )
 
+        // Ruby
+        val RUBY_PICKAXE = registerItem("ruby_pickaxe", PickaxeItem(ModToolMaterial.RUBY, 1, -2.8f, Item.Settings()) as Item )
+        val RUBY_AXE = registerItem("ruby_axe", AxeItem(ModToolMaterial.RUBY, 7f, -3f, Item.Settings()) as Item )
+        val RUBY_SHOVEL = registerItem("ruby_shovel", ShovelItem(ModToolMaterial.RUBY, 1.5f, -3f, Item.Settings()) as Item )
+        val RUBY_HOE = registerItem("ruby_hoe", HoeItem(ModToolMaterial.RUBY, 0, -2f, Item.Settings()) as Item )
+        val RUBY_SWORD = registerItem("ruby_sword", SwordItem(ModToolMaterial.RUBY, 1, -2.8f, Item.Settings()) as Item )
+
+        // Sapphire
+        val SAPPHIRE_PICKAXE = registerItem("sapphire_pickaxe", PickaxeItem(ModToolMaterial.SAPPHIRE, 1, -2.8f, Item.Settings()) as Item )
+        val SAPPHIRE_AXE = registerItem("sapphire_axe", AxeItem(ModToolMaterial.SAPPHIRE, 7f, -3f, Item.Settings()) as Item )
+        val SAPPHIRE_SHOVEL = registerItem("sapphire_shovel", ShovelItem(ModToolMaterial.SAPPHIRE, 1.5f, -3f, Item.Settings()) as Item )
+        val SAPPHIRE_HOE = registerItem("sapphire_hoe", HoeItem(ModToolMaterial.SAPPHIRE, 0, -2f, Item.Settings()) as Item )
+        val SAPPHIRE_SWORD = registerItem("sapphire_sword", SwordItem(ModToolMaterial.SAPPHIRE, 1, -2.8f, Item.Settings()) as Item )
+
+        // Topaz
+        val TOPAZ_PICKAXE = registerItem("topaz_pickaxe", PickaxeItem(ModToolMaterial.TOPAZ, 1, -2.8f, Item.Settings()) as Item )
+        val TOPAZ_AXE = registerItem("topaz_axe", AxeItem(ModToolMaterial.TOPAZ, 7f, -3f, Item.Settings()) as Item )
+        val TOPAZ_SHOVEL = registerItem("topaz_shovel", ShovelItem(ModToolMaterial.TOPAZ, 1.5f, -3f, Item.Settings()) as Item )
+        val TOPAZ_HOE = registerItem("topaz_hoe", HoeItem(ModToolMaterial.TOPAZ, 0, -2f, Item.Settings()) as Item )
+        val TOPAZ_SWORD = registerItem("topaz_sword", SwordItem(ModToolMaterial.TOPAZ, 1, -2.8f, Item.Settings()) as Item )
+
+
+
+
 //        val WOODEN_SWORD = Items.register("wooden_sword", SwordItem(ToolMaterials.WOOD, 3, -2.4f, Item.Settings()) as Item)
 //        val STONE_SWORD = Items.register("stone_sword", SwordItem(ToolMaterials.STONE, 3, -2.4f, Item.Settings()) as Item)
 //        val GOLDEN_SWORD = Items.register("golden_sword", SwordItem(ToolMaterials.GOLD, 3, -2.4f, Item.Settings()) as Item)
