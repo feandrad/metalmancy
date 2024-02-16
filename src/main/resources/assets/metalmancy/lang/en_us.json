@@ -331,5 +331,22 @@
   "item.metalmancy.cobalt_axe": "Cobalt Axe",
   "item.metalmancy.cobalt_shovel": "Cobalt Shovel",
   "item.metalmancy.cobalt_hoe": "Cobalt Hoe",
-  "item.metalmancy.cobalt_hammer": "Cobalt Hammer"
+  "item.metalmancy.cobalt_hammer": "Cobalt Hammer",
+
+  "item.metalmancy.copper_heap": "Copper Heap",
+  "item.metalmancy.iron_heap": "Iron Heap",
+  "item.metalmancy.gold_heap": "Gold Heap",
+  "item.metalmancy.diamond_heap": "Diamond Heap",
+
+  "item.metalmancy.zinc_heap": "Zinc Heap",
+  "item.metalmancy.tin_heap": "Tin Heap",
+  "item.metalmancy.silver_heap": "Silver Heap",
+  "item.metalmancy.platinum_heap": "Platinum Heap",
+  "item.metalmancy.titanium_heap": "Titanium Heap",
+  "item.metalmancy.cobalt_heap": "Cobalt Heap",
+  "item.metalmancy.mithril_heap": "Mithril Heap",
+  "item.metalmancy.orichalcum_heap": "Orichalcum Heap",
+  "item.metalmancy.bronze_heap": "Bronze Heap",
+  "item.metalmancy.brass_heap": "Brass Heap",
+  "item.metalmancy.steel_heap": "Steel Heap"
 }

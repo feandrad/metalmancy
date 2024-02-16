@@ -28,6 +28,8 @@ class ItemTagProvider(
             .add(Items.COPPER_INGOT)
         getOrCreateTagBuilder(ModItemTags.COPPER_NUGGETS)
             .add(ModItems.COPPER_NUGGET)
+        getOrCreateTagBuilder(ModItemTags.DIAMOND_NUGGETS)
+            .add(ModItems.DIAMOND_NUGGET)
 
         // Metals
         getOrCreateTagBuilder(ModItemTags.TIN_INGOTS)

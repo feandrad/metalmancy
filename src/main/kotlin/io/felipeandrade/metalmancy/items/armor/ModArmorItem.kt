@@ -8,6 +8,4 @@ class ModArmorItem(
     material: ArmorMaterial,
     type: Type,
     settings: Settings = FabricItemSettings()
-): ArmorItem(material, type, settings) {
-
-}
+): ArmorItem(material, type, settings)

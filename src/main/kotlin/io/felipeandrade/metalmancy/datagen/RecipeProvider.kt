@@ -27,6 +27,7 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
 
         // Vanilla
         offerCompactingRecipes(exporter, ModItems.COPPER_NUGGET, Items.COPPER_INGOT)
+        offerCompactingRecipes(exporter, ModItems.DIAMOND_NUGGET, Items.DIAMOND)
 
         // Metals
         offerOreMaterial(
@@ -241,7 +242,7 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
         offerIronAlternatives(exporter)
     }
 
-    fun offerArmorRecipes(
+    private fun offerArmorRecipes(
         exporter: RecipeExporter,
         tag: TagKey<Item>,
         helmet: Item,
@@ -249,10 +250,10 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
         leggings: Item,
         boots: Item,
     ) {
-        offerHelmet(exporter, tag, helmet)
-        offerChestplate(exporter, tag, chestplate)
-        offerLeggings(exporter, tag, leggings)
-        offerBoots(exporter, tag, boots)
+        helmet.offerHelmet(exporter, tag)
+        chestplate.offerChestplate(exporter, tag)
+        leggings.offerLeggings(exporter, tag)
+        boots.offerBoots(exporter, tag)
     }
 }
 
@@ -392,42 +393,53 @@ fun offerCompassRecipe(exporter: RecipeExporter, tag: TagKey<Item>) {
         .offerTo(exporter, Identifier(MOD_ID, getRecipeName(Items.COMPASS)))
 }
 
-fun offerHelmet(exporter: RecipeExporter, tag: TagKey<Item>, item: Item) {
-    ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, item)
+fun Item.offerHelmet(exporter: RecipeExporter, tag: TagKey<Item>) {
+    ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, this)
         .pattern("###")
         .pattern("# #")
         .input('#', tag)
         .criterion(HAS_TAG_ITEM, conditionsFromTag(tag) as AdvancementCriterion<*>)
-        .offerTo(exporter, Identifier(MOD_ID, getRecipeName(item)))
+        .offerTo(exporter, Identifier(MOD_ID, getRecipeName(this)))
 }
 
-fun offerChestplate(exporter: RecipeExporter, tag: TagKey<Item>, item: Item) {
-    ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, item)
+fun Item.offerChestplate(exporter: RecipeExporter, tag: TagKey<Item>) {
+    ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, this)
         .pattern("# #")
         .pattern("###")
         .pattern("###")
         .input('#', tag)
         .criterion(HAS_TAG_ITEM, conditionsFromTag(tag) as AdvancementCriterion<*>)
-        .offerTo(exporter, Identifier(MOD_ID, getRecipeName(item)))
+        .offerTo(exporter, Identifier(MOD_ID, getRecipeName(this)))
 }
 
-fun offerLeggings(exporter: RecipeExporter, tag: TagKey<Item>, item: Item) {
-    ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, item)
+fun Item.offerLeggings(exporter: RecipeExporter, tag: TagKey<Item>) {
+    ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, this)
         .pattern("###")
         .pattern("# #")
         .pattern("# #")
         .input('#', tag)
         .criterion(HAS_TAG_ITEM, conditionsFromTag(tag) as AdvancementCriterion<*>)
-        .offerTo(exporter, Identifier(MOD_ID, getRecipeName(item)))
+        .offerTo(exporter, Identifier(MOD_ID, getRecipeName(this)))
 }
 
-fun offerBoots(exporter: RecipeExporter, tag: TagKey<Item>, item: Item) {
-    ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, item)
+fun Item.offerBoots(exporter: RecipeExporter, tag: TagKey<Item>) {
+    ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, this)
         .pattern("# #")
         .pattern("# #")
         .input('#', tag)
         .criterion(HAS_TAG_ITEM, conditionsFromTag(tag) as AdvancementCriterion<*>)
-        .offerTo(exporter, Identifier(MOD_ID, getRecipeName(item)))
+        .offerTo(exporter, Identifier(MOD_ID, getRecipeName(this)))
+}
+
+fun Item.offerPickaxe(exporter: RecipeExporter, ingot: ItemConvertible, handle: ItemConvertible) {
+    ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, this)
+        .pattern("###")
+        .pattern(" | ")
+        .pattern(" | ")
+        .input('#', ingot)
+        .input('|', handle)
+        .criterion(RecipeProvider.hasItem(ingot), RecipeProvider.conditionsFromItem(ingot))
+        .offerTo(exporter, Identifier(MOD_ID, getRecipeName(this)))
 }
 
 const val HAS_TAG_ITEM = "has_tag_item"

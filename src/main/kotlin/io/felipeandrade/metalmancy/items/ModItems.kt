@@ -7,8 +7,37 @@ class ModItems {
     companion object {
         // Vanilla
         val COPPER_NUGGET = registerItem("copper_nugget")
-        val COPPER_DUST = registerItem("copper_dust")
         val COPPER_CRUSHED = registerItem("copper_crushed")
+        val COPPER_DUST = registerItem("copper_dust")
+        val COPPER_HEAP = registerItem("copper_heap")
+        val COPPER_PLATE = registerItem("copper_plate")
+        val COPPER_GEAR = registerItem("copper_gear")
+        val COPPER_ROD = registerItem("copper_rod")
+        val COPPER_CABLE = registerItem("copper_cable")
+
+        val IRON_CRUSHED = registerItem("iron_crushed")
+        val IRON_DUST = registerItem("iron_dust")
+        val IRON_HEAP = registerItem("iron_heap")
+        val IRON_PLATE = registerItem("iron_plate")
+        val IRON_GEAR = registerItem("iron_gear")
+        val IRON_ROD = registerItem("iron_rod")
+        val IRON_CABLE = registerItem("iron_cable")
+
+        val GOLD_CRUSHED = registerItem("gold_crushed")
+        val GOLD_DUST = registerItem("gold_dust")
+        val GOLD_HEAP = registerItem("gold_heap")
+        val GOLD_PLATE = registerItem("gold_plate")
+        val GOLD_GEAR = registerItem("gold_gear")
+        val GOLD_ROD = registerItem("gold_rod")
+        val GOLD_CABLE = registerItem("gold_cable")
+        
+        val DIAMOND_NUGGET = registerItem("diamond_nugget")
+        val DIAMOND_CRUSHED = registerItem("diamond_crushed")
+        val DIAMOND_DUST = registerItem("diamond_dust")
+        val DIAMOND_HEAP = registerItem("diamond_heap")
+        val DIAMOND_PLATE = registerItem("diamond_plate")
+        val DIAMOND_GEAR = registerItem("diamond_gear")
+        val DIAMOND_ROD = registerItem("diamond_rod")
 
         val COAL_DUST = registerItem("coal_dust")
         val COAL_CRUSHED = registerItem("coal_crushed")
@@ -95,7 +124,7 @@ class ModItems {
         val MITHRIL_HEAP = registerItem("mithril_heap")
         val ORICHALCUM_HEAP = registerItem("orichalcum_heap")
 
-        // Rod
+        // Rod        
         val BRASS_ROD = registerItem("brass_rod")
         val BRONZE_ROD = registerItem("bronze_rod")
         val STEEL_ROD = registerItem("steel_rod")

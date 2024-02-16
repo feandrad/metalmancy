@@ -43,6 +43,7 @@ object ModBlockTags {
 object ModItemTags {
     val COPPER_INGOTS = createTag("copper_ingots", "c")
     val COPPER_NUGGETS = createTag("copper_nuggets", "c")
+    val DIAMOND_NUGGETS = createTag("diamond_nuggets", "c")
 
     val ZINC_INGOTS = createTag("zinc_ingots", "c")
     val TIN_INGOTS = createTag("tin_ingots", "c")
