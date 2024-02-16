@@ -5,9 +5,29 @@ import net.minecraft.item.*
 
 class ModTools {
     companion object{
-        // Pickaxes
-        val COPPER_PICKAXE = registerItem("copper_pickaxe", PickaxeItem(ModToolMaterial.COPPER, 1, -2.8f, Item.Settings()) as Item )
 
+        // Bone
+        val BONE_PICKAXE = registerItem("bone_pickaxe", PickaxeItem(ModToolMaterial.BONE, 1, -2.8f, Item.Settings()) as Item )
+        val BONE_AXE = registerItem("bone_axe", AxeItem(ModToolMaterial.BONE, 7f, -3f, Item.Settings()) as Item )
+        val BONE_SHOVEL = registerItem("bone_shovel", ShovelItem(ModToolMaterial.BONE, 1.5f, -3f, Item.Settings()) as Item )
+        val BONE_HOE = registerItem("bone_hoe", HoeItem(ModToolMaterial.BONE, 0, -2f, Item.Settings()) as Item )
+        val BONE_SWORD = registerItem("bone_sword", SwordItem(ModToolMaterial.BONE, 1, -2.8f, Item.Settings()) as Item )
+
+        // Flint
+        val FLINT_PICKAXE = registerItem("flint_pickaxe", PickaxeItem(ModToolMaterial.FLINT, 1, -2.8f, Item.Settings()) as Item )
+        val FLINT_AXE = registerItem("flint_axe", AxeItem(ModToolMaterial.FLINT, 7f, -3f, Item.Settings()) as Item )
+        val FLINT_SHOVEL = registerItem("flint_shovel", ShovelItem(ModToolMaterial.FLINT, 1.5f, -3f, Item.Settings()) as Item )
+        val FLINT_HOE = registerItem("flint_hoe", HoeItem(ModToolMaterial.FLINT, 0, -2f, Item.Settings()) as Item )
+        val FLINT_SWORD = registerItem("flint_sword", SwordItem(ModToolMaterial.FLINT, 1, -2.8f, Item.Settings()) as Item )
+
+        // Copper
+        val COPPER_PICKAXE = registerItem("copper_pickaxe", PickaxeItem(ModToolMaterial.COPPER, 1, -2.8f, Item.Settings()) as Item )
+        val COPPER_AXE = registerItem("copper_axe", AxeItem(ModToolMaterial.COPPER, 7f, -3f, Item.Settings()) as Item )
+        val COPPER_SHOVEL = registerItem("copper_shovel", ShovelItem(ModToolMaterial.COPPER, 1.5f, -3f, Item.Settings()) as Item )
+        val COPPER_HOE = registerItem("copper_hoe", HoeItem(ModToolMaterial.COPPER, 0, -2f, Item.Settings()) as Item )
+        val COPPER_SWORD = registerItem("copper_sword", SwordItem(ModToolMaterial.COPPER, 1, -2.8f, Item.Settings()) as Item )
+
+        // Pickaxes
         val SILVER_PICKAXE = registerItem("silver_pickaxe", PickaxeItem(ModToolMaterial.SILVER, 1, -2.8f, Item.Settings()) as Item )
         val PLATINUM_PICKAXE = registerItem("platinum_pickaxe", PickaxeItem(ModToolMaterial.PLATINUM, 1, -2.8f, Item.Settings()) as Item )
         val TITANIUM_PICKAXE = registerItem("titanium_pickaxe", PickaxeItem(ModToolMaterial.TITANIUM, 1, -2.8f, Item.Settings()) as Item )
@@ -20,7 +40,6 @@ class ModTools {
         val STEEL_PICKAXE = registerItem("steel_pickaxe", PickaxeItem(ModToolMaterial.STEEL, 1, -2.8f, Item.Settings()) as Item )
 
         // Axes
-        val COPPER_AXE = registerItem("copper_axe", AxeItem(ModToolMaterial.COPPER, 7f, -3f, Item.Settings()) as Item )
 
         val SILVER_AXE = registerItem("silver_axe", AxeItem(ModToolMaterial.SILVER, 7f, -3f, Item.Settings()) as Item )
         val PLATINUM_AXE = registerItem("platinum_axe", AxeItem(ModToolMaterial.PLATINUM, 7f, -3f, Item.Settings()) as Item )
@@ -34,8 +53,6 @@ class ModTools {
         val STEEL_AXE = registerItem("steel_axe", AxeItem(ModToolMaterial.STEEL, 7f, -3f, Item.Settings()) as Item )
 
         // Shovels
-        val COPPER_SHOVEL = registerItem("copper_shovel", ShovelItem(ModToolMaterial.COPPER, 1.5f, -3f, Item.Settings()) as Item )
-
         val SILVER_SHOVEL = registerItem("silver_shovel", ShovelItem(ModToolMaterial.SILVER, 1.5f, -3f, Item.Settings()) as Item )
         val PLATINUM_SHOVEL = registerItem("platinum_shovel", ShovelItem(ModToolMaterial.PLATINUM, 1.5f, -3f, Item.Settings()) as Item )
         val TITANIUM_SHOVEL = registerItem("titanium_shovel", ShovelItem(ModToolMaterial.TITANIUM, 1.5f, -3f, Item.Settings()) as Item )
@@ -48,7 +65,6 @@ class ModTools {
         val STEEL_SHOVEL = registerItem("steel_shovel", ShovelItem(ModToolMaterial.STEEL, 1.5f, -3f, Item.Settings()) as Item )
 
         // Hoes
-        val COPPER_HOE = registerItem("copper_hoe", HoeItem(ModToolMaterial.COPPER, 0, -2f, Item.Settings()) as Item )
 
         val SILVER_HOE = registerItem("silver_hoe", HoeItem(ModToolMaterial.SILVER, 0, -1f, Item.Settings()) as Item )
         val PLATINUM_HOE = registerItem("platinum_hoe", HoeItem(ModToolMaterial.PLATINUM, 0, 0f, Item.Settings()) as Item )
@@ -62,7 +78,6 @@ class ModTools {
         val STEEL_HOE = registerItem("steel_hoe", HoeItem(ModToolMaterial.STEEL, 0, 0f, Item.Settings()) as Item )
 
         // Swords
-        val COPPER_SWORD = registerItem("copper_sword", SwordItem(ModToolMaterial.COPPER, 1, -2.8f, Item.Settings()) as Item )
 
         val SILVER_SWORD = registerItem("silver_sword", SwordItem(ModToolMaterial.SILVER, 1, -2.8f, Item.Settings()) as Item )
         val PLATINUM_SWORD = registerItem("platinum_sword", SwordItem(ModToolMaterial.PLATINUM, 1, -2.8f, Item.Settings()) as Item )

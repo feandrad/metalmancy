@@ -25,6 +25,7 @@ class ItemGroup {
                 .displayName(Text.translatable("itemGroup.metalmancy.materials"))
                 .entries { _, entries ->
                     with(entries) {
+                        add(ModItems.WOOD_DUST)
                         add(ModItems.COAL_DUST)
                         add(ModItems.COAL_CRUSHED)
                         
@@ -33,24 +34,24 @@ class ItemGroup {
                         add(ModItems.COPPER_NUGGET)
                         add(ModItems.COPPER_PLATE)
                         add(ModItems.COPPER_HEAP)
-                        add(ModItems.COPPER_GEAR)
                         add(ModItems.COPPER_ROD)
+                        add(ModItems.COPPER_GEAR)
                         add(ModItems.COPPER_CABLE)
 
                         add(ModItems.IRON_CRUSHED)
                         add(ModItems.IRON_DUST)
                         add(ModItems.IRON_PLATE)
                         add(ModItems.IRON_HEAP)
-                        add(ModItems.IRON_GEAR)
                         add(ModItems.IRON_ROD)
+                        add(ModItems.IRON_GEAR)
                         add(ModItems.IRON_CABLE)
 
                         add(ModItems.GOLD_CRUSHED)
                         add(ModItems.GOLD_DUST)
                         add(ModItems.GOLD_PLATE)
                         add(ModItems.GOLD_HEAP)
-                        add(ModItems.GOLD_GEAR)
                         add(ModItems.GOLD_ROD)
+                        add(ModItems.GOLD_GEAR)
                         add(ModItems.GOLD_CABLE)
 
                         add(ModItems.DIAMOND_CRUSHED)
@@ -58,8 +59,8 @@ class ItemGroup {
                         add(ModItems.DIAMOND_NUGGET)
                         add(ModItems.DIAMOND_PLATE)
                         add(ModItems.DIAMOND_HEAP)
-                        add(ModItems.DIAMOND_GEAR)
                         add(ModItems.DIAMOND_ROD)
+                        add(ModItems.DIAMOND_GEAR)
 
                         // Metals
                         add(ModBlocks.TIN_BLOCK)
@@ -73,8 +74,8 @@ class ItemGroup {
                         add(ModItems.TIN_PLATE)
                         add(ModItems.TIN_RAW)
                         add(ModItems.TIN_HEAP)
-                        add(ModItems.TIN_GEAR)
                         add(ModItems.TIN_ROD)
+                        add(ModItems.TIN_GEAR)
                         add(ModItems.TIN_CABLE)
 
                         add(ModBlocks.ZINC_BLOCK)
@@ -88,8 +89,8 @@ class ItemGroup {
                         add(ModItems.ZINC_RAW)
                         add(ModItems.ZINC_PLATE)
                         add(ModItems.ZINC_HEAP)
-                        add(ModItems.ZINC_GEAR)
                         add(ModItems.ZINC_ROD)
+                        add(ModItems.ZINC_GEAR)
                         add(ModItems.ZINC_CABLE)
 
                         add(ModBlocks.SILVER_BLOCK)
@@ -103,8 +104,8 @@ class ItemGroup {
                         add(ModItems.SILVER_RAW)
                         add(ModItems.SILVER_PLATE)
                         add(ModItems.SILVER_HEAP)
-                        add(ModItems.SILVER_GEAR)
                         add(ModItems.SILVER_ROD)
+                        add(ModItems.SILVER_GEAR)
                         add(ModItems.SILVER_CABLE)
 
                         add(ModBlocks.PLATINUM_BLOCK)
@@ -118,8 +119,8 @@ class ItemGroup {
                         add(ModItems.PLATINUM_RAW)
                         add(ModItems.PLATINUM_PLATE)
                         add(ModItems.PLATINUM_HEAP)
-                        add(ModItems.PLATINUM_GEAR)
                         add(ModItems.PLATINUM_ROD)
+                        add(ModItems.PLATINUM_GEAR)
                         add(ModItems.PLATINUM_CABLE)
 
                         add(ModBlocks.TITANIUM_BLOCK)
@@ -133,8 +134,8 @@ class ItemGroup {
                         add(ModItems.TITANIUM_RAW)
                         add(ModItems.TITANIUM_PLATE)
                         add(ModItems.TITANIUM_HEAP)
-                        add(ModItems.TITANIUM_GEAR)
                         add(ModItems.TITANIUM_ROD)
+                        add(ModItems.TITANIUM_GEAR)
                         add(ModItems.TITANIUM_CABLE)
 
                         add(ModBlocks.COBALT_BLOCK)
@@ -148,8 +149,8 @@ class ItemGroup {
                         add(ModItems.COBALT_RAW)
                         add(ModItems.COBALT_PLATE)
                         add(ModItems.COBALT_HEAP)
-                        add(ModItems.COBALT_GEAR)
                         add(ModItems.COBALT_ROD)
+                        add(ModItems.COBALT_GEAR)
                         add(ModItems.COBALT_CABLE)
 
                         add(ModBlocks.MITHRIL_BLOCK)
@@ -163,8 +164,8 @@ class ItemGroup {
                         add(ModItems.MITHRIL_RAW)
                         add(ModItems.MITHRIL_PLATE)
                         add(ModItems.MITHRIL_HEAP)
-                        add(ModItems.MITHRIL_GEAR)
                         add(ModItems.MITHRIL_ROD)
+                        add(ModItems.MITHRIL_GEAR)
                         add(ModItems.MITHRIL_CABLE)
 
                         add(ModBlocks.ORICHALCUM_BLOCK)
@@ -178,8 +179,8 @@ class ItemGroup {
                         add(ModItems.ORICHALCUM_RAW)
                         add(ModItems.ORICHALCUM_PLATE)
                         add(ModItems.ORICHALCUM_HEAP)
-                        add(ModItems.ORICHALCUM_GEAR)
                         add(ModItems.ORICHALCUM_ROD)
+                        add(ModItems.ORICHALCUM_GEAR)
                         add(ModItems.ORICHALCUM_CABLE)
 
                         add(ModBlocks.BRONZE_BLOCK)
@@ -189,8 +190,8 @@ class ItemGroup {
                         add(ModItems.BRONZE_NUGGET)
                         add(ModItems.BRONZE_PLATE)
                         add(ModItems.BRONZE_HEAP)
-                        add(ModItems.BRONZE_GEAR)
                         add(ModItems.BRONZE_ROD)
+                        add(ModItems.BRONZE_GEAR)
                         add(ModItems.BRONZE_CABLE)
 
                         add(ModBlocks.BRASS_BLOCK)
@@ -200,8 +201,8 @@ class ItemGroup {
                         add(ModItems.BRASS_NUGGET)
                         add(ModItems.BRASS_PLATE)
                         add(ModItems.BRASS_HEAP)
-                        add(ModItems.BRASS_GEAR)
                         add(ModItems.BRASS_ROD)
+                        add(ModItems.BRASS_GEAR)
                         add(ModItems.BRASS_CABLE)
 
                         add(ModBlocks.STEEL_BLOCK)
@@ -211,8 +212,8 @@ class ItemGroup {
                         add(ModItems.STEEL_NUGGET)
                         add(ModItems.STEEL_PLATE)
                         add(ModItems.STEEL_HEAP)
-                        add(ModItems.STEEL_GEAR)
                         add(ModItems.STEEL_ROD)
+                        add(ModItems.STEEL_GEAR)
                         add(ModItems.STEEL_CABLE)
 
                         add(ModBlocks.RUBY_BLOCK)
@@ -243,6 +244,18 @@ class ItemGroup {
                 .displayName(Text.translatable("itemGroup.metalmancy.tools"))
                 .entries { _, entries ->
                     with(entries) {
+
+                        add(ModTools.BONE_SWORD)
+                        add(ModTools.BONE_SHOVEL)
+                        add(ModTools.BONE_PICKAXE)
+                        add(ModTools.BONE_AXE)
+                        add(ModTools.BONE_HOE)
+
+                        add(ModTools.FLINT_SWORD)
+                        add(ModTools.FLINT_SHOVEL)
+                        add(ModTools.FLINT_PICKAXE)
+                        add(ModTools.FLINT_AXE)
+                        add(ModTools.FLINT_HOE)
 
                         add(ModTools.COPPER_SWORD)
                         add(ModTools.COPPER_SHOVEL)

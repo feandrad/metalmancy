@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "steel_dust",
+  "key": {
+    "#": {
+      "item": "metalmancy:steel_heap"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "metalmancy:steel_dust"
+  }
+}

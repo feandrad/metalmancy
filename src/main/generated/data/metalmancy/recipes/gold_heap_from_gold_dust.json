@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "gold_heap",
+  "ingredients": [
+    {
+      "item": "metalmancy:gold_dust"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "metalmancy:gold_heap"
+  }
+}

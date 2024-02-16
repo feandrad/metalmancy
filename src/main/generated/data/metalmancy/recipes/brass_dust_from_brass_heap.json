@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "brass_dust",
+  "key": {
+    "#": {
+      "item": "metalmancy:brass_heap"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "metalmancy:brass_dust"
+  }
+}

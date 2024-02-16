@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "copper_dust",
+  "key": {
+    "#": {
+      "item": "metalmancy:copper_heap"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "metalmancy:copper_dust"
+  }
+}

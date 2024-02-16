@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "orichalcum_dust",
+  "key": {
+    "#": {
+      "item": "metalmancy:orichalcum_heap"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "metalmancy:orichalcum_dust"
+  }
+}

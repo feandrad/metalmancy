@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "diamond_heap",
+  "ingredients": [
+    {
+      "item": "metalmancy:diamond_dust"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "metalmancy:diamond_heap"
+  }
+}

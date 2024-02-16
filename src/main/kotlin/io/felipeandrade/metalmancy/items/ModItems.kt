@@ -39,6 +39,7 @@ class ModItems {
         val DIAMOND_GEAR = registerItem("diamond_gear")
         val DIAMOND_ROD = registerItem("diamond_rod")
 
+        val WOOD_DUST = registerItem("wood_dust")
         val COAL_DUST = registerItem("coal_dust")
         val COAL_CRUSHED = registerItem("coal_crushed")
 

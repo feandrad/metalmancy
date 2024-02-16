@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "zinc_heap",
+  "ingredients": [
+    {
+      "item": "metalmancy:zinc_dust"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "metalmancy:zinc_heap"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "mithril_heap",
+  "ingredients": [
+    {
+      "item": "metalmancy:mithril_dust"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "metalmancy:mithril_heap"
+  }
+}

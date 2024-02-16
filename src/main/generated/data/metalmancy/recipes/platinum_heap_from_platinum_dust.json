@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "platinum_heap",
+  "ingredients": [
+    {
+      "item": "metalmancy:platinum_dust"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "metalmancy:platinum_heap"
+  }
+}

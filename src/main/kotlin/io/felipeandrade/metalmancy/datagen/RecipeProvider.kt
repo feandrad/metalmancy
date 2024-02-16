@@ -27,7 +27,18 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
 
         // Vanilla
         offerCompactingRecipes(exporter, ModItems.COPPER_NUGGET, Items.COPPER_INGOT)
+        offerCompactingRecipes(exporter, ModItems.COPPER_HEAP, ModItems.COPPER_DUST)
+        offerSmeltingAndBlasting(exporter, listOf(ModItems.COPPER_CRUSHED, ModItems.COPPER_DUST), Items.COPPER_INGOT, 0.7f, 200, RecipeCategory.MISC)
+
+        offerCompactingRecipes(exporter, ModItems.IRON_HEAP, ModItems.IRON_DUST)
+        offerSmeltingAndBlasting(exporter, listOf(ModItems.IRON_CRUSHED, ModItems.IRON_DUST), Items.IRON_INGOT, 0.7f, 200, RecipeCategory.MISC)
+        
+        offerCompactingRecipes(exporter, ModItems.GOLD_HEAP, ModItems.GOLD_DUST)
+        offerSmeltingAndBlasting(exporter, listOf(ModItems.GOLD_CRUSHED, ModItems.GOLD_DUST), Items.GOLD_INGOT, 0.7f, 200, RecipeCategory.MISC)
+        
         offerCompactingRecipes(exporter, ModItems.DIAMOND_NUGGET, Items.DIAMOND)
+        offerCompactingRecipes(exporter, ModItems.DIAMOND_HEAP, ModItems.DIAMOND_DUST)
+        offerSmeltingAndBlasting(exporter, listOf(ModItems.DIAMOND_CRUSHED, ModItems.DIAMOND_DUST), Items.DIAMOND, 0.7f, 200, RecipeCategory.MISC)
 
         // Metals
         offerOreMaterial(
@@ -37,6 +48,8 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
             block = ModBlocks.TIN_BLOCK,
             raw = ModItems.TIN_RAW,
             rawBlock = ModBlocks.TIN_RAW_BLOCK,
+            heap = ModItems.TIN_HEAP,
+            dust = ModItems.TIN_DUST,
             ingotSmelts = listOf(
                 ModItems.TIN_RAW,
                 ModItems.TIN_DUST,
@@ -52,6 +65,8 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
             block = ModBlocks.ZINC_BLOCK,
             raw = ModItems.ZINC_RAW,
             rawBlock = ModBlocks.ZINC_RAW_BLOCK,
+            heap = ModItems.ZINC_HEAP,
+            dust = ModItems.ZINC_DUST,
             ingotSmelts = listOf(
                 ModItems.ZINC_RAW,
                 ModItems.ZINC_DUST,
@@ -67,6 +82,8 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
             block = ModBlocks.SILVER_BLOCK,
             raw = ModItems.SILVER_RAW,
             rawBlock = ModBlocks.SILVER_RAW_BLOCK,
+            heap = ModItems.SILVER_HEAP,
+            dust = ModItems.SILVER_DUST,
             ingotSmelts = listOf(
                 ModItems.SILVER_RAW,
                 ModItems.SILVER_DUST,
@@ -82,6 +99,8 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
             block = ModBlocks.PLATINUM_BLOCK,
             raw = ModItems.PLATINUM_RAW,
             rawBlock = ModBlocks.PLATINUM_RAW_BLOCK,
+            heap = ModItems.PLATINUM_HEAP,
+            dust = ModItems.PLATINUM_DUST,
             ingotSmelts = listOf(
                 ModItems.PLATINUM_RAW,
                 ModItems.PLATINUM_DUST,
@@ -97,6 +116,8 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
             block = ModBlocks.TITANIUM_BLOCK,
             raw = ModItems.TITANIUM_RAW,
             rawBlock = ModBlocks.TITANIUM_RAW_BLOCK,
+            heap = ModItems.TITANIUM_HEAP,
+            dust = ModItems.TITANIUM_DUST,
             ingotSmelts = listOf(
                 ModItems.TITANIUM_RAW,
                 ModItems.TITANIUM_DUST,
@@ -112,6 +133,8 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
             block = ModBlocks.COBALT_BLOCK,
             raw = ModItems.COBALT_RAW,
             rawBlock = ModBlocks.COBALT_RAW_BLOCK,
+            heap = ModItems.COBALT_HEAP,
+            dust = ModItems.COBALT_DUST,
             ingotSmelts = listOf(
                 ModItems.COBALT_RAW,
                 ModItems.COBALT_DUST,
@@ -127,6 +150,8 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
             block = ModBlocks.MITHRIL_BLOCK,
             raw = ModItems.MITHRIL_RAW,
             rawBlock = ModBlocks.MITHRIL_RAW_BLOCK,
+            heap = ModItems.MITHRIL_HEAP,
+            dust = ModItems.MITHRIL_DUST,
             ingotSmelts = listOf(
                 ModItems.MITHRIL_RAW,
                 ModItems.MITHRIL_DUST,
@@ -142,6 +167,8 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
             block = ModBlocks.ORICHALCUM_BLOCK,
             raw = ModItems.ORICHALCUM_RAW,
             rawBlock = ModBlocks.ORICHALCUM_RAW_BLOCK,
+            heap = ModItems.ORICHALCUM_HEAP,
+            dust = ModItems.ORICHALCUM_DUST,
             ingotSmelts = listOf(
                 ModItems.ORICHALCUM_RAW,
                 ModItems.ORICHALCUM_DUST,
@@ -157,6 +184,8 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
             ingot = ModItems.BRONZE_INGOT,
             nugget = ModItems.BRONZE_NUGGET,
             block = ModBlocks.BRONZE_BLOCK,
+            heap = ModItems.BRONZE_HEAP,
+            dust = ModItems.BRONZE_DUST,
             ingotSmelts = listOf(ModItems.BRONZE_DUST, ModItems.BRONZE_CRUSHED)
         )
         offerAlloyMaterial(
@@ -164,6 +193,8 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
             ingot = ModItems.BRASS_INGOT,
             nugget = ModItems.BRASS_NUGGET,
             block = ModBlocks.BRASS_BLOCK,
+            heap = ModItems.BRASS_HEAP,
+            dust = ModItems.BRASS_DUST,
             ingotSmelts = listOf(ModItems.BRASS_DUST, ModItems.BRASS_CRUSHED)
         )
         offerAlloyMaterial(
@@ -171,6 +202,8 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
             ingot = ModItems.STEEL_INGOT,
             nugget = ModItems.STEEL_NUGGET,
             block = ModBlocks.STEEL_BLOCK,
+            heap = ModItems.STEEL_HEAP,
+            dust = ModItems.STEEL_DUST,
             ingotSmelts = listOf(ModItems.STEEL_DUST, ModItems.STEEL_CRUSHED)
         )
 
@@ -294,6 +327,8 @@ fun offerOreMaterial(
     block: ItemConvertible,
     raw: ItemConvertible,
     rawBlock: ItemConvertible,
+    heap: ItemConvertible,
+    dust: ItemConvertible,
     ingotSmelts: List<ItemConvertible> = listOf(),
     ingotExp: Float = 0.7f,
     ingotCookTime: Int = 200,
@@ -303,6 +338,7 @@ fun offerOreMaterial(
     recipeCategory: RecipeCategory = RecipeCategory.MISC,
 ) {
     offerCompactingRecipes(exporter, raw, rawBlock, recipeCategory)
+    offerCompactingRecipes(exporter, heap, dust)
     offerProgressiveCompactingRecipes(exporter, nugget, ingot, block, recipeCategory)
     if (ingotSmelts.isNotEmpty()) {
         offerSmeltingAndBlasting(exporter, ingotSmelts, ingot, ingotExp, ingotCookTime, recipeCategory)
@@ -317,6 +353,8 @@ fun offerAlloyMaterial(
     ingot: ItemConvertible,
     nugget: ItemConvertible,
     block: ItemConvertible,
+    heap: ItemConvertible,
+    dust: ItemConvertible,
     ingotSmelts: List<ItemConvertible> = listOf(),
     ingotExp: Float = 0.7f,
     ingotCookTime: Int = 200,
@@ -326,6 +364,8 @@ fun offerAlloyMaterial(
     recipeCategory: RecipeCategory = RecipeCategory.MISC,
 ) {
     offerProgressiveCompactingRecipes(exporter, nugget, ingot, block, recipeCategory)
+    offerCompactingRecipes(exporter, heap, dust)
+
     if (ingotSmelts.isNotEmpty()) {
         offerSmeltingAndBlasting(exporter, ingotSmelts, ingot, ingotExp, ingotCookTime, recipeCategory)
     }

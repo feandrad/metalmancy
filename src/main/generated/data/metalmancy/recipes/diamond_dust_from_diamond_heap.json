@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "diamond_dust",
+  "key": {
+    "#": {
+      "item": "metalmancy:diamond_heap"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "metalmancy:diamond_dust"
+  }
+}

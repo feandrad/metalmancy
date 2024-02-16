@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "silver_heap",
+  "ingredients": [
+    {
+      "item": "metalmancy:silver_dust"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "metalmancy:silver_heap"
+  }
+}

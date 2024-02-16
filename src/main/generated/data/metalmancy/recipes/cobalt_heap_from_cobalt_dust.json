@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "cobalt_heap",
+  "ingredients": [
+    {
+      "item": "metalmancy:cobalt_dust"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "metalmancy:cobalt_heap"
+  }
+}

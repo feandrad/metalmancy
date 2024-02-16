@@ -81,6 +81,7 @@ class ModelProvider(
 
     override fun generateItemModels(itemModelGenerator: ItemModelGenerator): Unit = with(itemModelGenerator) {
         // Vanilla
+        register(ModItems.WOOD_DUST, Models.GENERATED)
         register(ModItems.COAL_DUST, Models.GENERATED)
         register(ModItems.COAL_CRUSHED, Models.GENERATED)
 
