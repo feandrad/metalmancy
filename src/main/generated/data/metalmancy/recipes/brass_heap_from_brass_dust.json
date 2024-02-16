@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "brass_heap",
+  "ingredients": [
+    {
+      "item": "metalmancy:brass_dust"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "metalmancy:brass_heap"
+  }
+}

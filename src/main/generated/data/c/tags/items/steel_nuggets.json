@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "metalmancy:steel_nugget"
+    "metalmancy:steel_nugget",
+    "metalmancy:topaz"
   ]
 }

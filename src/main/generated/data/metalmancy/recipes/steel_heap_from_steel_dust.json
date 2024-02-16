@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "steel_heap",
+  "ingredients": [
+    {
+      "item": "metalmancy:steel_dust"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "metalmancy:steel_heap"
+  }
+}

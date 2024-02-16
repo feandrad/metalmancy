@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "metalmancy:brass_nugget"
+    "metalmancy:brass_nugget",
+    "metalmancy:ruby"
   ]
 }

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "orichalcum_heap",
+  "ingredients": [
+    {
+      "item": "metalmancy:orichalcum_dust"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "metalmancy:orichalcum_heap"
+  }
+}
