@@ -21,6 +21,9 @@ class CalcinatorBlock(settings: Settings) : AbstractFurnaceBlock(settings) {
     override fun createBlockEntity(pos: BlockPos, state: BlockState): BlockEntity = CalcinatorBlockEntity(pos, state)
 
     override fun openScreen(world: World, pos: BlockPos, player: PlayerEntity) {
-
+        val blockEntity = world.getBlockEntity(pos)
+        if (blockEntity is CalcinatorBlockEntity) {
+            player.openHandledScreen(blockEntity)
+        }
     }
 }
