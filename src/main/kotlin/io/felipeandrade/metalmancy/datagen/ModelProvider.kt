@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
 import net.minecraft.data.client.BlockStateModelGenerator
 import net.minecraft.data.client.ItemModelGenerator
 import net.minecraft.data.client.Models
+import net.minecraft.data.client.TexturedModel
 import net.minecraft.item.ArmorItem
 
 class ModelProvider(
@@ -76,6 +77,9 @@ class ModelProvider(
         registerSimpleCubeAll(ModBlocks.TOPAZ_BLOCK)
         registerSimpleCubeAll(ModBlocks.TOPAZ_ORE)
         registerSimpleCubeAll(ModBlocks.TOPAZ_DEEPSLATE_ORE)
+
+        // Machines
+        registerCooker(ModBlocks.CALCINATOR, TexturedModel.ORIENTABLE_WITH_BOTTOM)
 
     }
 

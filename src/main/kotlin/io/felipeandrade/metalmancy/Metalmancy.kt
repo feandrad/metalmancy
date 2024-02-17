@@ -1,6 +1,7 @@
 package io.felipeandrade.metalmancy
 
 import io.felipeandrade.metalmancy.blocks.ModBlocks
+import io.felipeandrade.metalmancy.blocks.entity.ModBlockEntities
 import io.felipeandrade.metalmancy.items.ModItems
 import io.felipeandrade.metalmancy.items.armor.ModArmorItems
 import io.felipeandrade.metalmancy.items.tools.ModTools
@@ -17,6 +18,7 @@ object Metalmancy : ModInitializer {
 		ModTools.initialize()
 		ModArmorItems.initialize()
 		ModBlocks.initialize()
+		ModBlockEntities.initialize()
 		ItemGroup.initialize()
 		registerWorldGen()
 	}

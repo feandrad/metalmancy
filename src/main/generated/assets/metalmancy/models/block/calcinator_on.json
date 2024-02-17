@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "metalmancy:block/calcinator_bottom",
+    "front": "metalmancy:block/calcinator_front_on",
+    "side": "metalmancy:block/calcinator_side",
+    "top": "metalmancy:block/calcinator_top"
+  }
+}
