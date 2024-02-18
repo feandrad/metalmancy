@@ -81,7 +81,22 @@ class ModelProvider(
         // Machines
         registerCooker(ModBlocks.CALCINATOR, TexturedModel.ORIENTABLE_WITH_BOTTOM)
 
+        return@with
     }
+
+//        val identifier: Identifier = modelFactory.upload(cooker, this.modelCollector)
+//
+//
+//    private fun registerCubeSideFrontTop(block: Block){
+//
+//
+//
+//        val textureMap = TextureMap().put(TextureKey.SIDE, TextureMap.getSubId(block, "_side"))
+//            .put(TextureKey.FRONT, TextureMap.getSubId(block, "_front"))
+//            .put(TextureKey.TOP, TextureMap.getSubId(block, "_top"))
+
+
+//    }
 
     override fun generateItemModels(itemModelGenerator: ItemModelGenerator): Unit = with(itemModelGenerator) {
         // Vanilla
@@ -389,5 +404,7 @@ class ModelProvider(
 //        register(ModTools.STEEL_PICKAXE, Models.HANDHELD)
 //        register(ModTools.STEEL_AXE, Models.HANDHELD)
 //        register(ModTools.STEEL_HOE, Models.HANDHELD)
+
+        return@with
     }
 }

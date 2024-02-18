@@ -85,6 +85,7 @@ class ModBlocks {
 
         // Machines
         val CALCINATOR = registerBlock("calcinator", CalcinatorBlock(FabricBlockSettings.copy(Blocks.STONE)))
+        val WATER_TURBINE = registerBlock("water_turbine", Block(FabricBlockSettings.copy(Blocks.STONE)))
 
         //        val SMOKER = Blocks.register(
 //            "smoker", SmokerBlock(

@@ -1,0 +1,40 @@
+{
+	"textures": {
+		"body": "block/oak_shaft",
+		"particle": "block/oak_shaft"
+	},
+	"elements": [
+		{
+			"from": [6, 0, 6],
+			"to": [10, 16, 10],
+			"faces": {
+				"north": {"uv": [0, 0, 4, 16], "texture": "#body"},
+				"east": {"uv": [0, 0, 4, 16], "texture": "#body"},
+				"south": {"uv": [0, 0, 4, 16], "texture": "#body"},
+				"west": {"uv": [0, 0, 4, 16], "texture": "#body"},
+				"up": {"uv": [8, 4, 4, 0], "texture": "#body"},
+				"down": {"uv": [8, 0, 4, 4], "texture": "#body"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, -1, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"ground": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"gui": {
+			"rotation": [22, 45, 0],
+			"scale": [1, 0.8, 1]
+		},
+		"head": {
+			"rotation": [-90, 0, 114],
+			"translation": [0, 7.5, 0]
+		},
+		"fixed": {
+			"scale": [0.7, 0.7, 0.7]
+		}
+	}
+}
