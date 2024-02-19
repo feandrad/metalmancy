@@ -2,6 +2,7 @@ package io.felipeandrade.metalmancy.datagen
 
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.BRASS_BLOCK
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.BRONZE_BLOCK
+import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.CALCINATOR
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.COBALT_BLOCK
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.COBALT_DEEPSLATE_ORE
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.COBALT_ORE
@@ -37,6 +38,7 @@ import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.TITANIUM_ORE
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.TITANIUM_RAW_BLOCK
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.TOPAZ_DEEPSLATE_ORE
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.TOPAZ_ORE
+import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.WATER_TURBINE
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.ZINC_BLOCK
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.ZINC_DEEPSLATE_ORE
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.ZINC_ORE
@@ -113,6 +115,9 @@ class BlockLootTableGenerator(
         addDrop(BRASS_BLOCK)
         addDrop(BRONZE_BLOCK)
         addDrop(STEEL_BLOCK)
+
+        addDrop(CALCINATOR)
+        addDrop(WATER_TURBINE)
     }
 
     private fun generateOre(

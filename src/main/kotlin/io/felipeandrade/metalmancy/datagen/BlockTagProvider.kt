@@ -2,6 +2,7 @@ package io.felipeandrade.metalmancy.datagen
 
 import io.felipeandrade.metalmancy.ModBlockTags
 import io.felipeandrade.metalmancy.blocks.ModBlocks
+import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.CALCINATOR
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.COBALT_BLOCK
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.COBALT_DEEPSLATE_ORE
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.COBALT_ORE
@@ -39,6 +40,7 @@ import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.TITANIUM_RAW_BLOCK
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.TOPAZ_BLOCK
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.TOPAZ_DEEPSLATE_ORE
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.TOPAZ_ORE
+import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.WATER_TURBINE
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.ZINC_BLOCK
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.ZINC_DEEPSLATE_ORE
 import io.felipeandrade.metalmancy.blocks.ModBlocks.Companion.ZINC_ORE
@@ -58,6 +60,11 @@ class BlockTagProvider(
     override fun configure(arg: WrapperLookup) {
         ores()
         materialBlocks()
+
+        getOrCreateTagBuilder(ModBlockTags.MACHINES)
+            .add(CALCINATOR)
+            .add(WATER_TURBINE)
+
         pickaxeMineable()
     }
 
@@ -188,6 +195,7 @@ class BlockTagProvider(
             .forceAddTag(ModBlockTags.RUBY_BLOCKS)
             .forceAddTag(ModBlockTags.SAPPHIRE_BLOCKS)
             .forceAddTag(ModBlockTags.TOPAZ_BLOCKS)
+            .forceAddTag(ModBlockTags.MACHINES)
 
 
         getOrCreateTagBuilder(TagKey.of(RegistryKeys.BLOCK, Identifier("fabric", "needs_tool_level_4")))

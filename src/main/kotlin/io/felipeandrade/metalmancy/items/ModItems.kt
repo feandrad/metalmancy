@@ -185,6 +185,7 @@ class ModItems {
         val RUBY = registerItem("ruby")
         val SAPPHIRE = registerItem("sapphire")
         val TOPAZ = registerItem("topaz")
+        val ESSENCE_DUST = registerItem("essence_dust")
 
         fun initialize() {}
     }

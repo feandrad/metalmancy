@@ -84,21 +84,10 @@ class ModelProvider(
         return@with
     }
 
-//        val identifier: Identifier = modelFactory.upload(cooker, this.modelCollector)
-//
-//
-//    private fun registerCubeSideFrontTop(block: Block){
-//
-//
-//
-//        val textureMap = TextureMap().put(TextureKey.SIDE, TextureMap.getSubId(block, "_side"))
-//            .put(TextureKey.FRONT, TextureMap.getSubId(block, "_front"))
-//            .put(TextureKey.TOP, TextureMap.getSubId(block, "_top"))
-
-
-//    }
-
     override fun generateItemModels(itemModelGenerator: ItemModelGenerator): Unit = with(itemModelGenerator) {
+
+        register(ModItems.ESSENCE_DUST, Models.GENERATED)
+
         // Vanilla
         register(ModItems.WOOD_DUST, Models.GENERATED)
         register(ModItems.COAL_DUST, Models.GENERATED)

@@ -8,6 +8,8 @@ import net.minecraft.registry.tag.TagKey
 import net.minecraft.util.Identifier
 
 object ModBlockTags {
+    val MACHINES = createTag("machines")
+
     val ZINC_ORES = createTag("zinc_ores", "c")
     val TIN_ORES = createTag("tin_ores", "c")
     val SILVER_ORES = createTag("silver_ores", "c")

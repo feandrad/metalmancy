@@ -1,6 +1,9 @@
 package io.felipeandrade.metalmancy.screen
 
 import io.felipeandrade.metalmancy.blocks.entity.CalcinatorBlockEntity
+import io.felipeandrade.metalmancy.blocks.entity.CalcinatorBlockEntity.Companion.INVENTORY_SIZE
+import io.felipeandrade.metalmancy.blocks.entity.CalcinatorBlockEntity.Companion.PROPERTY_SIZE
+import io.felipeandrade.metalmancy.screen.slot.FuelSlot
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.entity.player.PlayerInventory
@@ -10,6 +13,7 @@ import net.minecraft.network.PacketByteBuf
 import net.minecraft.screen.ArrayPropertyDelegate
 import net.minecraft.screen.PropertyDelegate
 import net.minecraft.screen.ScreenHandler
+import net.minecraft.screen.slot.FurnaceOutputSlot
 import net.minecraft.screen.slot.Slot
 
 class CalcinatorScreenHandler(
@@ -23,16 +27,18 @@ class CalcinatorScreenHandler(
 
     constructor(syncId: Int, playerInventory: PlayerInventory, buf: PacketByteBuf) : this(
         syncId, playerInventory, playerInventory.player.world.getBlockEntity(buf.readBlockPos()),
-        ArrayPropertyDelegate(2)
+        ArrayPropertyDelegate(PROPERTY_SIZE)
     )
 
     init {
-        checkSize(inventory, 4)
+        checkSize(inventory, INVENTORY_SIZE)
         inventory.onOpen(playerInventory.player)
-        addSlot(Slot(inventory, CalcinatorBlockEntity.INPUT_SLOT, 42, 17))
-        addSlot(Slot(inventory, CalcinatorBlockEntity.FUEL_SLOT, 42, 53))
-        addSlot(Slot(inventory, CalcinatorBlockEntity.CONTAINER_INPUT_SLOT, 118, 17))
-        addSlot(Slot(inventory, CalcinatorBlockEntity.CONTAINER_OUTPUT_SLOT, 118, 53))
+        addSlot(Slot(inventory, CalcinatorBlockEntity.INPUT_SLOT, 25, 17))
+        addSlot(FuelSlot(inventory, CalcinatorBlockEntity.FUEL_SLOT, 25, 53))
+        addSlot(Slot(inventory, CalcinatorBlockEntity.CONTAINER_INPUT_SLOT, 136, 17))
+        addSlot(FurnaceOutputSlot(playerInventory.player, inventory, CalcinatorBlockEntity.CONTAINER_OUTPUT_SLOT, 136, 53))
+        addSlot(FurnaceOutputSlot(playerInventory.player, inventory, CalcinatorBlockEntity.OUTPUT_SLOT, 80, 35))
+        // 119, 17 , 127, 68 Exp bar
         addPlayerInventory(playerInventory)
         addPlayerHotbar(playerInventory)
         addProperties(propertyDelegate)
