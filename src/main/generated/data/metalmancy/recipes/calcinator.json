@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": {
+      "item": "minecraft:smooth_stone"
+    },
+    "f": {
+      "item": "minecraft:furnace"
+    },
+    "i": {
+      "tag": "metalmancy:iron_alternative"
+    }
+  },
+  "pattern": [
+    "# #",
+    "ifi",
+    "#i#"
+  ],
+  "result": {
+    "item": "metalmancy:calcinator"
+  }
+}

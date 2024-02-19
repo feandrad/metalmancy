@@ -9,6 +9,7 @@ import io.felipeandrade.metalmancy.items.tools.ModTools
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider
 import net.minecraft.advancement.AdvancementCriterion
+import net.minecraft.block.Blocks
 import net.minecraft.data.server.recipe.RecipeExporter
 import net.minecraft.data.server.recipe.RecipeProvider.*
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder
@@ -39,6 +40,8 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
         offerCompactingRecipes(exporter, ModItems.DIAMOND_NUGGET, Items.DIAMOND)
         offerCompactingRecipes(exporter, ModItems.DIAMOND_HEAP, ModItems.DIAMOND_DUST)
         offerSmeltingAndBlasting(exporter, listOf(ModItems.DIAMOND_CRUSHED, ModItems.DIAMOND_DUST), Items.DIAMOND, 0.7f, 200, RecipeCategory.MISC)
+
+        offerMachines(exporter)
 
         // Metals
         offerOreMaterial(
@@ -294,6 +297,30 @@ class RecipeProvider(dataOutput: FabricDataOutput) : FabricRecipeProvider(dataOu
 
 
         offerIronAlternatives(exporter)
+    }
+
+    private fun offerMachines(exporter: RecipeExporter) {
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.CALCINATOR)
+            .pattern("# #")
+            .pattern("ifi")
+            .pattern("#i#") // .pattern("#g#")
+            .input('f', Blocks.FURNACE)
+            .input('#', Blocks.SMOOTH_STONE)
+            .input('i', ModItemTags.IRON_ALTERNATIVE)
+//            .input('g', ModItems.IRON_GEAR)
+            .criterion(HAS_TAG_ITEM, conditionsFromTag(ModItemTags.IRON_ALTERNATIVE) as AdvancementCriterion<*>)
+            .offerTo(exporter, Identifier(MOD_ID, getRecipeName(ModBlocks.CALCINATOR)))
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.WATER_TURBINE)
+            .pattern("###")
+            .pattern("iii")  // .pattern("igi")
+            .pattern("###")
+            .input('#', Blocks.SMOOTH_STONE)
+            .input('i', ModItemTags.IRON_ALTERNATIVE)
+//            .input('g', ModItems.IRON_GEAR)
+            .criterion(HAS_TAG_ITEM, conditionsFromTag(ModItemTags.IRON_ALTERNATIVE) as AdvancementCriterion<*>)
+            .offerTo(exporter, Identifier(MOD_ID, getRecipeName(ModBlocks.WATER_TURBINE)))
     }
 
     private fun offerArmorRecipes(

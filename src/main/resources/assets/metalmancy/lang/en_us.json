@@ -1,7 +1,13 @@
 {
-  "itemGroup.metalmancy.materials": "GSW Materials",
-  "itemGroup.metalmancy.tools": "GSW Tools",
+  "metalmancy": "Metalmancy",
+  "itemGroup.metalmancy.materials": "Metalmancy Materials",
+  "itemGroup.metalmancy.tools": "Metalmancy Tools",
+  "itemGroup.metalmancy.machines": "Metalmancy Machines",
 
+  "block.metalmancy.calcinator": "Calcinator",
+  "block.metalmancy.water_turbine": "Water turbine",
+
+  "item.metalmancy.essence_dust": "Essence Dust",
 
   "block.metalmancy.tin_ore": "Tin Ore",
   "block.metalmancy.silver_ore": "Silver Ore",

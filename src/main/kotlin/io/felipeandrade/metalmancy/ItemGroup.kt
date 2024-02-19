@@ -8,7 +8,6 @@ import io.felipeandrade.metalmancy.items.tools.ModTools
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
 import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemStack
-import net.minecraft.item.Items
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.text.Text
@@ -21,7 +20,7 @@ class ItemGroup {
             Registries.ITEM_GROUP,
             Identifier(MOD_ID, "materials"),
             FabricItemGroup.builder()
-                .icon { ItemStack(Items.IRON_INGOT) }
+                .icon { ItemStack(ModItems.MITHRIL_INGOT) }
                 .displayName(Text.translatable("itemGroup.metalmancy.materials"))
                 .entries { _, entries ->
                     with(entries) {
@@ -240,7 +239,7 @@ class ItemGroup {
             Registries.ITEM_GROUP,
             Identifier(MOD_ID, "tools"),
             FabricItemGroup.builder()
-                .icon { ItemStack(Items.DIAMOND_PICKAXE) }
+                .icon { ItemStack(ModTools.MITHRIL_PICKAXE) }
                 .displayName(Text.translatable("itemGroup.metalmancy.tools"))
                 .entries { _, entries ->
                     with(entries) {
@@ -404,6 +403,21 @@ class ItemGroup {
                         add(ModArmorItems.STEEL_LEGGINGS)
                         add(ModArmorItems.STEEL_BOOTS)
 
+                    }
+                }
+                .build()
+        )
+
+        val MACHINES: ItemGroup = Registry.register(
+            Registries.ITEM_GROUP,
+            Identifier(MOD_ID, "machines"),
+            FabricItemGroup.builder()
+                .icon { ItemStack(ModBlocks.CALCINATOR) }
+                .displayName(Text.translatable("itemGroup.metalmancy.machines"))
+                .entries { _, entries ->
+                    with(entries) {
+                        add(ModBlocks.CALCINATOR)
+                        add(ModBlocks.WATER_TURBINE)
                     }
                 }
                 .build()

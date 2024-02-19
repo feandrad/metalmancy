@@ -20,12 +20,6 @@ class CalcinatorScreen(
         private val TEXTURE = Identifier(MOD_ID, "textures/gui/calcinator_gui.png")
     }
 
-    override fun init() {
-        super.init()
-        titleY = 1000
-        playerInventoryTitleY = 1000
-    }
-
     override fun drawBackground(context: DrawContext, delta: Float, mouseX: Int, mouseY: Int) {
         RenderSystem.setShader { GameRenderer.getPositionTexProgram() }
         RenderSystem.setShaderColor(1f, 1f, 1f, 1f)
@@ -33,12 +27,15 @@ class CalcinatorScreen(
         val x = (width - backgroundWidth) / 2
         val y = (height - backgroundHeight) / 2
         context.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight)
-//        renderProgressArrow(context, x, y)
-    }
 
-    private fun renderProgressArrow(context: DrawContext, x: Int, y: Int) {
-        if (handler.isCrafting) {
-            context.drawTexture(TEXTURE, x + 85, y + 30, 176, 0, 8, handler.scaledProgress)
+        if (handler.isBurning()) {
+            val h = handler.getBurnProgress()
+            context.drawTexture(TEXTURE, x + 26, y + 37, 176, 0, 14, h)
+        }
+
+        if (handler.isCrafting()) {
+            val w = handler.getCraftProgress()
+            context.drawTexture(TEXTURE, x + 49, y + 35, 176, 16, w, 16)
         }
     }
 

@@ -13,7 +13,6 @@ import net.minecraft.util.ItemScatterer
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
-
 class CalcinatorBlock(settings: Settings) : AbstractFurnaceBlock(settings) {
 
     companion object {
