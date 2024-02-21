@@ -3,6 +3,7 @@ package io.felipeandrade.metalmancy.blocks.entity
 import io.felipeandrade.metalmancy.Metalmancy.MOD_ID
 import io.felipeandrade.metalmancy.blocks.ModBlocks
 import net.fabricmc.fabric.api.`object`.builder.v1.block.entity.FabricBlockEntityTypeBuilder
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.util.Identifier
@@ -19,6 +20,11 @@ class ModBlockEntities {
             ).build()
         )
 
-        fun initialize() {}
+        fun initialize() {
+            FluidStorage.SIDED.registerForBlockEntity(
+                { blockEntity, direction -> blockEntity.fluidStorage },
+                CALCINATOR
+            )
+        }
     }
 }

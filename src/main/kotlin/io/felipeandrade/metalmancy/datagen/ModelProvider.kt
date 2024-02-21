@@ -1,6 +1,7 @@
 package io.felipeandrade.metalmancy.datagen
 
 import io.felipeandrade.metalmancy.blocks.ModBlocks
+import io.felipeandrade.metalmancy.fluid.ModFluids
 import io.felipeandrade.metalmancy.items.ModItems
 import io.felipeandrade.metalmancy.items.armor.ModArmorItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
@@ -87,6 +88,7 @@ class ModelProvider(
     override fun generateItemModels(itemModelGenerator: ItemModelGenerator): Unit = with(itemModelGenerator) {
 
         register(ModItems.ESSENCE_DUST, Models.GENERATED)
+        register(ModFluids.ESSENCE_BUCKET, Models.GENERATED)
 
         // Vanilla
         register(ModItems.WOOD_DUST, Models.GENERATED)

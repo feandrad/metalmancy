@@ -87,22 +87,6 @@ class ModBlocks {
         val CALCINATOR = registerBlock("calcinator", CalcinatorBlock(FabricBlockSettings.copy(Blocks.STONE)))
         val WATER_TURBINE = registerBlock("water_turbine", WaterTurbineBlock(FabricBlockSettings.copy(Blocks.STONE)))
 
-        //        val SMOKER = Blocks.register(
-//            "smoker", SmokerBlock(
-//                AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(
-//                    Instrument.BASEDRUM
-//                ).requiresTool().strength(3.5f).luminance(Blocks.createLightLevelFromLitBlockState(13))
-//            ) as Block
-//        )
-//        val BLAST_FURNACE: Block? = Blocks.register(
-//            "blast_furnace", BlastFurnaceBlock(
-//                AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(
-//                    Instrument.BASEDRUM
-//                ).requiresTool().strength(3.5f).luminance(Blocks.createLightLevelFromLitBlockState(13))
-//            ) as Block
-//        )
-
-
         fun initialize() {}
     }
 }

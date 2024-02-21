@@ -8,6 +8,7 @@ import net.minecraft.client.render.GameRenderer
 import net.minecraft.entity.player.PlayerInventory
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
+import java.util.*
 
 
 class CalcinatorScreen(
@@ -15,6 +16,9 @@ class CalcinatorScreen(
     inventory: PlayerInventory,
     title: Text
 ) : HandledScreen<CalcinatorScreenHandler>(handler, inventory, title) {
+
+
+    private val fluidRender = FluidStackRenderer(9, 52)
 
     companion object {
         private val TEXTURE = Identifier(MOD_ID, "textures/gui/calcinator_gui.png")
@@ -37,6 +41,17 @@ class CalcinatorScreen(
             val w = handler.getCraftProgress()
             context.drawTexture(TEXTURE, x + 49, y + 35, 176, 16, w, 16)
         }
+
+        fluidRender.drawFluid(
+            context,
+            handler.fluid,
+            handler.fluidAmount,
+            x + 119,
+            y + 18,
+            9,
+            51,
+            handler.getFluidCapacity()
+        )
     }
 
     override fun render(context: DrawContext?, mouseX: Int, mouseY: Int, delta: Float) {
@@ -44,4 +59,25 @@ class CalcinatorScreen(
         super.render(context, mouseX, mouseY, delta)
         drawMouseoverTooltip(context, mouseX, mouseY)
     }
+
+    override fun drawForeground(context: DrawContext, mouseX: Int, mouseY: Int) {
+        super.drawForeground(context, mouseX, mouseY)
+        val offsetX = (width - backgroundWidth) / 2
+        val offsetY = (height - backgroundHeight) / 2
+        // 119, 17 , 127, 68 Exp bar
+
+        if (isMouseOver(mouseX, mouseY, x+119, y+17, fluidRender.width, fluidRender.height)) {
+            context.drawTooltip(
+                textRenderer,
+                fluidRender.getTooltip(handler.fluid.fluid, handler.fluidAmount),
+                Optional.empty(),
+                mouseX - offsetX,
+                mouseY - offsetY
+            )
+        }
+    }
+}
+
+fun isMouseOver(mouseX: Int, mouseY: Int, x: Int, y: Int, sizeX: Int, sizeY: Int): Boolean {
+    return mouseX >= x && mouseX <= x + sizeX && mouseY >= y && mouseY <= y + sizeY
 }

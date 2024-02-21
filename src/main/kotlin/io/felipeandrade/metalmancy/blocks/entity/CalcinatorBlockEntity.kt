@@ -1,11 +1,19 @@
 package io.felipeandrade.metalmancy.blocks.entity
 
-import io.felipeandrade.metalmancy.Metalmancy.logger
 import io.felipeandrade.metalmancy.blocks.ModBlocks
+import io.felipeandrade.metalmancy.fluid.ModFluids
 import io.felipeandrade.metalmancy.items.ModItems
+import io.felipeandrade.metalmancy.networking.ModMessages
 import io.felipeandrade.metalmancy.screen.CalcinatorScreenHandler
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
+import net.fabricmc.fabric.api.networking.v1.PlayerLookup
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.fabricmc.fabric.api.registry.FuelRegistry
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant
+import net.fabricmc.fabric.api.transfer.v1.fluid.base.SingleFluidStorage
+import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction
 import net.minecraft.block.AbstractFurnaceBlock
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
@@ -13,11 +21,13 @@ import net.minecraft.entity.player.PlayerInventory
 import net.minecraft.inventory.Inventories
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
+import net.minecraft.item.Items
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.network.PacketByteBuf
 import net.minecraft.screen.PropertyDelegate
 import net.minecraft.screen.ScreenHandler
 import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.server.world.ServerWorld
 import net.minecraft.text.Text
 import net.minecraft.util.collection.DefaultedList
 import net.minecraft.util.math.BlockPos
@@ -51,17 +61,25 @@ class CalcinatorBlockEntity(
             }
         }
 
-    private var maxExperience = DEFAULT_EXPERIENCE_MAX
-    private var experience = 0
-        set(value) {
-            field = when {
-                value < 0 -> 0
-                value > maxExperience -> maxExperience
-                else -> value
-            }
-        }
-
     private var inventory = DefaultedList.ofSize(INVENTORY_SIZE, ItemStack.EMPTY)
+
+    val fluidStorage: SingleFluidStorage = object : SingleFluidStorage() {
+        override fun getCapacity(variant: FluidVariant): Long = 16 * FluidConstants.BUCKET
+        override fun onFinalCommit() {
+            if (world?.isClient == false) {
+                val data = PacketByteBufs.create()
+                variant.toPacket(data)
+                data.writeLong(amount)
+                data.writeBlockPos(getPos())
+                data.writeLong(capacity)
+
+                for (player: ServerPlayerEntity in PlayerLookup.tracking(world as ServerWorld, getPos())) {
+                    ServerPlayNetworking.send(player, ModMessages.FLUID_SYNC, data)
+                }
+            }
+            markDirty()
+        }
+    }
 
     private val propertyDelegate: PropertyDelegate = object : PropertyDelegate {
 
@@ -70,8 +88,6 @@ class CalcinatorBlockEntity(
             PROPERTY_MAX_BURN_TIME -> burnTime
             PROPERTY_PROGRESS -> progress
             PROPERTY_MAX_PROGRESS -> maxProgress
-            PROPERTY_EXPERIENCE -> experience
-            PROPERTY_MAX_EXPERIENCE -> maxExperience
             else -> -1
         }
 
@@ -81,8 +97,6 @@ class CalcinatorBlockEntity(
                 PROPERTY_MAX_BURN_TIME -> burnTime = value
                 PROPERTY_PROGRESS -> progress = value
                 PROPERTY_MAX_PROGRESS -> maxProgress = value
-                PROPERTY_EXPERIENCE -> experience = value
-                PROPERTY_MAX_EXPERIENCE -> maxExperience = value
             }
         }
 
@@ -90,22 +104,19 @@ class CalcinatorBlockEntity(
     }
 
     companion object {
-        const val PROPERTY_SIZE = 6
+        const val PROPERTY_SIZE = 4
         const val PROPERTY_BURN_TIME = 0
         const val PROPERTY_MAX_BURN_TIME = 1
         const val PROPERTY_PROGRESS = 2
         const val PROPERTY_MAX_PROGRESS = 3
-        const val PROPERTY_EXPERIENCE = 4
-        const val PROPERTY_MAX_EXPERIENCE = 5
 
         const val NBT_PROGRESS = "Progress"
-        const val NBT_EXP = "Experience"
         const val NBT_BURN_TIME = "BurnTime"
         const val NBT_MAX_BURN_TIME = "MaxBurnTime"
 
+
         const val INVENTORY_SIZE = 5
         const val DEFAULT_COOKING_TOTAL = 300
-        const val DEFAULT_EXPERIENCE_MAX = 16000
 
         const val INPUT_SLOT = 0
         const val FUEL_SLOT = 1
@@ -126,7 +137,7 @@ class CalcinatorBlockEntity(
         packetByteBuf.writeBlockPos(pos)
     }
 
-    private fun isExpFull(): Boolean = experience >= maxExperience
+    private fun isExpFull(): Boolean = fluidStorage.amount >= fluidStorage.capacity
 
     fun tick(world: World, pos: BlockPos, state: BlockState) {
         if (world.isClient()) return
@@ -162,11 +173,25 @@ class CalcinatorBlockEntity(
             shouldMarkDirty = true
         }
 
-
         if (wasBurning != isBurning()) {
             shouldMarkDirty = true
             val newState = state.with(AbstractFurnaceBlock.LIT, isBurning()) as BlockState
             world.setBlockState(pos, newState, Block.NOTIFY_ALL)
+        }
+
+        if (inventory[CONTAINER_INPUT_SLOT].item == Items.BUCKET && fluidStorage.amount >= FluidConstants.BUCKET
+            && inventory[CONTAINER_OUTPUT_SLOT].canReceive(ModFluids.ESSENCE_BUCKET)
+        ) {
+
+            try {
+                val tran = Transaction.openOuter()
+                fluidStorage.extract(FluidVariant.of(ModFluids.STILL_ESSENCE), FluidConstants.BUCKET, tran)
+                tran.commit()
+                inventory[CONTAINER_INPUT_SLOT].decrement(1)
+                setStack(CONTAINER_OUTPUT_SLOT, ItemStack(ModFluids.ESSENCE_BUCKET))
+            } catch (_: Exception) {
+
+            }
         }
 
         if (shouldMarkDirty) {
@@ -180,13 +205,19 @@ class CalcinatorBlockEntity(
         burnTime += fuelTime
         maxBurnTime = fuelTime
         stack.decrement(1)
-        logger.debug("Added Fuel: $fuelTime -> $burnTime")
     }
 
     private fun craftItem() {
         removeStack(INPUT_SLOT, 1)
         setStack(OUTPUT_SLOT, ItemStack(ModItems.ESSENCE_DUST, getStack(OUTPUT_SLOT).count + 1))
-        experience += 1
+
+        try {
+            val tran = Transaction.openOuter()
+            fluidStorage.insert(FluidVariant.of(ModFluids.STILL_ESSENCE), FluidConstants.BUCKET, tran)
+            tran.commit()
+        } catch (_: Exception) {
+
+        }
     }
 
     private fun hasRecipe(result: Item): Boolean {
@@ -205,7 +236,7 @@ class CalcinatorBlockEntity(
         nbt.putShort(NBT_BURN_TIME, burnTime.toShort())
         nbt.putShort(NBT_MAX_BURN_TIME, maxBurnTime.toShort())
         nbt.putInt(NBT_PROGRESS, progress)
-        nbt.putInt(NBT_EXP, experience)
+        fluidStorage.writeNbt(nbt)
         Inventories.writeNbt(nbt, inventory)
     }
 
@@ -213,12 +244,17 @@ class CalcinatorBlockEntity(
         super.readNbt(nbt)
         Inventories.readNbt(nbt, inventory)
         progress = nbt.getInt(NBT_PROGRESS)
-        experience = nbt.getInt(NBT_EXP)
         burnTime = nbt.getShort(NBT_BURN_TIME).toInt()
         maxBurnTime = nbt.getShort(NBT_MAX_BURN_TIME).toInt()
+        fluidStorage.readNbt(nbt)
     }
 
     private fun isBurning(): Boolean {
         return burnTime > 0
+    }
+
+    fun setFluidLevel(variant: FluidVariant, amount: Long) {
+        this.fluidStorage.variant = variant
+        this.fluidStorage.amount = amount
     }
 }

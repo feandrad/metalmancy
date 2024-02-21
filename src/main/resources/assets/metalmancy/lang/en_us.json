@@ -8,6 +8,10 @@
   "block.metalmancy.water_turbine": "Water turbine",
 
   "item.metalmancy.essence_dust": "Essence Dust",
+  "item.metalmancy.essence_bucket": "Essence Bucket",
+  "block.metalmancy.essence": "Essence",
+  "tooltip.metalmancy.liquid.amount.with.capacity": "%s / %s mB",
+  "tooltip.metalmancy.liquid.amount": "%s mB",
 
   "block.metalmancy.tin_ore": "Tin Ore",
   "block.metalmancy.silver_ore": "Silver Ore",

@@ -8,6 +8,8 @@ import io.felipeandrade.metalmancy.blocks.entity.CalcinatorBlockEntity.Companion
 import io.felipeandrade.metalmancy.blocks.entity.CalcinatorBlockEntity.Companion.PROPERTY_PROGRESS
 import io.felipeandrade.metalmancy.blocks.entity.CalcinatorBlockEntity.Companion.PROPERTY_SIZE
 import io.felipeandrade.metalmancy.screen.slot.FuelSlot
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.entity.player.PlayerInventory
@@ -24,14 +26,20 @@ import net.minecraft.util.math.MathHelper
 class CalcinatorScreenHandler(
     syncId: Int,
     playerInventory: PlayerInventory,
-    blockEntity: BlockEntity?,
+    val blockEntity: BlockEntity,
     private val propertyDelegate: PropertyDelegate
 ) : ScreenHandler(ModScreenHandlers.CALCINATOR_SCREEN_HANDLER, syncId) {
 
     private val inventory: Inventory = blockEntity as Inventory
+    var fluid: FluidVariant = FluidVariant.blank()
+        private set
+    var fluidAmount = 0L
+        private set
+    var fluidMaxCapacity = 0L
+        private set
 
     constructor(syncId: Int, playerInventory: PlayerInventory, buf: PacketByteBuf) : this(
-        syncId, playerInventory, playerInventory.player.world.getBlockEntity(buf.readBlockPos()),
+        syncId, playerInventory, playerInventory.player.world.getBlockEntity(buf.readBlockPos())!!,
         ArrayPropertyDelegate(PROPERTY_SIZE)
     )
 
@@ -51,7 +59,6 @@ class CalcinatorScreenHandler(
             )
         )
         addSlot(FurnaceOutputSlot(playerInventory.player, inventory, CalcinatorBlockEntity.OUTPUT_SLOT, 80, 35))
-        // 119, 17 , 127, 68 Exp bar
         addPlayerInventory(playerInventory)
         addPlayerHotbar(playerInventory)
         addProperties(propertyDelegate)
@@ -115,4 +122,11 @@ class CalcinatorScreenHandler(
         propertyDelegate[PROPERTY_MAX_PROGRESS],
         24f
     )
+
+    fun getFluidCapacity() = 16 * FluidConstants.BUCKET
+
+    fun setFluid(variant: FluidVariant, fluidLevel: Long) {
+        fluid = variant
+        fluidAmount = fluidLevel
+    }
 }

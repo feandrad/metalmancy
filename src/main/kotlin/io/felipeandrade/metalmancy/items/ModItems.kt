@@ -30,7 +30,7 @@ class ModItems {
         val GOLD_GEAR = registerItem("gold_gear")
         val GOLD_ROD = registerItem("gold_rod")
         val GOLD_CABLE = registerItem("gold_cable")
-        
+
         val DIAMOND_NUGGET = registerItem("diamond_nugget")
         val DIAMOND_CRUSHED = registerItem("diamond_crushed")
         val DIAMOND_DUST = registerItem("diamond_dust")
