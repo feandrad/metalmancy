@@ -6,17 +6,13 @@ import io.felipeandrade.metalmancy.blocks.entity.CalcinatorBlockEntity.Companion
 import io.felipeandrade.metalmancy.blocks.entity.CalcinatorBlockEntity.Companion.PROPERTY_MAX_BURN_TIME
 import io.felipeandrade.metalmancy.blocks.entity.CalcinatorBlockEntity.Companion.PROPERTY_MAX_PROGRESS
 import io.felipeandrade.metalmancy.blocks.entity.CalcinatorBlockEntity.Companion.PROPERTY_PROGRESS
-import io.felipeandrade.metalmancy.blocks.entity.CalcinatorBlockEntity.Companion.PROPERTY_SIZE
 import io.felipeandrade.metalmancy.screen.slot.FuelSlot
-import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.entity.player.PlayerInventory
 import net.minecraft.inventory.Inventory
 import net.minecraft.item.ItemStack
-import net.minecraft.network.PacketByteBuf
-import net.minecraft.screen.ArrayPropertyDelegate
 import net.minecraft.screen.PropertyDelegate
 import net.minecraft.screen.ScreenHandler
 import net.minecraft.screen.slot.FurnaceOutputSlot
@@ -31,17 +27,10 @@ class CalcinatorScreenHandler(
 ) : ScreenHandler(ModScreenHandlers.CALCINATOR_SCREEN_HANDLER, syncId) {
 
     private val inventory: Inventory = blockEntity as Inventory
-    var fluid: FluidVariant = FluidVariant.blank()
+    var fluid: FluidVariant = (blockEntity as CalcinatorBlockEntity).fluidStorage.variant
         private set
-    var fluidAmount = 0L
+    var fluidAmount = (blockEntity as CalcinatorBlockEntity).fluidStorage.amount
         private set
-    var fluidMaxCapacity = 0L
-        private set
-
-    constructor(syncId: Int, playerInventory: PlayerInventory, buf: PacketByteBuf) : this(
-        syncId, playerInventory, playerInventory.player.world.getBlockEntity(buf.readBlockPos())!!,
-        ArrayPropertyDelegate(PROPERTY_SIZE)
-    )
 
     init {
         checkSize(inventory, INVENTORY_SIZE)
@@ -123,7 +112,7 @@ class CalcinatorScreenHandler(
         24f
     )
 
-    fun getFluidCapacity() = 16 * FluidConstants.BUCKET
+    fun getFluidCapacity() = CalcinatorBlockEntity.FLUID_CAPACITY
 
     fun setFluid(variant: FluidVariant, fluidLevel: Long) {
         fluid = variant

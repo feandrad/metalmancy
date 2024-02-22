@@ -13,7 +13,7 @@ class FuelSlot (
     y: Int,
 ) : Slot(inventory, index, x, y) {
     override fun canInsert(stack: ItemStack): Boolean {
-        return FuelRegistry.INSTANCE.get(stack.item) != null || isBucket(stack)
+        return FuelRegistry.INSTANCE.get(stack.item) != null
     }
 
     override fun getMaxItemCount(stack: ItemStack): Int {

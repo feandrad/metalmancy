@@ -13,6 +13,7 @@ import net.minecraft.util.ItemScatterer
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
+
 class CalcinatorBlock(settings: Settings) : AbstractFurnaceBlock(settings) {
 
     companion object {
@@ -44,6 +45,22 @@ class CalcinatorBlock(settings: Settings) : AbstractFurnaceBlock(settings) {
             super.onStateReplaced(state, world, pos, newState, moved)
         }
     }
+
+//    override fun onUse(
+//        state: BlockState,
+//        world: World,
+//        pos: BlockPos,
+//        player: PlayerEntity,
+//        hand: Hand,
+//        hit: BlockHitResult
+//    ): ActionResult {
+//        if (!world.isClient) {
+//            val screenHandlerFactory: NamedScreenHandlerFactory = world.getBlockEntity(pos) as CalcinatorBlockEntity
+//            player.openHandledScreen(screenHandlerFactory)
+//        }
+//
+//        return ActionResult.SUCCESS
+//    }
 
     override fun <T : BlockEntity> getTicker(
         world: World,

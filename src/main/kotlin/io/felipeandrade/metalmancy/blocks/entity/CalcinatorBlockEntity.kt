@@ -3,7 +3,7 @@ package io.felipeandrade.metalmancy.blocks.entity
 import io.felipeandrade.metalmancy.blocks.ModBlocks
 import io.felipeandrade.metalmancy.fluid.ModFluids
 import io.felipeandrade.metalmancy.items.ModItems
-import io.felipeandrade.metalmancy.networking.ModMessages
+import io.felipeandrade.metalmancy.network.ModMessages
 import io.felipeandrade.metalmancy.screen.CalcinatorScreenHandler
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup
@@ -34,8 +34,6 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
 
-private fun ItemStack.canReceive(item: Item): Boolean = isEmpty || this.item == item && count < maxCount
-
 class CalcinatorBlockEntity(
     pos: BlockPos,
     state: BlockState
@@ -64,7 +62,7 @@ class CalcinatorBlockEntity(
     private var inventory = DefaultedList.ofSize(INVENTORY_SIZE, ItemStack.EMPTY)
 
     val fluidStorage: SingleFluidStorage = object : SingleFluidStorage() {
-        override fun getCapacity(variant: FluidVariant): Long = 16 * FluidConstants.BUCKET
+        override fun getCapacity(variant: FluidVariant): Long = FLUID_CAPACITY
         override fun onFinalCommit() {
             if (world?.isClient == false) {
                 val data = PacketByteBufs.create()
@@ -77,7 +75,6 @@ class CalcinatorBlockEntity(
                     ServerPlayNetworking.send(player, ModMessages.FLUID_SYNC, data)
                 }
             }
-            markDirty()
         }
     }
 
@@ -103,28 +100,6 @@ class CalcinatorBlockEntity(
         override fun size(): Int = PROPERTY_SIZE
     }
 
-    companion object {
-        const val PROPERTY_SIZE = 4
-        const val PROPERTY_BURN_TIME = 0
-        const val PROPERTY_MAX_BURN_TIME = 1
-        const val PROPERTY_PROGRESS = 2
-        const val PROPERTY_MAX_PROGRESS = 3
-
-        const val NBT_PROGRESS = "Progress"
-        const val NBT_BURN_TIME = "BurnTime"
-        const val NBT_MAX_BURN_TIME = "MaxBurnTime"
-
-
-        const val INVENTORY_SIZE = 5
-        const val DEFAULT_COOKING_TOTAL = 300
-
-        const val INPUT_SLOT = 0
-        const val FUEL_SLOT = 1
-        const val CONTAINER_INPUT_SLOT = 2
-        const val CONTAINER_OUTPUT_SLOT = 3
-        const val OUTPUT_SLOT = 4
-    }
-
     override fun getItems(): DefaultedList<ItemStack> = inventory
 
     override fun getContainerName(): Text = Text.translatable(ModBlocks.CALCINATOR.translationKey)
@@ -133,8 +108,10 @@ class CalcinatorBlockEntity(
         return CalcinatorScreenHandler(syncId, playerInventory, this, propertyDelegate)
     }
 
-    override fun writeScreenOpeningData(serverPlayerEntity: ServerPlayerEntity, packetByteBuf: PacketByteBuf) {
-        packetByteBuf.writeBlockPos(pos)
+    override fun writeScreenOpeningData(playerEntity: ServerPlayerEntity, buf: PacketByteBuf) {
+       if (playerEntity.world.isClient.not()) {
+           buf.writeBlockPos(pos)
+       }
     }
 
     private fun isExpFull(): Boolean = fluidStorage.amount >= fluidStorage.capacity
@@ -189,6 +166,7 @@ class CalcinatorBlockEntity(
                 tran.commit()
                 inventory[CONTAINER_INPUT_SLOT].decrement(1)
                 setStack(CONTAINER_OUTPUT_SLOT, ItemStack(ModFluids.ESSENCE_BUCKET))
+                shouldMarkDirty = true
             } catch (_: Exception) {
 
             }
@@ -201,7 +179,7 @@ class CalcinatorBlockEntity(
 
     private fun consumeFuel() {
         val stack = inventory[FUEL_SLOT]
-        val fuelTime = FuelRegistry.INSTANCE.get(stack.item).toInt()
+        val fuelTime = FuelRegistry.INSTANCE.get(stack.item)?.toInt() ?: return
         burnTime += fuelTime
         maxBurnTime = fuelTime
         stack.decrement(1)
@@ -241,12 +219,12 @@ class CalcinatorBlockEntity(
     }
 
     override fun readNbt(nbt: NbtCompound) {
-        super.readNbt(nbt)
         Inventories.readNbt(nbt, inventory)
+        fluidStorage.readNbt(nbt)
         progress = nbt.getInt(NBT_PROGRESS)
         burnTime = nbt.getShort(NBT_BURN_TIME).toInt()
         maxBurnTime = nbt.getShort(NBT_MAX_BURN_TIME).toInt()
-        fluidStorage.readNbt(nbt)
+        super.readNbt(nbt)
     }
 
     private fun isBurning(): Boolean {
@@ -257,4 +235,28 @@ class CalcinatorBlockEntity(
         this.fluidStorage.variant = variant
         this.fluidStorage.amount = amount
     }
+
+    companion object {
+        const val PROPERTY_SIZE = 4
+        const val PROPERTY_BURN_TIME = 0
+        const val PROPERTY_MAX_BURN_TIME = 1
+        const val PROPERTY_PROGRESS = 2
+        const val PROPERTY_MAX_PROGRESS = 3
+
+        const val NBT_PROGRESS = "Progress"
+        const val NBT_BURN_TIME = "BurnTime"
+        const val NBT_MAX_BURN_TIME = "MaxBurnTime"
+
+        const val INVENTORY_SIZE = 5
+        const val DEFAULT_COOKING_TOTAL = 300
+        const val FLUID_CAPACITY = 16 * FluidConstants.BUCKET
+
+        const val INPUT_SLOT = 0
+        const val FUEL_SLOT = 1
+        const val CONTAINER_INPUT_SLOT = 2
+        const val CONTAINER_OUTPUT_SLOT = 3
+        const val OUTPUT_SLOT = 4
+    }
 }
+
+private fun ItemStack.canReceive(item: Item): Boolean = isEmpty || this.item == item && count < maxCount

@@ -2,6 +2,7 @@ package io.felipeandrade.metalmancy.screen
 
 import com.mojang.blaze3d.systems.RenderSystem
 import io.felipeandrade.metalmancy.Metalmancy.MOD_ID
+import io.felipeandrade.metalmancy.blocks.entity.CalcinatorBlockEntity
 import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.gui.screen.ingame.HandledScreen
 import net.minecraft.client.render.GameRenderer
@@ -18,7 +19,7 @@ class CalcinatorScreen(
 ) : HandledScreen<CalcinatorScreenHandler>(handler, inventory, title) {
 
 
-    private val fluidRender = FluidStackRenderer(9, 52)
+    private val fluidRender = FluidStackRenderer(9, 52, CalcinatorBlockEntity.FLUID_CAPACITY)
 
     companion object {
         private val TEXTURE = Identifier(MOD_ID, "textures/gui/calcinator_gui.png")
@@ -47,7 +48,7 @@ class CalcinatorScreen(
             handler.fluid,
             handler.fluidAmount,
             x + 119,
-            y + 18,
+            y + 17,
             9,
             51,
             handler.getFluidCapacity()

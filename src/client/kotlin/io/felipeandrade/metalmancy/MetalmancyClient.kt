@@ -2,7 +2,7 @@ package io.felipeandrade.metalmancy
 
 import io.felipeandrade.metalmancy.fluid.ModFluids
 import io.felipeandrade.metalmancy.network.FluidSyncS2CPacket
-import io.felipeandrade.metalmancy.networking.ModMessages
+import io.felipeandrade.metalmancy.network.ModMessages
 import io.felipeandrade.metalmancy.screen.CalcinatorScreen
 import io.felipeandrade.metalmancy.screen.ModScreenHandlers
 import net.fabricmc.api.ClientModInitializer

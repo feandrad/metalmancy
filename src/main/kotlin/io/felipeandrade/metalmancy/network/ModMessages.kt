@@ -1,4 +1,4 @@
-package io.felipeandrade.metalmancy.networking
+package io.felipeandrade.metalmancy.network
 
 import io.felipeandrade.metalmancy.Metalmancy.MOD_ID
 import net.minecraft.util.Identifier

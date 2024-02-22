@@ -4,7 +4,6 @@ import com.google.common.base.Preconditions
 import com.mojang.blaze3d.systems.RenderSystem
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry
 import net.fabricmc.fabric.api.transfer.v1.client.fluid.FluidVariantRendering
-import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.DrawContext
@@ -23,13 +22,13 @@ import java.text.NumberFormat
 // HIGHLY EDITED VERSION FOR FABRIC by Kaupenjoe
 // Under MIT-License: https://github.com/mezz/JustEnoughItems/blob/1.18/LICENSE.txt
 class FluidStackRenderer(
-    val width: Int = 16,
-    val height: Int = 16,
-    val capacity: Long = 20 * FluidConstants.BUCKET,
+    val width: Int,
+    val height: Int,
+    val capacity: Long,
     val tooltipMode: TooltipMode = TooltipMode.SHOW_AMOUNT_AND_CAPACITY,
 ) {
 
-    val RATE = 1000
+    val RATE = 81
 
     enum class TooltipMode {
         SHOW_AMOUNT,
