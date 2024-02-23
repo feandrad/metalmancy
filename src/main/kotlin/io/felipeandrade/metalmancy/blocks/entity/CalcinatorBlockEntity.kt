@@ -166,24 +166,38 @@ class CalcinatorBlockEntity(
             world.setBlockState(pos, newState, Block.NOTIFY_ALL)
         }
 
-        if (inventory[CONTAINER_INPUT_SLOT].item == Items.BUCKET && fluidStorage.amount >= FluidConstants.BUCKET
-            && inventory[CONTAINER_OUTPUT_SLOT].canReceive(ModFluids.ESSENCE_BUCKET)
+        if (
+            inventory[CONTAINER_OUTPUT_SLOT].canReceive(ModFluids.ESSENCE_BUCKET) ||
+            inventory[CONTAINER_OUTPUT_SLOT].canReceive(ModItems.ESSENCE_BOTTLE)
         ) {
-
-            try {
-                val tran = Transaction.openOuter()
-                fluidStorage.extract(FluidVariant.of(ModFluids.STILL_ESSENCE), FluidConstants.BUCKET, tran)
-                tran.commit()
-                inventory[CONTAINER_INPUT_SLOT].decrement(1)
-                setStack(CONTAINER_OUTPUT_SLOT, ItemStack(ModFluids.ESSENCE_BUCKET))
-                shouldMarkDirty = true
-            } catch (_: Exception) {
+            if (
+                inventory[CONTAINER_INPUT_SLOT].item == Items.BUCKET && fluidStorage.amount >= FluidConstants.BUCKET ||
+                inventory[CONTAINER_INPUT_SLOT].item == Items.GLASS_BOTTLE && fluidStorage.amount >= FluidConstants.BOTTLE
+            ) {
+                shouldMarkDirty = routeFillContainer(inventory[CONTAINER_INPUT_SLOT].item)
             }
         }
 
         if (shouldMarkDirty) {
             markDirty(world, pos, state)
         }
+    }
+
+    private fun routeFillContainer(item: Item): Boolean = when (item) {
+        Items.BUCKET -> fillContainer(FluidConstants.BUCKET, ModFluids.ESSENCE_BUCKET)
+        Items.GLASS_BOTTLE -> fillContainer(FluidConstants.BOTTLE, ModItems.ESSENCE_BOTTLE)
+        else -> false
+    }
+
+    private fun fillContainer(amount: Long, result: Item): Boolean = try {
+        val tran = Transaction.openOuter()
+        fluidStorage.extract(FluidVariant.of(ModFluids.STILL_ESSENCE), amount, tran)
+        tran.commit()
+        inventory[CONTAINER_INPUT_SLOT].decrement(1)
+        setStack(CONTAINER_OUTPUT_SLOT, ItemStack(result, getStack(CONTAINER_OUTPUT_SLOT).count + 1))
+        true
+    } catch (_: Exception) {
+        false
     }
 
     private fun consumeFuel() {

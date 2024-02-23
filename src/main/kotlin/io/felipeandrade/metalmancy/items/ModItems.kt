@@ -1,6 +1,7 @@
 package io.felipeandrade.metalmancy.items
 
 import io.felipeandrade.metalmancy.common.registerItem
+import net.minecraft.item.Item
 
 class ModItems {
 
@@ -185,7 +186,10 @@ class ModItems {
         val RUBY = registerItem("ruby")
         val SAPPHIRE = registerItem("sapphire")
         val TOPAZ = registerItem("topaz")
+
+        // Essence
         val ESSENCE_DUST = registerItem("essence_dust")
+        val ESSENCE_BOTTLE = registerItem("essence_bottle", EssenceBottleItem(Item.Settings().maxCount(16)))
 
         fun initialize() {}
     }

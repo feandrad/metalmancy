@@ -88,6 +88,7 @@ class ModelProvider(
     override fun generateItemModels(itemModelGenerator: ItemModelGenerator): Unit = with(itemModelGenerator) {
 
         register(ModItems.ESSENCE_DUST, Models.GENERATED)
+        register(ModItems.ESSENCE_BOTTLE, Models.GENERATED)
         register(ModFluids.ESSENCE_BUCKET, Models.GENERATED)
 
         // Vanilla
