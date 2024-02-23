@@ -21,8 +21,8 @@ object Metalmancy : ModInitializer {
 		ModArmorItems.initialize()
 		ModBlocks.initialize()
 		ModBlockEntities.initialize()
-		ModRecipes.initialize()
 		ModFluids.initialize()
+		ModRecipes.initialize()
 		ItemGroup.initialize()
 		registerWorldGen()
 	}

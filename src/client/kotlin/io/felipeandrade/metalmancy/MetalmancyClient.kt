@@ -25,7 +25,7 @@ object MetalmancyClient : ClientModInitializer {
             ModFluids.STILL_ESSENCE, ModFluids.FLOWING_ESSENCE, SimpleFluidRenderHandler(
                 Identifier("minecraft:block/water_still"),
                 Identifier("minecraft:block/water_flow"),
-                0x4CC248
+                0x5af35b
             )
         )
 

@@ -1,12 +1,14 @@
 package io.felipeandrade.metalmancy.recipe
 
-import net.minecraft.recipe.BlastingRecipe
-import net.minecraft.recipe.RecipeType
+import io.felipeandrade.metalmancy.Metalmancy.MOD_ID
+import net.minecraft.recipe.RecipeSerializer
+import net.minecraft.registry.Registries
+import net.minecraft.registry.Registry
+import net.minecraft.util.Identifier
 
-class ModRecipes {
-    companion object{
-        val CALCINATING =  RecipeType.register<BlastingRecipe?>(CalcinatingRecipe.RECIPE_ID)
-
-        fun initialize() {}
+object ModRecipes {
+    fun initialize() {
+        RecipeSerializer.register(Identifier(MOD_ID , CalcinatingRecipe.RECIPE_ID).toString(), CalcinatingRecipe.Serializer())
+        Registry.register(Registries.RECIPE_TYPE, Identifier(MOD_ID , CalcinatingRecipe.RECIPE_ID), CalcinatingRecipe.TYPE)
     }
 }

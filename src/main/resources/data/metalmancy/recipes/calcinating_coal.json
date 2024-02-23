@@ -1,0 +1,7 @@
+{
+  "type": "metalmancy:calcinating",
+  "ingredient": {
+    "item": "minecraft:coal"
+  },
+  "experience": 10
+}

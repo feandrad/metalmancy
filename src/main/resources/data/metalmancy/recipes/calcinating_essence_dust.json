@@ -1,0 +1,10 @@
+{
+  "type": "metalmancy:calcinating",
+  "ingredient": {
+    "item": "metalmancy:essence_dust"
+  },
+  "output": {
+    "item": "minecraft:empty"
+  },
+  "experience": 10
+}
