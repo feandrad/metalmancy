@@ -47,9 +47,7 @@ class CalcinatingRecipe(
     companion object {
         const val RECIPE_ID = "calcinating"
 
-        val TYPE = object : RecipeType<CalcinatingRecipe> {
-            val ID = RECIPE_ID
-        }
+        val TYPE = object : RecipeType<CalcinatingRecipe> {}
 
         fun defaultRecipe(itemStack: ItemStack): RecipeEntry<CalcinatingRecipe> {
             val ingredient = Ingredient.ofStacks(itemStack)

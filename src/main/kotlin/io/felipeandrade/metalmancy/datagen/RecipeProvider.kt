@@ -584,7 +584,7 @@ fun Item.offerHoe(exporter: RecipeExporter, tag: TagKey<Item>, handle: ItemConve
 fun Item.offerSword(exporter: RecipeExporter, tag: TagKey<Item>, handle: ItemConvertible) {
     ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, this)
         .pattern("#")
-        .pattern("|")
+        .pattern("#")
         .pattern("|")
         .input('#', tag)
         .input('|', handle)
