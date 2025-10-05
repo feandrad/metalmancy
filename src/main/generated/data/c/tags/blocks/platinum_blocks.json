@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "metalmancy:platinum_raw_block",
-    "metalmancy:platinum_block",
-    "#c:platinum_ores"
-  ]
-}

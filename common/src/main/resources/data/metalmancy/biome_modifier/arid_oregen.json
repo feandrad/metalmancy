@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:add_features",
+  "biomes": "#metalmancy:is_arid",
+  "features": [
+    "metalmancy:oregen_potash_ore",
+    "metalmancy:oregen_topaz_ore",
+    "metalmancy:oregen_lithium_ore",
+    "metalmancy:oregen_rock_salt_ore_bonus"
+  ],
+  "step": "underground_ores"
+}

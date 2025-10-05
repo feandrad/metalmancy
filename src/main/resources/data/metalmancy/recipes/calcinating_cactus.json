@@ -1,9 +1,0 @@
-{
-  "type": "metalmancy:calcinating",
-  "ingredient": {
-    "item": "minecraft:cactus"
-  },
-  "output": {
-    "item":"minecraft:charcoal"
-  }
-}

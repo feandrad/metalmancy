@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "metalmancy:silver_raw_block",
-    "metalmancy:silver_block",
-    "#c:silver_ores"
-  ]
-}

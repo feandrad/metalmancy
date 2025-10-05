@@ -1,0 +1,63 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm'
+}
+architectury {
+    common rootProject.enabled_platforms.split(',')
+}
+
+sourceSets {
+    main {
+        // adiciona o diretório onde estão WorldgenJsonGen.kt e OreGenSpec.kt
+        kotlin.srcDir 'src/tools/blockgen'
+        kotlin.srcDir 'src/tools/itemgen'
+        kotlin.srcDir 'src/tools/worldgen'
+        kotlin.srcDir 'src/tools/lootgen'
+        resources.srcDir 'src/tools/datagen/resources'
+    }
+}
+
+dependencies {
+    // We depend on Fabric Loader here to use the Fabric @Environment annotations,
+    // which get remapped to the correct annotations on each platform.
+    // Do NOT use other classes from Fabric Loader.
+    modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+
+    modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+}
+repositories {
+    mavenCentral()
+}
+kotlin {
+    jvmToolchain(21)
+}
+
+tasks.register('cleanGeneratedAssets', Delete) {
+    group = 'datagen'
+    description = 'Remove JSONs antigos de worldgen em build/generated'
+    delete("$buildDir/generated/data")
+}
+
+tasks.register('generateAll') {
+    group = 'datagen'
+    description = 'Sincroniza todos os assets gerados'
+    dependsOn 'cleanGeneratedAssets'
+    dependsOn 'generateBlocks'
+    dependsOn 'generateItems'
+    dependsOn 'generateOres'
+    dependsOn 'generateLoot'
+}
+
+tasks.register('syncGeneratedAll') {
+    group = 'datagen'
+    description = 'Sincroniza todos os assets gerados'
+    dependsOn 'syncGeneratedBlocks'
+    dependsOn 'syncGeneratedItems'
+    dependsOn 'syncGeneratedWorldgen'
+    dependsOn 'syncGeneratedLoot'
+}
+
+apply from: "$projectDir/gradle/worldgen.gradle"
+apply from: "$projectDir/gradle/lootgen.gradle"
+apply from: "$projectDir/gradle/blockgen.gradle"
+apply from: "$projectDir/gradle/itemgen.gradle"

@@ -1,0 +1,41 @@
+tasks.register('generateItems', JavaExec) {
+    group = 'itemgen'
+    description = 'Gera assets de itens a partir da lista ItemEntries'
+    mainClass = 'tools.itemgen.ItemGenKt'
+    classpath = sourceSets.main.runtimeClasspath
+    args '--out', "$buildDir/generated/assets"
+    doFirst { println "→ Gerando assets de itens em $buildDir/generated/assets …" }
+}
+
+tasks.register('syncGeneratedItems', Copy) {
+    group = 'itemgen'
+    description = 'Copia os assets de itens gerados para resources'
+    from "$buildDir/generated/assets"
+    into 'src/main/resources/assets'
+    dependsOn 'generateItems'
+}
+
+tasks.named('generateItems') {
+    dependsOn 'cleanGeneratedAssets'
+}
+
+tasks.register('cleanItemgenResources', Delete) {
+    group = 'itemgen'
+    description = 'Remove assets de itens antigos já copiados em src/main/resources/assets'
+    delete("src/main/resources/assets/${rootProject.name.toLowerCase()}/models/item")
+    delete("src/main/resources/assets/${rootProject.name.toLowerCase()}/items")
+}
+
+tasks.register('forceRecreateItems') {
+    group = 'itemgen'
+    description = 'Força recriação completa dos assets de itens: limpa resources, limpa generated, gera JSONs e sincroniza.'
+
+    dependsOn 'cleanItemgenResources'
+    dependsOn 'cleanItemgen'
+    dependsOn 'generateItems'
+    dependsOn 'syncGeneratedItems'
+}
+
+tasks.named('syncGeneratedAll') {
+    dependsOn 'syncGeneratedItems'
+}

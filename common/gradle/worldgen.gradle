@@ -1,0 +1,48 @@
+
+def generatedDir = "$buildDir/generated/data/${rootProject.name.toLowerCase()}/worldgen"
+def outputDir = "src/main/resources/data/${rootProject.name.toLowerCase()}/worldgen"
+
+tasks.register('cleanGeneratedWorldgen', Delete) {
+    group = 'worldgen'
+    description = "Remove JSONs de $generatedDir"
+    delete(generatedDir)
+}
+
+tasks.register('generateOres', JavaExec) {
+    group = 'worldgen'
+    description = 'Gera worldgen JSON a partir da lista OreGenEntries'
+    // ajuste se você mudou o package. Com "package tools" fica assim:
+    mainClass = 'tools.WorldgenJsonGenKt'
+    classpath = sourceSets.main.runtimeClasspath
+    args '--out', generatedDir
+    doFirst { println "→ Gerando worldgen JSON em $generatedDir …" }
+
+    dependsOn 'cleanGeneratedWorldgen'
+}
+
+tasks.register('syncGeneratedWorldgen', Copy) {
+    group = 'worldgen'
+    description = 'Copia os JSONs gerados para resources'
+    from generatedDir
+    into outputDir
+}
+
+tasks.named('syncGeneratedWorldgen') {
+    dependsOn 'generateOres'
+}
+
+tasks.register('cleanWorldgenResources', Delete) {
+    group = 'worldgen'
+    description = "Clear $outputDir"
+    delete(outputDir)
+}
+
+tasks.register('forceRecreateWorldgen') {
+    group = 'worldgen'
+    description = 'Força recriação completa do worldgen: limpa resources, limpa generated, gera JSONs e sincroniza.'
+
+    dependsOn 'cleanGeneratedWorldgen'
+    dependsOn 'cleanWorldgenResources'
+    dependsOn 'generateOres'
+    dependsOn 'syncGeneratedWorldgen'
+}

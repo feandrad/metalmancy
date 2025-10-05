@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "metalmancy:tin_ore",
+    "metalmancy:zinc_ore",
+    "metalmancy:aluminum_ore",
+    "metalmancy:lead_ore",
+    "metalmancy:nickel_ore",
+    "metalmancy:manganese_ore",
+    "metalmancy:rock_salt_ore",
+    "metalmancy:potash_ore"
+  ]
+}

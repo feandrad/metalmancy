@@ -1,0 +1,47 @@
+
+def generatedDir = "$buildDir/generated/data/${rootProject.name.toLowerCase()}/loot_table"
+def outputDir = "src/main/resources/data/${rootProject.name.toLowerCase()}/loot_table"
+
+tasks.register('cleanGeneratedLoot', Delete) {
+    group = 'lootgen'
+    description = "Removes old loot table assets from $generatedDir"
+    delete(generatedDir)
+}
+
+tasks.register('generateLoot', JavaExec) {
+    group = 'lootgen'
+    description = 'Generates loot table assets from the LootEntries list'
+    mainClass = 'tools.lootgen.LootGenKt'
+    classpath = sourceSets.main.runtimeClasspath
+    args '--out', generatedDir
+    doFirst { println "→ Generating loot table assets in $generatedDir…" }
+
+    dependsOn 'cleanGeneratedLoot'
+}
+
+tasks.register('syncGeneratedLoot', Copy) {
+    group = 'lootgen'
+    description = 'Copies the generated loot table assets to resources'
+    from generatedDir
+    into outputDir
+}
+
+tasks.named('syncGeneratedLoot') {
+    dependsOn 'generateLoot'
+}
+
+tasks.register('cleanLootgenResources', Delete) {
+    group = 'lootgen'
+    description = "Clear $outputDir"
+    delete(outputDir)
+}
+
+tasks.register('forceRecreateLoot') {
+    group = 'lootgen'
+    description = 'Forces complete recreation of loot table assets: cleans resources, cleans generated, generates JSONs, and syncs.'
+
+    dependsOn 'cleanGeneratedLoot'
+    dependsOn 'cleanLootgenResources'
+    dependsOn 'generateLoot'
+    dependsOn 'syncGeneratedLoot'
+}

@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "metalmancy:silver_ore",
+    "metalmancy:lithium_ore",
+    "metalmancy:cinnabar_ore",
+    "metalmancy:topaz_ore",
+    "metalmancy:sapphire_ore",
+    "metalmancy:ruby_ore",
+    "metalmancy:cobalt_ore",
+    "metalmancy:uranium_ore"
+  ]
+}

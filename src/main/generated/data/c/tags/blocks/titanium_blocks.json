@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "metalmancy:titanium_raw_block",
-    "metalmancy:titanium_block",
-    "#c:titanium_ores"
-  ]
-}

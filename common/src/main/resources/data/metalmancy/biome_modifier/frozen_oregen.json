@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:add_features",
+  "biomes": "#metalmancy:is_tropical_jungle",
+  "features": [
+    "metalmancy:oregen_sapphire_ore",
+    "metalmancy:oregen_cobalt_ore",
+    "metalmancy:oregen_nickel_ore",
+    "metalmancy:oregen_silver_ore_bonus"
+  ],
+  "step": "underground_ores"
+}

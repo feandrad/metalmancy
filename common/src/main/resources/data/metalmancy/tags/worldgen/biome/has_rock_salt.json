@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "#metalmancy:is_arid",
+    "minecraft:beach",
+    "minecraft:savanna",
+    "minecraft:savanna_plateau",
+    "minecraft:windswept_savanna",
+    "minecraft:stony_peaks",
+    "minecraft:stony_shore"
+  ]
+}

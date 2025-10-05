@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:add_features",
+  "biomes": "#minecraft:is_deep_ocean",
+  "features": [
+    "metalmancy:oregen_manganese_ore",
+    "metalmancy:oregen_manganese_nodules"
+  ],
+  "step": "underground_ores"
+}

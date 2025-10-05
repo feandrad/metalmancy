@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "metalmancy:tin_raw_block",
-    "metalmancy:tin_block",
-    "#c:tin_ores"
-  ]
-}

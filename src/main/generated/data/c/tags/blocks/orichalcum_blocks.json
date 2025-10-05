@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "metalmancy:orichalcum_raw_block",
-    "metalmancy:orichalcum_block",
-    "#c:orichalcum_ores"
-  ]
-}
