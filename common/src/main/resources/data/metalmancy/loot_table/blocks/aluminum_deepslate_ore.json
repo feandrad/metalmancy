@@ -25,11 +25,11 @@
                   }
                 }
               ],
-              "name": "metalmancy:zinc_ore"
+              "name": "metalmancy:aluminum_deepslate_ore"
             },
             {
               "type": "minecraft:item",
-              "name": "metalmancy:raw_zinc",
+              "name": "metalmancy:raw_aluminum",
               "functions": [
                 {
                   "function": "minecraft:apply_bonus",
@@ -46,5 +46,5 @@
       ]
     }
   ],
-  "random_sequence": "metalmancy:blocks/zinc_ore"
+  "random_sequence": "metalmancy:blocks/aluminum_deepslate_ore"
 }

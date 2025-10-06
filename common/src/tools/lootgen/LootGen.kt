@@ -20,13 +20,23 @@ fun main(args: Array<String>) {
     targetFile.mkdirs()
 
     for (entry in LootEntries.entries) {
-        val lootTable = createBlockLootTable(entry)
-        val json = GsonBuilder().setPrettyPrinting().create().toJson(lootTable)
-        File(targetFile, entry.fileName).writeText(json)
+        for (orePart in entry.ores) {
+            val lootTable = createBlockLootTable(entry, orePart)
+            val json = GsonBuilder().setPrettyPrinting().create().toJson(lootTable)
+            val fileName = getLootTableFileName(entry, orePart)
+            File(targetFile, fileName).writeText(json)
+        }
     }
 }
 
-internal fun createBlockLootTable(entry: GeneratedLoot): Map<String, Any> {
+internal fun getLootTableFileName(entry: GeneratedLoot, orePart: Part): String {
+    return when (orePart) {
+        Part.ORE_DEEPSLATE -> "${entry.oreName}_deepslate_ore.json"
+        else -> "${entry.oreName}_ore.json"
+    }
+}
+
+internal fun createBlockLootTable(entry: GeneratedLoot, orePart: Part): Map<String, Any> {
     val silkTouchCondition = mapOf(
         "condition" to "minecraft:match_tool",
         "predicate" to mapOf(
@@ -39,10 +49,15 @@ internal fun createBlockLootTable(entry: GeneratedLoot): Map<String, Any> {
         )
     )
 
+    val oreName = when (orePart) {
+        Part.ORE_DEEPSLATE -> "${entry.oreName}_deepslate_ore"
+        else -> "${entry.oreName}_ore"
+    }
+
     val silkTouchAlternative = mapOf(
         "type" to "minecraft:item",
         "conditions" to listOf(silkTouchCondition),
-        "name" to "metalmancy:${entry.oreName}_ore"
+        "name" to "metalmancy:$oreName"
     )
 
     val fortuneFunctions = listOf(
@@ -74,7 +89,7 @@ internal fun createBlockLootTable(entry: GeneratedLoot): Map<String, Any> {
     return mapOf(
         "type" to "minecraft:block",
         "pools" to listOf(pool),
-        "random_sequence" to "metalmancy:blocks/${entry.oreName}_ore"
+        "random_sequence" to "metalmancy:blocks/$oreName"
     )
 }
 
