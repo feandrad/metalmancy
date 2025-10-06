@@ -40,6 +40,9 @@ kotlin {
 
 tasks.withType(Test).configureEach {
     useJUnitPlatform()
+    testLogging {
+        showStandardStreams = true
+    }
 }
 
 tasks.register('cleanGeneratedAssets', Delete) {
