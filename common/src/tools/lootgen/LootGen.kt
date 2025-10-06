@@ -26,7 +26,7 @@ fun main(args: Array<String>) {
     }
 }
 
-private fun createBlockLootTable(entry: GeneratedLoot): Map<String, Any> {
+internal fun createBlockLootTable(entry: GeneratedLoot): Map<String, Any> {
     val silkTouchCondition = mapOf(
         "condition" to "minecraft:match_tool",
         "predicate" to mapOf(
@@ -78,7 +78,7 @@ private fun createBlockLootTable(entry: GeneratedLoot): Map<String, Any> {
     )
 }
 
-private fun getDropName(entry: GeneratedLoot): String {
+internal fun getDropName(entry: GeneratedLoot): String {
     return when (entry.drop) {
         Part.RAW_ITEM -> "metalmancy:raw_${entry.oreName}"
         Part.DUST -> "metalmancy:${entry.oreName}_dust"

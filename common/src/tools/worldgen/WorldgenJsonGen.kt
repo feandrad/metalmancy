@@ -54,20 +54,20 @@ fun main(args: Array<String>) {
     println("[generateJson] Dica: rode ':common:syncGeneratedWorldgen' para copiar em resources.")
 }
 
-private fun OreGen.toConfiguredName(): String = if (suffix != null)
+internal fun OreGen.toConfiguredName(): String = if (suffix != null)
     "${ore}_${suffix}" else ore
 
-private fun OreGen.toPlacedName(): String = if (suffix != null)
+internal fun OreGen.toPlacedName(): String = if (suffix != null)
     "oregen_${ore}_${suffix}" else "oregen_${ore}"
 
-private fun OreGen.toPlacedFeature(configFileName: String): LinkedHashMap<String, Any> {
+internal fun OreGen.toPlacedFeature(configFileName: String): LinkedHashMap<String, Any> {
     val placement = mutableListOf<Map<String, Any>>()
     placement += linkedMapOf("type" to "minecraft:count", "count" to countPerChunk)
     placement += linkedMapOf("type" to "minecraft:in_square")
     val height = linkedMapOf<String, Any>(
         "type" to heightType.id,
-        "min_inclusive" to linkedMapOf("absolute" to yRange.min()),
-        "max_inclusive" to linkedMapOf("absolute" to yRange.max())
+        "min_inclusive" to linkedMapOf("absolute" to yRange.first),
+        "max_inclusive" to linkedMapOf("absolute" to yRange.last)
     )
     placement += linkedMapOf("type" to "minecraft:height_range", "height" to height)
     placement += linkedMapOf("type" to "minecraft:biome")
@@ -78,7 +78,7 @@ private fun OreGen.toPlacedFeature(configFileName: String): LinkedHashMap<String
     return placed
 }
 
-private fun OreGen.toConfiguredFeatureJson(): LinkedHashMap<String, Any> {
+internal fun OreGen.toConfiguredFeatureJson(): LinkedHashMap<String, Any> {
     val root = linkedMapOf<String, Any>()
     root["type"] = "minecraft:ore"
     val config = linkedMapOf<String, Any>()
@@ -127,7 +127,7 @@ private fun dir(base: String, vararg parts: String): File {
     return f
 }
 
-private fun nextUnique(base: String, counts: MutableMap<String, Int>): String {
+internal fun nextUnique(base: String, counts: MutableMap<String, Int>): String {
     val n = counts.compute(base) { _, prev -> (prev ?: 0) + 1 }!!
     return if (n == 1) base else "${base}_$n"
 }
