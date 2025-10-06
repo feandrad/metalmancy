@@ -40,10 +40,12 @@ internal fun createBlockLootTable(entry: GeneratedLoot, orePart: Part): Map<Stri
     val silkTouchCondition = mapOf(
         "condition" to "minecraft:match_tool",
         "predicate" to mapOf(
-            "enchantments" to listOf(
-                mapOf(
-                    "enchantment" to "minecraft:silk_touch",
-                    "levels" to mapOf("min" to 1)
+            "predicates" to mapOf(
+                "minecraft:enchantments" to listOf(
+                    mapOf(
+                        "enchantment" to "minecraft:silk_touch",
+                        "levels" to mapOf("min" to 1)
+                    )
                 )
             )
         )
@@ -97,6 +99,7 @@ internal fun getDropName(entry: GeneratedLoot): String {
     return when (entry.drop) {
         Part.RAW_ITEM -> "metalmancy:raw_${entry.oreName}"
         Part.DUST -> "metalmancy:${entry.oreName}_dust"
-        else -> "metalmancy:${entry.oreName}"
+        Part.GEM -> "metalmancy:${entry.oreName}"
+        else -> "metalmancy:${entry.oreName}_ore"
     }
 }
