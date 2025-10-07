@@ -19,7 +19,7 @@ class LootGenTest {
     @Test
     fun `createBlockLootTable should generate correct structure`() {
         val loot = GeneratedLoot("test_ore", Part.RAW_ITEM)
-        val table = createBlockLootTable(loot)
+        val table = createBlockLootTable(loot, loot.ores.first())
 
         assertEquals("minecraft:block", table["type"])
         assertEquals("metalmancy:blocks/test_ore_ore", table["random_sequence"])
