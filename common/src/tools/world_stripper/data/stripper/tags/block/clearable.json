@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:base_stone_overworld",
+    "#minecraft:stone_ore_replaceables",
+    "#minecraft:deepslate_ore_replaceables",
+    "#minecraft:dirt",
+    "#minecraft:leaves",
+    "#minecraft:logs",
+    "#minecraft:sculk_replaceable",
+    "#minecraft:sniffer_diggable_block",
+    "minecraft:water",
+    "minecraft:lava",
+    "minecraft:magma_block",
+    "minecraft:obsidian",
+    "minecraft:cobblestone",
+    "minecraft:kelp",
+    "minecraft:seagrass",
+    "minecraft:vine"
+  ]
+}

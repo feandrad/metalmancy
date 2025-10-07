@@ -1,6 +1,6 @@
 {
   "pack": {
-    "pack_format": 48,
+    "pack_format": 81,
     "description": "Metalmancy dev tools: clear current chunk-ish column"
   }
 }
