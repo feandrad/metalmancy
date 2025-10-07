@@ -5,8 +5,7 @@
     "metalmancy:oregen_ruby_ore",
     "metalmancy:oregen_cinnabar_ore",
     "metalmancy:oregen_nickel_ore",
-    "metalmancy:oregen_nickel_ore_bonus",
-    "metalmancy:oregen_aluminum_ore_bonus"
+    "metalmancy:oregen_aluminum_ore"
   ],
   "step": "underground_ores"
 }

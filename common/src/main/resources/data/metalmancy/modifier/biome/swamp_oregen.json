@@ -2,8 +2,8 @@
   "type": "minecraft:add_features",
   "biomes": "#metalmancy:is_swamp",
   "features": [
-    "metalmancy:oregen_lead_ore_bonus",
-    "metalmancy:oregen_silver_ore_bonus"
+    "metalmancy:oregen_lead_ore",
+    "metalmancy:oregen_silver_ore"
   ],
   "step": "underground_ores"
 }

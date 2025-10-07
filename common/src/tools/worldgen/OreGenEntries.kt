@@ -13,7 +13,21 @@ object OreGenEntries {
 
                 buildList {
                     when (material.name) {
-                        "ruby", "sapphire", "topaz" -> add(OreGen(ore, deep, -64..-4, OreGenHeightType.UNIFORM, 4, 2))
+                        "zinc", "tin" -> add(OreGen(ore, deep, -16..112))
+
+                        "silver", "manganese" -> add(OreGen(ore, deep, -64..32))
+
+                        "aluminum", "nickel", "lead" -> {
+                            add(OreGen(ore, deep, -64..32))
+                            add(OreGen(ore, deep, -64..0, OreGenHeightType.TRAPEZOID, 4, 7, "small"))
+                        }
+
+                        "cobalt", "lithium" -> add(OreGen(ore, deep, -64..-4, OreGenHeightType.UNIFORM))
+
+                        "titanium", "platinum", "uranium" -> {
+                            add(OreGen(ore, deep, -64..0))
+                            add(OreGen(ore, deep, -64..-24, OreGenHeightType.UNIFORM, 2, 1, "tiny"))
+                        }
 
                         "rock_salt" -> {
                             add(OreGen(ore, deep, -16..192, OreGenHeightType.UNIFORM, 20, 8))
@@ -24,34 +38,7 @@ object OreGenEntries {
 
                         "potash" -> add(OreGen(ore, deep, -64..-4, OreGenHeightType.UNIFORM, 12, 8))
 
-                        "zinc", "tin" -> add(OreGen(ore, deep, -16..112))
-
-                        "cobalt", "manganese" -> add(OreGen(ore, deep, -64..32))
-
-
-                        "aluminum" -> {
-                            add(OreGen(ore, deep, -64..32))
-                            add(OreGen(ore, deep, -64..0, OreGenHeightType.TRAPEZOID, 8, 8, "bonus"))
-                        }
-
-                        "nickel" -> {
-                            add(OreGen(ore, deep, -64..32))
-                            add(OreGen(ore, deep, -64..0, OreGenHeightType.TRAPEZOID, 8, 8, "bonus"))
-                        }
-
-                        "lead" -> {
-                            add(OreGen(ore, deep, -64..32))
-                            add(OreGen(ore, deep, -64..0, OreGenHeightType.TRAPEZOID, 8, 8, "bonus"))
-                        }
-
-                        "silver" -> {
-                            add(OreGen(ore, deep, -64..32))
-                            add(OreGen(ore, deep, -64..0, OreGenHeightType.TRAPEZOID, 8, 8, "bonus"))
-                        }
-
-                        "titanium", "platinum", "lithium", "uranium" -> add(
-                            OreGen(ore, deep, -64..-4, OreGenHeightType.UNIFORM, 4, 2)
-                        )
+                        "ruby", "sapphire", "topaz" -> add(OreGen(ore, deep, -64..-4, OreGenHeightType.UNIFORM, 4, 2))
 
                         else -> {}
                     }

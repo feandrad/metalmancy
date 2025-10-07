@@ -1,0 +1,15 @@
+{
+  "type": "metalmancy:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": [
+    "metalmancy:oregen_zinc",
+    "metalmancy:oregen_tin",
+    "metalmancy:oregen_lead_small",
+    "metalmancy:oregen_nickel_small",
+    "metalmancy:oregen_aluminum_small",
+    "metalmancy:oregen_platinum_tiny",
+    "metalmancy:oregen_titanium_tiny",
+    "metalmancy:oregen_uranium_tiny"
+  ],
+  "step": "underground_ores"
+}
