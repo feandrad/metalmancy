@@ -12,6 +12,7 @@ sourceSets {
         kotlin.srcDir 'src/tools/itemgen'
         kotlin.srcDir 'src/tools/worldgen'
         kotlin.srcDir 'src/tools/lootgen'
+        kotlin.srcDir 'src/tools/recipegen'
         resources.srcDir 'src/tools/datagen/resources'
     }
     test {
@@ -59,6 +60,7 @@ tasks.register('generateAll') {
     dependsOn 'generateItems'
     dependsOn 'generateOres'
     dependsOn 'generateLoot'
+    dependsOn 'generateRecipes'
 }
 
 tasks.register('syncGeneratedAll') {
@@ -68,9 +70,11 @@ tasks.register('syncGeneratedAll') {
     dependsOn 'syncGeneratedItems'
     dependsOn 'syncGeneratedWorldgen'
     dependsOn 'syncGeneratedLoot'
+    dependsOn 'syncGeneratedRecipes'
 }
 
 apply from: "$projectDir/gradle/worldgen.gradle"
 apply from: "$projectDir/gradle/lootgen.gradle"
 apply from: "$projectDir/gradle/blockgen.gradle"
 apply from: "$projectDir/gradle/itemgen.gradle"
+apply from: "$projectDir/gradle/recipegen.gradle"
