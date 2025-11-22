@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#metalmancy:has_rock_salt",
+  "features": [ "metalmancy:oregen_rock_salt_ore" ],
+  "step": "underground_ores"
+}

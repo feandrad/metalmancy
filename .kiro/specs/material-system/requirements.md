@@ -31,6 +31,52 @@ O Metalmancy é um mod de Minecraft que adiciona um sistema extensível de mater
 4. WHEN materiais são agrupados por família THEN o sistema SHALL permitir acesso a grupos como GEMS, SALTS, METALS
 5. WHEN um material é consultado THEN o sistema SHALL fornecer acesso a todas as suas partes configuradas
 
+#### Materiais Definidos
+
+O sistema SHALL incluir os seguintes materiais:
+
+**Gemas (3):**
+- Ruby (rubi) - minério, minério deepslate, gema, bloco
+- Sapphire (safira) - minério, minério deepslate, gema, bloco
+- Topaz (topázio) - minério, minério deepslate, gema, bloco
+
+**Metais Base - Nível Cobre (4):**
+- Zinc (zinco) - minério, minério deepslate, item bruto, bloco bruto, lingote, pepita, pó, bloco
+- Tin (estanho) - minério, minério deepslate, item bruto, bloco bruto, lingote, pepita, pó, bloco
+- Lead (chumbo) - minério, minério deepslate, item bruto, bloco bruto, lingote, pepita, pó, bloco
+- Nickel (níquel) - minério, minério deepslate, item bruto, bloco bruto, lingote, pepita, pó, bloco
+
+**Metais Intermediários - Nível Ferro (4):**
+- Aluminum (alumínio) - minério, minério deepslate, item bruto, bloco bruto, lingote, pepita, pó, bloco
+- Manganese (manganês) - minério, minério deepslate, item bruto, bloco bruto, lingote, pepita, pó, bloco
+- Silver (prata) - minério, minério deepslate, item bruto, bloco bruto, lingote, pepita, pó, bloco
+- Cobalt (cobalto) - minério, minério deepslate, item bruto, bloco bruto, lingote, pepita, pó, bloco
+
+**Metais Avançados - Nível Diamante (4):**
+- Platinum (platina) - minério, minério deepslate, item bruto, bloco bruto, lingote, pepita, pó, bloco
+- Titanium (titânio) - minério, minério deepslate, item bruto, bloco bruto, lingote, pepita, pó, bloco
+- Lithium (lítio) - minério, minério deepslate, item bruto, bloco bruto, lingote, pepita, pó, bloco
+- Uranium (urânio) - minério, minério deepslate, item bruto, bloco bruto, lingote, pepita, pó, bloco
+
+**Metais Místicos - Nível Netherite (2):**
+- Mithril - minério, item bruto, bloco bruto, lingote, pepita, pó, bloco
+- Orichalcum - minério, item bruto, bloco bruto, lingote, pepita, pó, bloco
+
+**Ligas (6):**
+- Pewter (peltre) - lingote, pepita, pó, bloco
+- Brass (latão) - lingote, pepita, pó, bloco
+- Bronze - lingote, pepita, pó, bloco
+- Steel (aço) - lingote, pepita, pó, bloco
+- Electrum (electro) - lingote, pepita, pó, bloco
+- Invar - lingote, pepita, pó, bloco
+
+**Alchemy (3):**
+- RockSalt (sal-gema) - minério, minério deepslate, gema, pó, bloco
+- Potash (potássio) - minério, minério deepslate, item bruto, pó, bloco
+- Mercury (cinábrio/minério de mercúrio) - minério, minério deepslate, pó
+
+**Total: 26 materiais** (3 gemas + 3 Alchemy + 14 metais + 6 ligas)
+
 ### Requisito 2: Registro de Blocos
 
 **User Story:** Como desenvolvedor do mod, eu quero registrar blocos de materiais automaticamente, para que todos os minérios e blocos sejam adicionados ao jogo.
@@ -38,10 +84,7 @@ O Metalmancy é um mod de Minecraft que adiciona um sistema extensível de mater
 #### Critérios de Aceitação
 
 1. WHEN um material possui partes de bloco THEN o sistema SHALL criar e registrar blocos para cada parte
-2. WHEN um bloco é criado THEN o sistema SHALL usar propriedades baseadas em blocos vanilla similares
-3. WHEN blocos de gemas são criados THEN o sistema SHALL usar propriedades similares ao minério de esmeralda
-4. WHEN blocos de sais são criados THEN o sistema SHALL usar propriedades similares ao minério de carvão
-5. WHEN blocos de metais são criados THEN o sistema SHALL usar propriedades baseadas na categoria do metal (cobre, ferro, ouro ou diamante)
+2. WHEN um bloco é criado THEN o sistema SHALL usar propriedades baseadas em blocos similares
 6. WHEN um bloco é registrado THEN o sistema SHALL usar o ResourceLocation correto com o namespace do mod
 
 ### Requisito 3: Registro de Itens

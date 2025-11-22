@@ -13,6 +13,20 @@ O design segue o princípio DRY (Don't Repeat Yourself) - materiais são definid
 
 **Status Atual:** O mod está totalmente funcional no Fabric. A implementação NeoForge está em desenvolvimento.
 
+**Implementação Atual:**
+- ✅ Sistema core de materiais (Material, Family, Part)
+- ✅ Catálogo completo de materiais (Materials.kt)
+- ✅ Sistema de registro de blocos (MaterialBlocks.kt)
+- ✅ Block Generator (BlockGen.kt)
+- ✅ Item Generator (ItemGen.kt)
+- ✅ Recipe Generator (RecipeGen.kt)
+- ✅ Loot Generator (LootGen.kt)
+- ✅ Worldgen Generator (WorldgenJsonGen.kt)
+- ⏳ Sistema de registro de itens (MaterialItems.kt) - pendente
+- ⏳ Integração completa com Gradle - pendente
+- ⏳ Testes de propriedade - pendente
+- ⏳ Implementação NeoForge - pendente
+
 ## Arquitetura
 
 ### Estrutura de Módulos
@@ -103,8 +117,9 @@ object Materials {
     // ...
     
     val GEMS = listOf(RUBY, SAPPHIRE, TOPAZ)
+    val ALCHEMY = listOf(ROCK_SALT, POTASH, MERCURY)
     val METALS = COPPER_LIKE_METALS + IRON_LIKE_METALS + ...
-    val ALL = GEMS + SALTS + METALS
+    val ALL = GEMS + ALCHEMY + METALS + ALLOYS
 }
 ```
 
@@ -135,12 +150,60 @@ object MaterialBlocks {
 - Organizar blocos por categoria
 
 **Estratégia de Propriedades:**
-- Gemas → propriedades de EMERALD_ORE
-- Sais → propriedades de COAL_ORE
-- Metais copper-like → propriedades de COPPER_ORE
-- Metais iron-like → propriedades de IRON_ORE
-- Metais gold-like → propriedades de GOLD_BLOCK
-- Metais diamond-like → propriedades de DIAMOND_ORE
+- Gemas → propriedades similares a blocos vanilla
+- Alchemy → propriedades similares a blocos vanilla
+- Metais copper-like (nível cobre) → propriedades de COPPER_ORE
+- Metais iron-like (nível ferro) → propriedades de IRON_ORE
+- Metais diamond-like (nível diamante) → propriedades de DIAMOND_ORE
+- Metais netherite-like (nível netherite) → propriedades customizadas
+
+**CRÍTICO - Inicialização de Block ID (Minecraft 1.21.10+):**
+
+A partir do Minecraft 1.21.10, o construtor de Block valida que o block ID interno está definido antes de permitir a criação do bloco. A solução é chamar `.setId()` nas propriedades ANTES de criar o bloco:
+
+```kotlin
+// ❌ ERRADO - Causa NullPointerException: Block id not set
+fun createLike(id: String, block: Block): BlockBehaviour.Properties {
+    return BlockBehaviour.Properties.ofFullCopy(block)
+}
+
+// ✅ CORRETO - Define o ID antes de criar o bloco
+fun createLike(id: String, block: Block): BlockBehaviour.Properties =
+    BlockBehaviour.Properties.ofFullCopy(block).setId(Metalmancy.resourceKey(id, Registries.BLOCK))
+```
+
+**Implementação Correta:**
+
+A chave é usar inicialização direta (não lazy) e inline a criação de propriedades:
+
+```kotlin
+val GEMS: Map<Material, Map<Part, Block>> = Materials.GEMS.associateWith { material ->
+    material.parts.filter { it.isBlock }.associateWith { part ->
+        val id = material.unlocalizedName(part)
+        val properties = createLike(id, Blocks.EMERALD_ORE)
+        register(id, Block(properties))
+    }
+}
+```
+
+**Por que isso funciona:**
+1. Inicialização direta (não `by lazy`) garante que a ordem de execução é previsível
+2. `createLike()` define o ResourceKey via `.setId()` ANTES do bloco ser construído
+3. O ID está disponível quando `Block(properties)` é chamado
+4. Registro acontece imediatamente após criação
+
+**Por que lazy initialization falha:**
+- `by lazy` adia a execução até o primeiro acesso
+- Durante lazy evaluation, o contexto de registro pode não estar pronto
+- Fabric pode tentar acessar propriedades do bloco antes do ID ser definido
+
+**Ordem de Operações Correta:**
+1. Gerar ID do bloco: `material.unlocalizedName(part)`
+2. Criar properties com ID: `createLike(id, vanillaBlock)` → chama `.setId()`
+3. Construir bloco: `Block(properties)` → ID já está definido
+4. Registrar: `register(id, block)`
+
+Esta implementação segue o padrão de `io.felipeandrade.metalmancy.blocks.MaterialBlocks` (implementação funcional).
 
 #### MaterialItems Object
 
@@ -160,11 +223,48 @@ object MaterialItems {
 - Registrar itens no Minecraft Registry
 - Mapear partes para itens
 
+**Implementação:**
+
+Similar a MaterialBlocks, usa inicialização direta e `.setId()` para BlockItems:
+
+```kotlin
+val RUBY: Map<Part, Item> = mapItems(Materials.RUBY, MaterialBlocks.GEMS[Materials.RUBY])
+
+private fun mapItems(
+    material: Material,
+    blocks: Map<Part, Block>? = MaterialBlocks.METALS[material]
+): Map<Part, Item> {
+    val blockItems: Map<Part, Item> = blocks?.entries?.associate { (part, block) ->
+        part to register(material.unlocalizedName(part), block)
+    } ?: emptyMap()
+    val items: Map<Part, Item> = material.parts.filter { it.isBlock.not() }.associateWith { part ->
+        register(material.unlocalizedName(part))
+    }
+    return blockItems + items
+}
+
+private fun register(path: String, block: Block, properties: Item.Properties = Item.Properties()): BlockItem {
+    val key = Metalmancy.resourceKey(path, Registries.ITEM)
+    val props = properties.useBlockDescriptionPrefix().setId(key)
+    return Registry.register(BuiltInRegistries.ITEM, key, BlockItem(block, props))
+}
+```
+
+**Pontos-chave:**
+- Inicialização direta (não lazy) para garantir ordem de execução
+- `.setId()` é chamado nas propriedades do item antes de criar o BlockItem
+- `useBlockDescriptionPrefix()` garante que BlockItems usem descrições de bloco
+- Itens regulares usam `Items.registerItem()` do Minecraft
+- BlockItems são registrados manualmente com `Registry.register()`
+
 ### 3. Build-time Generators
 
 #### Block Generator
 
+**Status:** ✅ Implementado em `common/src/tools/blockgen/`
+
 **Entrada:** `BlockEntries.blocks` (lista de GeneratedBlock)
+- BlockEntries itera automaticamente sobre `Materials.ALL` e cria um `DefaultBlock` para cada parte que é bloco
 
 **Saída:**
 - `blockstates/<name>.json` - Define estados do bloco
@@ -182,6 +282,11 @@ abstract class GeneratedBlock(val unlocalizedName: String) {
 class DefaultBlock : GeneratedBlock {
     // Implementação para blocos cúbicos simples
 }
+```
+
+**Uso:**
+```bash
+./gradlew :common:generateBlockJson --args="--out build/generated/assets"
 ```
 
 **Formato de Saída (blockstate):**
@@ -207,7 +312,11 @@ class DefaultBlock : GeneratedBlock {
 
 #### Item Generator
 
-**Entrada:** `ItemEntries.items` (lista de GeneratedItem)
+**Status:** ✅ Implementado em `common/src/tools/itemgen/`
+
+**Entrada:** 
+- `ItemEntries.items` (lista de GeneratedItem) - itera sobre Materials.ALL
+- `BlockEntries.blocks` (lista de GeneratedBlock) - para gerar modelos de item correspondentes
 
 **Saída:**
 - `models/item/<name>.json` - Define modelo do item
@@ -225,6 +334,11 @@ class GeneratedBlockItem : GeneratedItem {
 }
 ```
 
+**Uso:**
+```bash
+./gradlew :common:generateItemJson --args="--out build/generated/assets"
+```
+
 **Formato de Saída (item model):**
 ```json
 {
@@ -237,10 +351,13 @@ class GeneratedBlockItem : GeneratedItem {
 
 #### Recipe Generator
 
+**Status:** ✅ Implementado em `common/src/tools/recipegen/`
+
 **Entrada:** `RecipeEntries.recipes` (lista de GeneratedRecipe)
+- RecipeEntries usa `Recipes.byFamily()` para gerar receitas baseadas na família do material
 
 **Saída:**
-- `recipes/<category>/<name>.json` - Define receita de crafting/smelting
+- `recipes/<name>.json` - Define receita de crafting/smelting
 
 **Estrutura:**
 ```kotlin
@@ -256,6 +373,11 @@ class BlastingRecipe : GeneratedRecipe
 - Metais: gera smelting e blasting para ORE → INGOT e ORE_DEEPSLATE → INGOT
 - Gemas: gera smelting para ORE → GEM e ORE_DEEPSLATE → GEM
 - Outras famílias: sem receitas automáticas
+
+**Uso:**
+```bash
+./gradlew :common:generateRecipeJson --args="--out build/generated/data"
+```
 
 **Formato de Saída (smelting):**
 ```json
@@ -274,9 +396,46 @@ class BlastingRecipe : GeneratedRecipe
 }
 ```
 
+#### Loot Generator
+
+**Status:** ✅ Implementado em `common/src/tools/lootgen/`
+
+**Entrada:** `LootEntries.entries` (lista de GeneratedLoot)
+- Lista manual de materiais com seus drops configurados
+
+**Saída:**
+- `loot_table/blocks/<name>_ore.json` - Define loot table para minério normal
+- `loot_table/blocks/<name>_deepslate_ore.json` - Define loot table para minério deepslate
+
+**Estrutura:**
+```kotlin
+data class GeneratedLoot(
+    val oreName: String,
+    val drop: Part = Part.RAW_ITEM,
+    val ores: List<Part> = listOf(Part.ORE, Part.ORE_DEEPSLATE)
+)
+```
+
+**Lógica de Geração:**
+- Gemas: dropam GEM (com fortune)
+- Sais: dropam DUST (com fortune)
+- Metais: dropam RAW_ITEM (com fortune)
+- Silk Touch: dropa o próprio bloco de minério
+- Explosion decay aplicado automaticamente
+
+**Uso:**
+```bash
+./gradlew :common:generateLootJson --args="--out build/generated/loot_table"
+```
+
 #### Worldgen Generator
 
+**Status:** ✅ Implementado em `common/src/tools/worldgen/`
+
 **Entrada:** `OreGenEntries.overworld/nether/ender` (lista de OreGen)
+- OreGenEntries filtra `Materials.ALL` para materiais com `Part.ORE`
+- Configurações específicas por material (yRange, veinSize, countPerChunk)
+- Suporte para múltiplas dimensões (overworld, nether, end)
 
 **Saída:**
 - `worldgen/configured_feature/<name>.json` - Define feature de minério
@@ -285,17 +444,20 @@ class BlastingRecipe : GeneratedRecipe
 **Estrutura:**
 ```kotlin
 data class OreGen(
-    val stone: String,
-    val deepslate: String? = null,
-    val yRange: IntRange = -80..80,
-    val heightType: OreGenHeightType = OreGenHeightType.TRAPEZOID,
-    val veinSize: Int = 4,
-    val countPerChunk: Int = 7,
-    val suffix: String? = null
+    val ore: String,                                      // Nome do minério (stone variant)
+    val deepslate: String? = null,                        // Nome do minério deepslate (opcional)
+    val yRange: IntRange = -80..80,                       // Faixa de altura Y
+    val heightType: OreGenHeightType = TRAPEZOID,         // Tipo de distribuição
+    val veinSize: Int = 4,                                // Tamanho do veio
+    val countPerChunk: Int = 7,                           // Tentativas por chunk
+    val suffix: String? = null,                           // Sufixo para múltiplas configs
+    val targets: List<OreGenTarget>? = null               // Targets customizados (opcional)
 )
 
-enum class OreGenHeightType {
-    TRAPEZOID, TRIANGLE, UNIFORM
+enum class OreGenHeightType(val id: String) {
+    TRAPEZOID("minecraft:trapezoid"),
+    TRIANGLE("minecraft:triangle"),
+    UNIFORM("minecraft:uniform")
 }
 ```
 
@@ -304,6 +466,13 @@ enum class OreGenHeightType {
 - Aplica configurações específicas por material (yRange, veinSize, etc.)
 - Suporta múltiplas configurações por material (com sufixos)
 - Gera targets para stone_ore_replaceables e deepslate_ore_replaceables
+- Usa `nextUnique()` para garantir nomes únicos de arquivos
+
+**Uso:**
+```bash
+./gradlew :common:generateJson --args="--out build/generated"
+./gradlew :common:syncGeneratedWorldgen  # Copia para resources
+```
 
 **Formato de Saída (configured_feature):**
 ```json
@@ -482,13 +651,13 @@ Family (1) ──< (N) Material
 
 ### Propriedade 3: Agrupamento por família
 
-*Para qualquer* lista de agrupamento (GEMS, SALTS, METALS), todos os materiais na lista devem pertencer à família correspondente.
+*Para qualquer* lista de agrupamento (GEMS, ALCHEMY, METALS), todos os materiais na lista devem pertencer à família correspondente.
 
 **Valida: Requisitos 1.4, 10.1, 10.2**
 
 ### Propriedade 4: Completude da lista ALL
 
-*Para qualquer* material em Materials, ele deve estar presente em Materials.ALL, e Materials.ALL deve ser igual à união de GEMS + SALTS + METALS.
+*Para qualquer* material em Materials, ele deve estar presente em Materials.ALL, e Materials.ALL deve ser igual à união de GEMS + ALCHEMY + METALS + ALLOYS.
 
 **Valida: Requisitos 10.5**
 
@@ -650,15 +819,15 @@ Family (1) ──< (N) Material
 
 ### Propriedade 31: Agrupamento de metais por nível
 
-*Para qualquer* material em COPPER_LIKE_METALS, IRON_LIKE_METALS, GOLD_LIKE_METALS ou DIAMOND_LIKE_METALS, o material deve ser do tipo Family.METAL.
+*Para qualquer* material em COPPER_LIKE_METALS, IRON_LIKE_METALS, DIAMOND_LIKE_METALS ou NETHERITE_LIKE_METALS, o material deve ser do tipo Family.METAL.
 
 **Valida: Requisitos 10.3**
 
 ### Propriedade 32: Aplicação de propriedades baseadas em categoria
 
-*Para qualquer* bloco criado, as propriedades devem ser baseadas no bloco vanilla correspondente à categoria do material (EMERALD_ORE para gemas, COPPER_ORE para copper-like metals, etc.).
+*Para qualquer* bloco criado, as propriedades devem ser baseadas em blocos vanilla similares correspondentes à categoria do material.
 
-**Valida: Requisitos 2.5, 10.4**
+**Valida: Requisitos 2.2, 10.4**
 
 ## Tratamento de Erros
 
@@ -770,7 +939,7 @@ fun `GEMS list contains only GEM family materials`() {
 
 2. **Propriedades de Agrupamento:**
    - Para qualquer material em GEMS, família deve ser GEM
-   - Para qualquer material em Materials.ALL, deve estar em GEMS, SALTS ou METALS
+   - Para qualquer material em Materials.ALL, deve estar em GEMS, ALCHEMY, METALS ou ALLOYS
 
 3. **Propriedades de Geração de JSON:**
    - Para qualquer GeneratedBlock, JSON deve ser válido e bem-formatado
@@ -983,6 +1152,59 @@ graph TD
     I --> O[worldgen/configured_feature/*.json]
     I --> P[worldgen/placed_feature/*.json]
 ```
+
+## Resumo da Implementação Atual
+
+### ✅ Componentes Implementados
+
+1. **Sistema Core de Materiais** (`common/src/main/kotlin/io/felipeandrade/metalmancy/material/`)
+   - `Material.kt` - Data class para materiais
+   - `Family.kt` - Enum de famílias de materiais
+   - `Part.kt` - Enum de partes de materiais
+   - `Materials.kt` - Catálogo completo com 23 materiais (3 gemas, 2 sais, 12 metais, 6 ligas)
+
+2. **Sistema de Registro de Blocos** (`common/src/main/kotlin/io/felipeandrade/metalmancy/material/`)
+   - `MaterialBlocks.kt` - Registro automático de blocos por categoria
+   - Propriedades baseadas em blocos vanilla similares
+   - Suporte para GEMS, SALTS, METALS e ALLOYS
+
+3. **Geradores Build-time** (`common/src/tools/`)
+   - `blockgen/` - Gera blockstates e modelos de blocos
+   - `itemgen/` - Gera modelos e renderização de itens
+   - `recipegen/` - Gera receitas de smelting/blasting
+   - `lootgen/` - Gera loot tables para blocos de minério
+   - `worldgen/` - Gera configured_feature e placed_feature para minérios
+
+### ⏳ Componentes Pendentes
+
+1. **Sistema de Registro de Itens**
+   - `MaterialItems.kt` - Precisa ser implementado
+   - Registro de itens e BlockItems
+   - Mapeamento de partes para itens
+
+2. **Integração com Gradle**
+   - Tasks Gradle para executar geradores
+   - Task `syncGeneratedWorldgen` para copiar assets
+   - Configuração de source sets
+
+3. **Testes**
+   - Testes de propriedade usando Kotest
+   - Testes unitários para lógica de negócio
+   - Testes de integração para Fabric
+
+4. **Suporte NeoForge**
+   - Implementação do módulo NeoForge
+   - PlatformHelper para NeoForge
+   - Testes de integração
+
+### 📊 Estatísticas
+
+- **Materiais Definidos:** 26 (3 gemas, 3 alchemy, 14 metais, 6 ligas)
+- **Blocos Gerados:** ~150+ (cada material tem múltiplas partes de bloco)
+- **Itens Gerados:** ~200+ (incluindo BlockItems)
+- **Receitas Geradas:** ~100+ (smelting e blasting para metais e gemas)
+- **Loot Tables Geradas:** ~40+ (para todos os minérios com variantes stone/deepslate)
+- **Features de Worldgen:** ~30+ (incluindo variantes com sufixos)
 
 ### Hierarquia de Classes de Geração
 

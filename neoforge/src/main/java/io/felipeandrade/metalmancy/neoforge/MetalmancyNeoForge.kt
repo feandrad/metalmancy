@@ -3,6 +3,7 @@ package io.felipeandrade.metalmancy.neoforge
 import io.felipeandrade.metalmancy.Metalmancy
 import io.felipeandrade.metalmancy.Metalmancy.init
 import io.felipeandrade.metalmancy.blocks.MaterialBlocks
+import io.felipeandrade.metalmancy.items.MaterialItems
 import net.minecraft.core.registries.Registries
 import net.minecraft.resources.ResourceKey
 import net.neoforged.bus.api.SubscribeEvent
@@ -20,10 +21,12 @@ class MetalmancyNeoForge {
 }
 
 @EventBusSubscriber(modid = Metalmancy.MOD_ID)
-class ModRegistryEvents {
+object ModRegistryEvents {
+    @JvmStatic
     @SubscribeEvent
     fun registerContent(event: RegisterEvent) {
-        register(event, Registries.BLOCK, MaterialBlocks::registerAll);
+        register(event, Registries.BLOCK, MaterialBlocks::registerAll)
+        register(event, Registries.ITEM, MaterialItems::registerAll)
     }
 }
 

@@ -38,6 +38,7 @@ private fun dir(base: String, vararg parts: String): File {
 
 private fun com.google.gson.Gson.writeJson(dir: File, fileName: String, json: com.google.gson.JsonObject) {
     val out = File(dir, fileName)
+    out.parentFile?.mkdirs()  // Create parent directories if needed
     FileWriter(out).use { w -> toJson(json, w) }
     println("[RecipeGen] wrote ${out.path}")
 }

@@ -1,0 +1,20 @@
+// Texture Report Generator Task
+// Generates a report of missing textures for materials
+
+task generateTextureReport(type: JavaExec) {
+    group = 'metalmancy'
+    description = 'Generates a report of missing textures'
+    
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'texturereport.TextureReport'
+    
+    // Parse command line arguments
+    if (project.hasProperty('args')) {
+        args project.property('args').split('\\s+')
+    }
+    
+    // Default output path
+    if (!project.hasProperty('args') || !project.property('args').contains('--out=')) {
+        args '--out=aseprite/missing_textures_report.md'
+    }
+}

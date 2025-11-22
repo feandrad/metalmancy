@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "group": "sapphire",
+  "ingredient": {
+    "item": "metalmancy:sapphire_deepslate_ore"
+  },
+  "result": {
+    "id": "metalmancy:sapphire"
+  },
+  "experience": 0.1,
+  "cookingtime": 200
+}

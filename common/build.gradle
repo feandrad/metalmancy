@@ -13,6 +13,7 @@ sourceSets {
         kotlin.srcDir 'src/tools/worldgen'
         kotlin.srcDir 'src/tools/lootgen'
         kotlin.srcDir 'src/tools/recipegen'
+        kotlin.srcDir 'src/tools/texturereport'
         resources.srcDir 'src/tools/datagen/resources'
     }
     test {
@@ -31,6 +32,12 @@ dependencies {
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:5.10.2"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.10.2"
+    testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
+    
+    // Kotest for property-based testing
+    testImplementation "io.kotest:kotest-runner-junit5:5.8.0"
+    testImplementation "io.kotest:kotest-assertions-core:5.8.0"
+    testImplementation "io.kotest:kotest-property:5.8.0"
 }
 repositories {
     mavenCentral()
@@ -78,3 +85,4 @@ apply from: "$projectDir/gradle/lootgen.gradle"
 apply from: "$projectDir/gradle/blockgen.gradle"
 apply from: "$projectDir/gradle/itemgen.gradle"
 apply from: "$projectDir/gradle/recipegen.gradle"
+apply from: "$projectDir/gradle/texturereport.gradle"
