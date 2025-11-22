@@ -102,10 +102,6 @@ Materials with missing textures: **28**
 - [ ] `block/manganese_raw_block.png` (RAW_BLOCK)
 - [ ] `item/manganese_raw.png` (RAW_ITEM)
 
-### mercury (1 missing)
-
-- [ ] `item/mercury_dust.png` (DUST)
-
 ### mithril (7 missing)
 
 - [ ] `block/mithril_block.png` (BLOCK)
