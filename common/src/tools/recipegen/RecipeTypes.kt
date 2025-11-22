@@ -15,21 +15,15 @@ class SmeltingRecipe(
         val json = JsonObject()
         json.addProperty("type", "minecraft:smelting")
         json.addProperty("category", category)
+        json.addProperty("cookingtime", cookingTime)
+        json.addProperty("experience", experience)
         if (group != null) {
             json.addProperty("group", group)
         }
-        val ingredientJson = JsonObject()
-        if (ingredient.startsWith("#")) {
-            ingredientJson.addProperty("tag", ingredient.substring(1))
-        } else {
-            ingredientJson.addProperty("item", ingredient)
-        }
-        json.add("ingredient", ingredientJson)
+        json.addProperty("ingredient", ingredient)
         val resultJson = JsonObject()
         resultJson.addProperty("id", result)
         json.add("result", resultJson)
-        json.addProperty("experience", experience)
-        json.addProperty("cookingtime", cookingTime)
         return json
     }
 }
@@ -47,21 +41,91 @@ class BlastingRecipe(
         val json = JsonObject()
         json.addProperty("type", "minecraft:blasting")
         json.addProperty("category", category)
+        json.addProperty("cookingtime", cookingTime)
+        json.addProperty("experience", experience)
         if (group != null) {
             json.addProperty("group", group)
         }
-        val ingredientJson = JsonObject()
-        if (ingredient.startsWith("#")) {
-            ingredientJson.addProperty("tag", ingredient.substring(1))
-        } else {
-            ingredientJson.addProperty("item", ingredient)
-        }
-        json.add("ingredient", ingredientJson)
+        json.addProperty("ingredient", ingredient)
         val resultJson = JsonObject()
         resultJson.addProperty("id", result)
         json.add("result", resultJson)
-        json.addProperty("experience", experience)
-        json.addProperty("cookingtime", cookingTime)
+        return json
+    }
+}
+
+class ShapedRecipe(
+    unlocalizedName: String,
+    private val pattern: List<String>,
+    private val key: Map<Char, String>,
+    private val result: String,
+    private val count: Int = 1,
+    private val group: String? = null,
+    private val category: String = "misc",
+) : GeneratedRecipe(unlocalizedName) {
+    override fun generateRecipe(): JsonObject {
+        val json = JsonObject()
+        json.addProperty("type", "minecraft:crafting_shaped")
+        json.addProperty("category", category)
+        if (group != null) {
+            json.addProperty("group", group)
+        }
+        val keyJson = JsonObject()
+        key.forEach { (char, item) ->
+            val itemJson = JsonObject()
+            if (item.startsWith("#")) {
+                itemJson.addProperty("tag", item.substring(1))
+            } else {
+                itemJson.addProperty("item", item)
+            }
+            keyJson.add(char.toString(), itemJson)
+        }
+        json.add("key", keyJson)
+        val patternArray = com.google.gson.JsonArray()
+        pattern.forEach { patternArray.add(it) }
+        json.add("pattern", patternArray)
+        val resultJson = JsonObject()
+        resultJson.addProperty("item", result)
+        if (count > 1) {
+            resultJson.addProperty("count", count)
+        }
+        json.add("result", resultJson)
+        return json
+    }
+}
+
+class ShapelessRecipe(
+    unlocalizedName: String,
+    private val ingredients: List<String>,
+    private val result: String,
+    private val count: Int = 1,
+    private val group: String? = null,
+    private val category: String = "misc",
+) : GeneratedRecipe(unlocalizedName) {
+    override fun generateRecipe(): JsonObject {
+        val json = JsonObject()
+        json.addProperty("type", "minecraft:crafting_shapeless")
+        json.addProperty("category", category)
+        if (group != null) {
+            json.addProperty("group", group)
+        }
+        val ingredientsArray = com.google.gson.JsonArray()
+        ingredients.forEach { ingredient ->
+            val ingredientJson = JsonObject()
+            if (ingredient.startsWith("#")) {
+                ingredientJson.addProperty("tag", ingredient.substring(1))
+            } else {
+                ingredientJson.addProperty("item", ingredient)
+            }
+            ingredientsArray.add(ingredientJson)
+        }
+        json.add("ingredients", ingredientsArray)
+        val resultJson = JsonObject()
+        resultJson.addProperty("item", result)
+        if (count > 1) {
+            resultJson.addProperty("count", count)
+        }
+        json.add("result", resultJson)
         return json
     }
 }
