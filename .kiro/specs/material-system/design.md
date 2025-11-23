@@ -398,7 +398,7 @@ class BlastingRecipe : GeneratedRecipe
 
 #### Loot Generator
 
-**Status:** ✅ Implementado em `common/src/tools/lootgen/`
+**Status:** ⏳ Parcialmente implementado em `common/src/tools/lootgen/` - faltam loot tables para blocos não-minério
 
 **Entrada:** `LootEntries.entries` (lista de GeneratedLoot)
 - Lista manual de materiais com seus drops configurados
@@ -406,6 +406,8 @@ class BlastingRecipe : GeneratedRecipe
 **Saída:**
 - `loot_table/blocks/<name>_ore.json` - Define loot table para minério normal
 - `loot_table/blocks/<name>_deepslate_ore.json` - Define loot table para minério deepslate
+- `loot_table/blocks/<name>_block.json` - Define loot table para blocos de metal/gema (⏳ pendente)
+- `loot_table/blocks/raw_<name>_block.json` - Define loot table para blocos brutos (⏳ pendente)
 
 **Estrutura:**
 ```kotlin
@@ -417,15 +419,108 @@ data class GeneratedLoot(
 ```
 
 **Lógica de Geração:**
+
+**Minérios (ORE, ORE_DEEPSLATE):**
 - Gemas: dropam GEM (com fortune)
 - Sais: dropam DUST (com fortune)
 - Metais: dropam RAW_ITEM (com fortune)
 - Silk Touch: dropa o próprio bloco de minério
 - Explosion decay aplicado automaticamente
 
+**Blocos de Metal/Gema (BLOCK):**
+- Dropam o próprio bloco
+- Fortune NÃO afeta o drop
+- Silk Touch não é necessário
+- Explosion decay aplicado automaticamente
+
+**Blocos Brutos (RAW_BLOCK):**
+- Dropam o próprio bloco
+- Fortune NÃO afeta o drop
+- Silk Touch não é necessário
+- Explosion decay aplicado automaticamente
+
 **Uso:**
 ```bash
 ./gradlew :common:generateLootJson --args="--out build/generated/loot_table"
+```
+
+**Formato de Saída (minério com fortune):**
+```json
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "predicates": {
+                      "minecraft:enchantments": [
+                        {
+                          "enchantments": "minecraft:silk_touch",
+                          "levels": { "min": 1 }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "name": "metalmancy:zinc_ore"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:ore_drops",
+                  "function": "minecraft:apply_bonus"
+                },
+                {
+                  "function": "minecraft:explosion_decay"
+                }
+              ],
+              "name": "metalmancy:raw_zinc"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "metalmancy:blocks/zinc_ore"
+}
+```
+
+**Formato de Saída (bloco simples sem fortune):**
+```json
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "metalmancy:zinc_block"
+        }
+      ],
+      "rolls": 1.0,
+      "functions": [
+        {
+          "function": "minecraft:explosion_decay"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "metalmancy:blocks/zinc_block"
+}
 ```
 
 #### Worldgen Generator
@@ -751,83 +846,131 @@ Family (1) ──< (N) Material
 
 **Valida: Requisitos 6.3**
 
-### Propriedade 20: Geração de configured_feature para minérios
+### Propriedade 20: Geração de loot table para cada bloco
 
-*Para qualquer* OreGen em OreGenEntries, o Worldgen Generator deve gerar um arquivo JSON de configured_feature.
+*Para qualquer* bloco em Materials.ALL, o Loot Generator deve gerar um arquivo JSON de loot table.
 
 **Valida: Requisitos 7.1**
 
-### Propriedade 21: Geração de placed_feature para minérios
+### Propriedade 21: Loot tables de minérios com Fortune
 
-*Para qualquer* OreGen em OreGenEntries, o Worldgen Generator deve gerar um arquivo JSON de placed_feature.
+*Para qualquer* minério (ORE ou ORE_DEEPSLATE), a loot table gerada deve incluir suporte para Fortune que aumenta o drop.
 
 **Valida: Requisitos 7.2**
 
-### Propriedade 22: Suporte a variantes stone e deepslate
+### Propriedade 22: Loot tables de minérios com Silk Touch
 
-*Para qualquer* OreGen com deepslate não-nulo, o configured_feature gerado deve conter targets para ambos stone_ore_replaceables e deepslate_ore_replaceables.
+*Para qualquer* minério (ORE ou ORE_DEEPSLATE), a loot table gerada deve incluir alternativa que dropa o próprio bloco quando Silk Touch é usado.
 
 **Valida: Requisitos 7.3**
 
-### Propriedade 23: Respeito à faixa de altura Y
+### Propriedade 23: Loot tables de blocos sem Fortune
 
-*Para qualquer* OreGen com yRange especificado, o placed_feature gerado deve conter height_range com min e max correspondentes.
+*Para qualquer* bloco de metal (BLOCK) ou bloco bruto (RAW_BLOCK), a loot table gerada NÃO deve incluir suporte para Fortune.
 
-**Valida: Requisitos 7.4**
+**Valida: Requisitos 7.4, 7.5**
 
-### Propriedade 24: Suporte a tipos de distribuição
+### Propriedade 24: Loot tables de blocos de gema sem Fortune
 
-*Para qualquer* OreGen com heightType especificado (TRAPEZOID, TRIANGLE, UNIFORM), o placed_feature gerado deve usar o tipo correto no height_range.
-
-**Valida: Requisitos 7.5**
-
-### Propriedade 25: Inclusão de veinSize e countPerChunk
-
-*Para qualquer* OreGen, o configured_feature deve conter o veinSize no campo size, e o placed_feature deve conter countPerChunk no campo count.
+*Para qualquer* bloco de gema (BLOCK de família GEM), a loot table gerada NÃO deve incluir suporte para Fortune.
 
 **Valida: Requisitos 7.6**
 
-### Propriedade 26: Unicidade de nomes de features
+### Propriedade 25: Explosion decay em todas as loot tables
 
-*Para qualquer* conjunto de OreGens com o mesmo stone, os nomes de arquivo gerados devem ser únicos (usando sufixos numéricos se necessário).
+*Para qualquer* loot table gerada, deve incluir a função explosion_decay.
 
 **Valida: Requisitos 7.7**
 
-### Propriedade 27: Parsing de argumentos de linha de comando
+### Propriedade 26: Pretty-printing de loot tables
 
-*Para qualquer* gerador executado com --out <path>, o diretório de saída deve ser <path>.
+*Para qualquer* JSON de loot table gerado, o conteúdo deve estar formatado com indentação (pretty-printed).
+
+**Valida: Requisitos 7.8**
+
+### Propriedade 27: Criação automática de diretórios para loot tables
+
+*Para qualquer* caminho de saída especificado para loot tables, os diretórios necessários devem ser criados automaticamente se não existirem.
+
+**Valida: Requisitos 7.9**
+
+### Propriedade 28: Geração de configured_feature para minérios
+
+*Para qualquer* OreGen em OreGenEntries, o Worldgen Generator deve gerar um arquivo JSON de configured_feature.
+
+**Valida: Requisitos 8.1**
+
+### Propriedade 29: Geração de placed_feature para minérios
+
+*Para qualquer* OreGen em OreGenEntries, o Worldgen Generator deve gerar um arquivo JSON de placed_feature.
 
 **Valida: Requisitos 8.2**
 
-### Propriedade 28: Armazenamento de PlatformHelper
+### Propriedade 30: Suporte a variantes stone e deepslate
+
+*Para qualquer* OreGen com deepslate não-nulo, o configured_feature gerado deve conter targets para ambos stone_ore_replaceables e deepslate_ore_replaceables.
+
+**Valida: Requisitos 8.3**
+
+### Propriedade 31: Respeito à faixa de altura Y
+
+*Para qualquer* OreGen com yRange especificado, o placed_feature gerado deve conter height_range com min e max correspondentes.
+
+**Valida: Requisitos 8.4**
+
+### Propriedade 32: Suporte a tipos de distribuição
+
+*Para qualquer* OreGen com heightType especificado (TRAPEZOID, TRIANGLE, UNIFORM), o placed_feature gerado deve usar o tipo correto no height_range.
+
+**Valida: Requisitos 8.5**
+
+### Propriedade 33: Inclusão de veinSize e countPerChunk
+
+*Para qualquer* OreGen, o configured_feature deve conter o veinSize no campo size, e o placed_feature deve conter countPerChunk no campo count.
+
+**Valida: Requisitos 8.6**
+
+### Propriedade 34: Unicidade de nomes de features
+
+*Para qualquer* conjunto de OreGens com o mesmo stone, os nomes de arquivo gerados devem ser únicos (usando sufixos numéricos se necessário).
+
+**Valida: Requisitos 8.7**
+
+### Propriedade 35: Parsing de argumentos de linha de comando
+
+*Para qualquer* gerador executado com --out <path>, o diretório de saída deve ser <path>.
+
+**Valida: Requisitos 9.2**
+
+### Propriedade 36: Armazenamento de PlatformHelper
 
 *Para qualquer* PlatformHelper passado para Metalmancy.init(), o helper deve ser armazenado e acessível via Metalmancy.helper.
 
-**Valida: Requisitos 9.1**
+**Valida: Requisitos 10.1**
 
-### Propriedade 29: Uso de registries compatíveis
+### Propriedade 37: Uso de registries compatíveis
 
 *Para qualquer* bloco ou item registrado, o sistema deve usar BuiltInRegistries do Minecraft.
 
-**Valida: Requisitos 9.4**
+**Valida: Requisitos 10.4**
 
-### Propriedade 30: Criação de ResourceLocation compatível com 1.21.x
+### Propriedade 38: Criação de ResourceLocation compatível com 1.21.x
 
 *Para qualquer* ResourceLocation criado, o sistema deve usar ResourceLocation.fromNamespaceAndPath() ao invés de métodos deprecated.
 
-**Valida: Requisitos 9.5**
+**Valida: Requisitos 10.5**
 
-### Propriedade 31: Agrupamento de metais por nível
+### Propriedade 39: Agrupamento de metais por nível
 
 *Para qualquer* material em COPPER_LIKE_METALS, IRON_LIKE_METALS, DIAMOND_LIKE_METALS ou NETHERITE_LIKE_METALS, o material deve ser do tipo Family.METAL.
 
-**Valida: Requisitos 10.3**
+**Valida: Requisitos 11.3**
 
-### Propriedade 32: Aplicação de propriedades baseadas em categoria
+### Propriedade 40: Aplicação de propriedades baseadas em categoria
 
 *Para qualquer* bloco criado, as propriedades devem ser baseadas em blocos vanilla similares correspondentes à categoria do material.
 
-**Valida: Requisitos 2.2, 10.4**
+**Valida: Requisitos 2.2, 11.4**
 
 ## Tratamento de Erros
 

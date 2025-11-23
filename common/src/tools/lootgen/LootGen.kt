@@ -20,23 +20,30 @@ fun main(args: Array<String>) {
     targetFile.mkdirs()
 
     for (entry in LootEntries.entries) {
-        for (orePart in entry.ores) {
-            val lootTable = createBlockLootTable(entry, orePart)
+        for (part in entry.parts) {
+            val lootTable = if (entry.isOre) {
+                createOreLootTable(entry, part)
+            } else {
+                createSimpleBlockLootTable(entry, part)
+            }
             val json = GsonBuilder().setPrettyPrinting().create().toJson(lootTable)
-            val fileName = getLootTableFileName(entry, orePart)
+            val fileName = getLootTableFileName(entry, part)
             File(targetFile, fileName).writeText(json)
         }
     }
 }
 
-internal fun getLootTableFileName(entry: GeneratedLoot, orePart: Part): String {
-    return when (orePart) {
-        Part.ORE_DEEPSLATE -> "${entry.oreName}_deepslate_ore.json"
-        else -> "${entry.oreName}_ore.json"
+internal fun getLootTableFileName(entry: GeneratedLoot, part: Part): String {
+    return when (part) {
+        Part.ORE_DEEPSLATE -> "${entry.materialName}_deepslate_ore.json"
+        Part.ORE -> "${entry.materialName}_ore.json"
+        Part.RAW_BLOCK -> "raw_${entry.materialName}_block.json"
+        Part.BLOCK -> "${entry.materialName}_block.json"
+        else -> "${entry.materialName}_${part.name.lowercase()}.json"
     }
 }
 
-internal fun createBlockLootTable(entry: GeneratedLoot, orePart: Part): Map<String, Any> {
+internal fun createOreLootTable(entry: GeneratedLoot, orePart: Part): Map<String, Any> {
     val silkTouchCondition = mapOf(
         "condition" to "minecraft:match_tool",
         "predicate" to mapOf(
@@ -52,8 +59,8 @@ internal fun createBlockLootTable(entry: GeneratedLoot, orePart: Part): Map<Stri
     )
 
     val oreName = when (orePart) {
-        Part.ORE_DEEPSLATE -> "${entry.oreName}_deepslate_ore"
-        else -> "${entry.oreName}_ore"
+        Part.ORE_DEEPSLATE -> "${entry.materialName}_deepslate_ore"
+        else -> "${entry.materialName}_ore"
     }
 
     val silkTouchAlternative = mapOf(
@@ -95,11 +102,39 @@ internal fun createBlockLootTable(entry: GeneratedLoot, orePart: Part): Map<Stri
     )
 }
 
+internal fun createSimpleBlockLootTable(entry: GeneratedLoot, part: Part): Map<String, Any> {
+    val blockName = when (part) {
+        Part.RAW_BLOCK -> "raw_${entry.materialName}_block"
+        Part.BLOCK -> "${entry.materialName}_block"
+        else -> "${entry.materialName}_${part.name.lowercase()}"
+    }
+
+    val itemEntry = mapOf(
+        "type" to "minecraft:item",
+        "name" to "metalmancy:$blockName"
+    )
+
+    val pool = mapOf(
+        "rolls" to 1.0,
+        "bonus_rolls" to 0.0,
+        "entries" to listOf(itemEntry),
+        "functions" to listOf(
+            mapOf("function" to "minecraft:explosion_decay")
+        )
+    )
+
+    return mapOf(
+        "type" to "minecraft:block",
+        "pools" to listOf(pool),
+        "random_sequence" to "metalmancy:blocks/$blockName"
+    )
+}
+
 internal fun getDropName(entry: GeneratedLoot): String {
     return when (entry.drop) {
-        Part.RAW_ITEM -> "metalmancy:raw_${entry.oreName}"
-        Part.DUST -> "metalmancy:${entry.oreName}_dust"
-        Part.GEM -> "metalmancy:${entry.oreName}"
-        else -> "metalmancy:${entry.oreName}_ore"
+        Part.RAW_ITEM -> "metalmancy:raw_${entry.materialName}"
+        Part.DUST -> "metalmancy:${entry.materialName}_dust"
+        Part.GEM -> "metalmancy:${entry.materialName}"
+        else -> "metalmancy:${entry.materialName}_ore"
     }
 }

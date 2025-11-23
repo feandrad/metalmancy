@@ -135,7 +135,23 @@ O sistema SHALL incluir os seguintes materiais:
 4. WHEN arquivos são gerados THEN o sistema SHALL criar os diretórios necessários automaticamente
 5. WHEN a geração é concluída THEN o sistema SHALL reportar o caminho de saída e arquivos criados
 
-### Requisito 7: Geração de Worldgen
+### Requisito 7: Geração de Loot Tables
+
+**User Story:** Como desenvolvedor do mod, eu quero gerar automaticamente loot tables para blocos, para que jogadores recebam os drops corretos ao quebrar blocos.
+
+#### Critérios de Aceitação
+
+1. WHEN o Loot Generator é executado THEN o sistema SHALL gerar arquivos JSON de loot table para cada bloco
+2. WHEN minérios são processados THEN o sistema SHALL gerar loot tables que dropam itens brutos ou gemas com suporte a Fortune
+3. WHEN minérios são processados THEN o sistema SHALL gerar loot tables que dropam o próprio bloco com Silk Touch
+4. WHEN blocos de metal são processados THEN o sistema SHALL gerar loot tables que dropam o próprio bloco sem Fortune
+5. WHEN blocos brutos são processados THEN o sistema SHALL gerar loot tables que dropam o próprio bloco sem Fortune
+6. WHEN blocos de gema são processados THEN o sistema SHALL gerar loot tables que dropam o próprio bloco sem Fortune
+7. WHEN loot tables são geradas THEN o sistema SHALL aplicar explosion_decay automaticamente
+8. WHEN arquivos são gerados THEN o sistema SHALL usar formatação JSON com pretty-printing
+9. WHEN arquivos são gerados THEN o sistema SHALL criar os diretórios necessários automaticamente
+
+### Requisito 8: Geração de Worldgen
 
 **User Story:** Como desenvolvedor do mod, eu quero gerar automaticamente configurações de geração de mundo, para que minérios apareçam naturalmente no mundo.
 
@@ -149,7 +165,7 @@ O sistema SHALL incluir os seguintes materiais:
 6. WHEN minérios são configurados THEN o sistema SHALL permitir especificar tamanho de veio e contagem por chunk
 7. WHEN nomes de features são duplicados THEN o sistema SHALL adicionar sufixos numéricos para garantir unicidade
 
-### Requisito 8: Integração com Build System
+### Requisito 9: Integração com Build System
 
 **User Story:** Como desenvolvedor do mod, eu quero executar geradores através de tasks Gradle, para que a geração de assets seja parte do processo de build.
 
@@ -161,7 +177,7 @@ O sistema SHALL incluir os seguintes materiais:
 4. WHEN assets são gerados THEN o sistema SHALL permitir cópia automática para diretório de resources
 5. WHEN o projeto é compilado THEN o sistema SHALL incluir código de ferramentas no source set principal
 
-### Requisito 9: Compatibilidade Multi-Plataforma
+### Requisito 10: Compatibilidade Multi-Plataforma
 
 **User Story:** Como desenvolvedor do mod, eu quero suportar Fabric e NeoForge, para que jogadores de ambas as plataformas possam usar o mod.
 
@@ -173,7 +189,7 @@ O sistema SHALL incluir os seguintes materiais:
 4. WHEN blocos e itens são registrados THEN o sistema SHALL usar registries do Minecraft de forma compatível
 5. WHEN ResourceLocations são criados THEN o sistema SHALL usar métodos compatíveis com a versão 1.21.x
 
-### Requisito 10: Organização de Materiais por Categoria
+### Requisito 11: Organização de Materiais por Categoria
 
 **User Story:** Como desenvolvedor do mod, eu quero organizar materiais em categorias, para que seja fácil aplicar propriedades e comportamentos específicos.
 

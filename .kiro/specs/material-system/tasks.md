@@ -99,16 +99,19 @@
 
 
 
-- [x] 6.5 Implementar Loot Generator
+- [x] 6.1 Implementar Loot Generator
   - ✅ Criar estrutura GeneratedLoot data class
   - ✅ Criar LootEntries com lista de materiais
-  - ✅ Implementar geração de loot tables para minérios
-  - ✅ Adicionar suporte para Silk Touch
-  - ✅ Adicionar suporte para Fortune
+  - ✅ Implementar geração de loot tables para minérios (ORE, ORE_DEEPSLATE)
+  - ✅ Adicionar suporte para Silk Touch em minérios
+  - ✅ Adicionar suporte para Fortune em minérios
   - ✅ Adicionar explosion decay
   - ✅ Suportar drops diferentes por família (GEM, DUST, RAW_ITEM)
+  - ⏳ Adicionar geração de loot tables para blocos de metal (BLOCK) - sem fortune
+  - ⏳ Adicionar geração de loot tables para blocos brutos (RAW_BLOCK) - sem fortune
+  - ⏳ Adicionar geração de loot tables para blocos de gema (BLOCK) - sem fortune
   - ✅ Implementado em: `common/src/tools/lootgen/`
-  - _Requisitos: Não especificado nos requisitos originais, mas essencial para gameplay_
+  - _Requisitos: 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9_
 
 
 
