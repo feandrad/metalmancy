@@ -1,7 +1,10 @@
 package io.felipeandrade.metalmancy.material
 
+import io.felipeandrade.metalmancy.registry.material.Family
+import io.felipeandrade.metalmancy.registry.material.Material
+import io.felipeandrade.metalmancy.registry.material.Part
 import io.kotest.property.Arb
-import io.kotest.property.arbitrary.*
+import io.kotest.property.arbitrary.arbitrary
 
 /**
  * Custom generators (Arb) for property-based testing of the Material system.

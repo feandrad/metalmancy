@@ -15,6 +15,7 @@ The Basic Tools System extends the Metalmancy mod to include craftable tools (sw
 - **Attack Speed**: The cooldown between attacks for a weapon tool
 - **Tool Generator**: Build-time tool that generates tool item registrations and recipes
 - **Tier**: Minecraft's tool material system defining mining level, durability, speed, damage, and enchantability
+- **Datapack Structure**: The Minecraft 1.21.10 file organization standard for data-driven content
 
 ## Requirements
 
@@ -42,6 +43,7 @@ The Basic Tools System extends the Metalmancy mod to include craftable tools (sw
 3. WHEN tool-enabled materials are queried THEN the system SHALL provide a dedicated collection (e.g., Materials.TOOL_MATERIALS)
 4. WHEN a material is not in the tool-enabled list THEN the system SHALL NOT generate tools for that material
 5. WHEN the tool-enabled list is modified THEN the system SHALL regenerate only the affected tool items and recipes
+6. WHEN the system initializes THEN the system SHALL include the following materials in the tool-enabled list: BRASS, BRONZE, SILVER, COBALT, ORICHALCUM, MITHRIL, PLATINUM, TITANIUM, ELECTRUM, TOPAZ, RUBY, SAPPHIRE, ALUMINUM, and STEEL
 
 ### Requirement 3: Tool Item Registration
 
@@ -62,10 +64,10 @@ The Basic Tools System extends the Metalmancy mod to include craftable tools (sw
 #### Acceptance Criteria
 
 1. WHEN a sword recipe is generated THEN the system SHALL require 2 ingots and 1 stick in a vertical pattern
-2. WHEN an axe recipe is generated THEN the system SHALL require 3 ingots and 2 sticks in the standard axe pattern
+2. WHEN an axe recipe is generated THEN the system SHALL require 3 ingots and 2 sticks in the standard axe pattern and generate a mirrored variant
 3. WHEN a pickaxe recipe is generated THEN the system SHALL require 3 ingots and 2 sticks in the standard pickaxe pattern
 4. WHEN a shovel recipe is generated THEN the system SHALL require 1 ingot and 2 sticks in a vertical pattern
-5. WHEN a hoe recipe is generated THEN the system SHALL require 2 ingots and 2 sticks in the standard hoe pattern
+5. WHEN a hoe recipe is generated THEN the system SHALL require 2 ingots and 2 sticks in the standard hoe pattern and generate a mirrored variant
 6. WHEN tool recipes are generated THEN the system SHALL use the material's ingot as the ingredient
 7. WHEN tool recipes are generated THEN the system SHALL use minecraft:stick as the handle ingredient
 
@@ -107,10 +109,15 @@ The Basic Tools System extends the Metalmancy mod to include craftable tools (sw
 1. WHEN the tool generator runs THEN the system SHALL generate item registration code for each tool (sword, axe, pickaxe, shovel, hoe)
 2. WHEN tool items are generated THEN the system SHALL create proper Minecraft tool item instances with correct properties
 3. WHEN tool item models are generated THEN the system SHALL create JSON files in assets/metalmancy/models/item/
-4. WHEN tool item models are generated THEN the system SHALL reference the correct texture path (e.g., "metalmancy:item/zinc_sword")
-5. WHEN tool item models are generated THEN the system SHALL use the "minecraft:item/handheld" parent model for all tools
-6. WHEN tool item render files are generated THEN the system SHALL create JSON files in assets/metalmancy/items/
-7. WHEN the generation completes THEN the system SHALL report the number of tool items, models, and recipes generated
+4. WHEN tool item models are generated THEN the system SHALL use the "minecraft:item/handheld" parent model for all tools
+5. WHEN tool item models are generated THEN the system SHALL use a two-layer texture structure with layer0 for the handle and layer1 for the tool head
+6. WHEN tool item models are generated for axes, pickaxes, or hoes THEN the system SHALL set layer0 to "metalmancy:item/wooden_handle"
+7. WHEN tool item models are generated for swords THEN the system SHALL set layer0 to "metalmancy:item/wooden_sword_handle"
+8. WHEN tool item models are generated for shovels THEN the system SHALL set layer0 to "metalmancy:item/wooden_shovel_handle"
+9. WHEN tool item models are generated THEN the system SHALL set layer1 to the material-specific tool texture path (e.g., "metalmancy:item/brass_pickaxe")
+10. WHEN tool inventory icons are generated THEN the system SHALL create JSON files in assets/metalmancy/items/ for rendering tools in inventories
+11. WHEN tool language files are generated THEN the system SHALL create or update en_us.json with localized names for each tool
+12. WHEN the generation completes THEN the system SHALL report the number of tool items, models, recipes, and language entries generated
 
 ### Requirement 6: Tool Properties by Type
 
@@ -160,6 +167,7 @@ The Basic Tools System extends the Metalmancy mod to include craftable tools (sw
 3. WHEN the tool generator is executed THEN the system SHALL generate item model JSON files for all tools
 4. WHEN the tool generator is executed THEN the system SHALL integrate with the existing Gradle build system
 5. WHEN the tool generator completes THEN the system SHALL copy generated files to the appropriate resource directories
+6. WHEN generating data files THEN the system SHALL follow the structure specified in common/src/tools/datapack-structure-1.21.10.md for all JSON files
 
 ### Requirement 10: Creative Mode Tab Integration
 

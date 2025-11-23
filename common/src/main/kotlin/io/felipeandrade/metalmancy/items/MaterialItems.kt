@@ -20,7 +20,7 @@ object MaterialItems {
 
     val SALT: Map<Part, Item> = mapItems(Materials.SALT,MaterialBlocks.SALTS[Materials.SALT])
     val POTASH: Map<Part, Item> = mapItems(Materials.POTASH,MaterialBlocks.SALTS[Materials.POTASH])
-    val MERCURY: Map<Part, Item> = mapItems(Materials.MERCURY)
+    val MERCURY: Map<Part, Item> = mapItems(Materials.MERCURY, MaterialBlocks.STONES[Materials.MERCURY])
 
     val ZINC: Map<Part, Item> = mapItems(Materials.ZINC)
     val TIN: Map<Part, Item> = mapItems(Materials.TIN)
@@ -39,6 +39,48 @@ object MaterialItems {
 
     val MITHRIL: Map<Part, Item> = mapItems(Materials.MITHRIL)
     val ORICHALCUM: Map<Part, Item> = mapItems(Materials.ORICHALCUM)
+
+    val PEWTER: Map<Part, Item> = mapItems(Materials.PEWTER, MaterialBlocks.ALLOYS[Materials.PEWTER])
+    val BRASS: Map<Part, Item> = mapItems(Materials.BRASS, MaterialBlocks.ALLOYS[Materials.BRASS])
+    val BRONZE: Map<Part, Item> = mapItems(Materials.BRONZE, MaterialBlocks.ALLOYS[Materials.BRONZE])
+    val STEEL: Map<Part, Item> = mapItems(Materials.STEEL, MaterialBlocks.ALLOYS[Materials.STEEL])
+    val ELECTRUM: Map<Part, Item> = mapItems(Materials.ELECTRUM, MaterialBlocks.ALLOYS[Materials.ELECTRUM])
+    val INVAR: Map<Part, Item> = mapItems(Materials.INVAR, MaterialBlocks.ALLOYS[Materials.INVAR])
+
+    // Groupings
+    val GEMS = mapOf(
+        Materials.RUBY to RUBY,
+        Materials.SAPPHIRE to SAPPHIRE,
+        Materials.TOPAZ to TOPAZ
+    )
+    val SALTS = mapOf(
+        Materials.SALT to SALT,
+        Materials.POTASH to POTASH
+    )
+    val METALS = mapOf(
+        Materials.ZINC to ZINC,
+        Materials.TIN to TIN,
+        Materials.LEAD to LEAD,
+        Materials.NICKEL to NICKEL,
+        Materials.ALUMINUM to ALUMINUM,
+        Materials.MANGANESE to MANGANESE,
+        Materials.SILVER to SILVER,
+        Materials.COBALT to COBALT,
+        Materials.PLATINUM to PLATINUM,
+        Materials.TITANIUM to TITANIUM,
+        Materials.LITHIUM to LITHIUM,
+        Materials.URANIUM to URANIUM,
+        Materials.MITHRIL to MITHRIL,
+        Materials.ORICHALCUM to ORICHALCUM
+    )
+    val ALLOYS = mapOf(
+        Materials.PEWTER to PEWTER,
+        Materials.BRASS to BRASS,
+        Materials.BRONZE to BRONZE,
+        Materials.STEEL to STEEL,
+        Materials.ELECTRUM to ELECTRUM,
+        Materials.INVAR to INVAR
+    )
 
     fun registerAll() = Unit
 

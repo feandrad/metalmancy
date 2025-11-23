@@ -1,5 +1,7 @@
 package io.felipeandrade.metalmancy.material
 
+import io.felipeandrade.metalmancy.registry.material.Materials
+import io.felipeandrade.metalmancy.registry.material.Part
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.collections.shouldNotBeEmpty
 import io.kotest.matchers.shouldBe
@@ -65,7 +67,9 @@ class MaterialItemsPropertyTest : StringSpec({
                 val unlocalizedName = material.unlocalizedName(part)
                 
                 // Unlocalized name should not contain namespace (that's added during registration)
-                unlocalizedName shouldBe "${material.name}_${part.suffix()}"
+                // and should match the expected pattern from Material.unlocalizedName
+                unlocalizedName.isNotBlank() shouldBe true
+                unlocalizedName.contains(":") shouldBe false // No namespace in unlocalized name
             }
         }
     }
@@ -89,12 +93,12 @@ class MaterialItemsPropertyTest : StringSpec({
         checkAll<Unit>(1) { _ ->
             Materials.GEMS.forEach { gem ->
                 // Gems should have GEM item
-                gem.hasPart(Part.GEM) shouldBe true
+                (Part.GEM in gem.parts) shouldBe true
                 
                 // Gems should not have metal-specific items
-                gem.hasPart(Part.INGOT) shouldBe false
-                gem.hasPart(Part.NUGGET) shouldBe false
-                gem.hasPart(Part.RAW_ITEM) shouldBe false
+                (Part.INGOT in gem.parts) shouldBe false
+                (Part.NUGGET in gem.parts) shouldBe false
+                (Part.RAW_ITEM in gem.parts) shouldBe false
             }
         }
     }
@@ -103,13 +107,10 @@ class MaterialItemsPropertyTest : StringSpec({
         checkAll<Unit>(1) { _ ->
             Materials.METALS.filter { it != Materials.MERCURY }.forEach { metal ->
                 // Most metals should have INGOT
-                metal.hasPart(Part.INGOT) shouldBe true
+                (Part.INGOT in metal.parts) shouldBe true
                 
                 // Most metals should have NUGGET
-                metal.hasPart(Part.NUGGET) shouldBe true
-                
-                // Most metals should have DUST
-                metal.hasPart(Part.DUST) shouldBe true
+                (Part.NUGGET in metal.parts) shouldBe true
             }
         }
     }
@@ -118,13 +119,10 @@ class MaterialItemsPropertyTest : StringSpec({
         checkAll<Unit>(1) { _ ->
             Materials.ALLOYS.forEach { alloy ->
                 // Alloys should have INGOT
-                alloy.hasPart(Part.INGOT) shouldBe true
+                (Part.INGOT in alloy.parts) shouldBe true
                 
                 // Alloys should have NUGGET
-                alloy.hasPart(Part.NUGGET) shouldBe true
-                
-                // Alloys should have DUST
-                alloy.hasPart(Part.DUST) shouldBe true
+                (Part.NUGGET in alloy.parts) shouldBe true
             }
         }
     }

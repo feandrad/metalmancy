@@ -1,5 +1,9 @@
 package io.felipeandrade.metalmancy.material
 
+import io.felipeandrade.metalmancy.registry.material.Family
+import io.felipeandrade.metalmancy.registry.material.Materials
+import io.felipeandrade.metalmancy.registry.material.Part
+
 /**
  * Simple verification that the material system is working correctly.
  * This can be run to manually verify the implementation.

@@ -14,6 +14,7 @@ sourceSets {
         kotlin.srcDir 'src/tools/lootgen'
         kotlin.srcDir 'src/tools/recipegen'
         kotlin.srcDir 'src/tools/texturereport'
+        kotlin.srcDir 'src/tools/toolgen'
         resources.srcDir 'src/tools/datagen/resources'
     }
     test {

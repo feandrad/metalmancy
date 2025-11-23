@@ -28,6 +28,14 @@ object MaterialBlocks {
         }
     }
 
+    val STONES: Map<Material, Map<Part, Block>> = Materials.STONES.associateWith { material ->
+        material.parts.filter { it.isBlock }.associateWith { part ->
+            val id = material.unlocalizedName(part)
+            val properties = createLike(id, Blocks.STONE)
+            register(id, Block(properties))
+        }
+    }
+
     val METALS: Map<Material, Map<Part, Block>> = Materials.COPPER_LIKE_METALS.associateWith { material ->
         material.parts.filter { it.isBlock }.associateWith { part ->
             val id = material.unlocalizedName(part)
@@ -50,6 +58,14 @@ object MaterialBlocks {
         material.parts.filter { it.isBlock }.associateWith { part ->
             val id = material.unlocalizedName(part)
             val properties = createLike(id, Blocks.DIAMOND_ORE)
+            register(id, Block(properties))
+        }
+    }
+
+    val ALLOYS: Map<Material, Map<Part, Block>> = Materials.ALLOYS.associateWith { material ->
+        material.parts.filter { it.isBlock }.associateWith { part ->
+            val id = material.unlocalizedName(part)
+            val properties = createLike(id, Blocks.IRON_BLOCK)
             register(id, Block(properties))
         }
     }

@@ -427,13 +427,7 @@ data class GeneratedLoot(
 - Silk Touch: dropa o próprio bloco de minério
 - Explosion decay aplicado automaticamente
 
-**Blocos de Metal/Gema (BLOCK):**
-- Dropam o próprio bloco
-- Fortune NÃO afeta o drop
-- Silk Touch não é necessário
-- Explosion decay aplicado automaticamente
-
-**Blocos Brutos (RAW_BLOCK):**
+**Blocos de Metal/Gema (BLOCK) and Brutos (RAW_BLOCK):**
 - Dropam o próprio bloco
 - Fortune NÃO afeta o drop
 - Silk Touch não é necessário

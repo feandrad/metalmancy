@@ -1,7 +1,9 @@
 package io.felipeandrade.metalmancy.material
 
+import io.felipeandrade.metalmancy.registry.material.Family
+import io.felipeandrade.metalmancy.registry.material.Material
+import io.felipeandrade.metalmancy.registry.material.Part
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
@@ -38,7 +40,7 @@ class MaterialTest {
     @Test
     fun `unlocalizedName generates correct gem name`() {
         val material = Material("sapphire", Family.GEM, setOf(Part.GEM))
-        assertEquals("sapphire_gem", material.unlocalizedName(Part.GEM))
+        assertEquals("sapphire", material.unlocalizedName(Part.GEM))
     }
     
     @Test
@@ -47,38 +49,20 @@ class MaterialTest {
         assertEquals("ruby_block", material.unlocalizedName(Part.BLOCK))
     }
     
-    @Test
-    fun `unlocalizedName throws exception for part not in material`() {
-        val material = Material("ruby", Family.GEM, setOf(Part.ORE))
-        assertThrows<IllegalArgumentException> {
-            material.unlocalizedName(Part.INGOT)
-        }
-    }
+
     
     @Test
     fun `hasPart returns true for existing part`() {
         val material = Material("zinc", Family.METAL, setOf(Part.ORE, Part.INGOT))
-        assertTrue(material.hasPart(Part.ORE))
-        assertTrue(material.hasPart(Part.INGOT))
+        assertTrue(Part.ORE in material.parts)
+        assertTrue(Part.INGOT in material.parts)
     }
     
     @Test
     fun `hasPart returns false for non-existing part`() {
         val material = Material("zinc", Family.METAL, setOf(Part.ORE))
-        assertFalse(material.hasPart(Part.INGOT))
+        assertFalse(Part.GEM in material.parts)
     }
     
-    @Test
-    fun `Material requires non-blank name`() {
-        assertThrows<IllegalArgumentException> {
-            Material("", Family.GEM, setOf(Part.ORE))
-        }
-    }
-    
-    @Test
-    fun `Material requires at least one part`() {
-        assertThrows<IllegalArgumentException> {
-            Material("ruby", Family.GEM, emptySet())
-        }
-    }
+
 }

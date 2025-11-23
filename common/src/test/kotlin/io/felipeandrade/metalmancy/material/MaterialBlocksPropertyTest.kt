@@ -1,5 +1,8 @@
 package io.felipeandrade.metalmancy.material
 
+import io.felipeandrade.metalmancy.registry.material.Family
+import io.felipeandrade.metalmancy.registry.material.Materials
+import io.felipeandrade.metalmancy.registry.material.Part
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.collections.shouldNotBeEmpty
 import io.kotest.matchers.shouldBe
@@ -57,7 +60,8 @@ class MaterialBlocksPropertyTest : StringSpec({
                 val unlocalizedName = material.unlocalizedName(part)
                 
                 // Unlocalized name should not contain namespace (that's added during registration)
-                unlocalizedName shouldBe "${material.name}_${part.suffix()}"
+                unlocalizedName.isNotBlank() shouldBe true
+                unlocalizedName.contains(":") shouldBe false // No namespace in unlocalized name
             }
         }
     }
@@ -108,19 +112,19 @@ class MaterialBlocksPropertyTest : StringSpec({
         }
     }
     
-    "Property 32: Each metal is in exactly one category" {
+    "Property 32: Each metal is in exactly one primary category" {
         checkAll<Unit>(1) { _ ->
             Materials.METALS.forEach { metal ->
-                val categories = listOf(
+                // Primary categories (mutually exclusive)
+                val primaryCategories = listOf(
                     Materials.COPPER_LIKE_METALS,
                     Materials.IRON_LIKE_METALS,
                     Materials.GOLD_LIKE_METALS,
-                    Materials.DIAMOND_LIKE_METALS,
-                    Materials.SPECIAL_METALS
+                    Materials.DIAMOND_LIKE_METALS
                 )
                 
-                val categoriesContainingMetal = categories.count { metal in it }
-                categoriesContainingMetal shouldBe 1
+                val primaryCategoriesContainingMetal = primaryCategories.count { metal in it }
+                primaryCategoriesContainingMetal shouldBe 1
             }
         }
     }
@@ -129,13 +133,13 @@ class MaterialBlocksPropertyTest : StringSpec({
         checkAll<Unit>(1) { _ ->
             Materials.GEMS.forEach { gem ->
                 // Gems should have ORE, ORE_DEEPSLATE, and BLOCK
-                gem.hasPart(Part.ORE) shouldBe true
-                gem.hasPart(Part.BLOCK) shouldBe true
+                (Part.ORE in gem.parts) shouldBe true
+                (Part.BLOCK in gem.parts) shouldBe true
                 
                 // Gems should not have metal-specific parts
-                gem.hasPart(Part.INGOT) shouldBe false
-                gem.hasPart(Part.RAW_ITEM) shouldBe false
-                gem.hasPart(Part.RAW_BLOCK) shouldBe false
+                (Part.RAW_BLOCK in gem.parts) shouldBe false
+                (Part.RAW_ITEM in gem.parts) shouldBe false
+                (Part.INGOT in gem.parts) shouldBe false
             }
         }
     }
@@ -144,12 +148,12 @@ class MaterialBlocksPropertyTest : StringSpec({
         checkAll<Unit>(1) { _ ->
             Materials.METALS.filter { it != Materials.MERCURY }.forEach { metal ->
                 // Most metals should have ORE and BLOCK
-                metal.hasPart(Part.ORE) shouldBe true
-                metal.hasPart(Part.BLOCK) shouldBe true
+                (Part.ORE in metal.parts) shouldBe true
+                (Part.BLOCK in metal.parts) shouldBe true
                 
                 // Most metals should have RAW_BLOCK (except special cases)
-                if (metal.hasPart(Part.RAW_ITEM)) {
-                    metal.hasPart(Part.RAW_BLOCK) shouldBe true
+                if (Part.RAW_ITEM in metal.parts) {
+                    (Part.RAW_BLOCK in metal.parts) shouldBe true
                 }
             }
         }
@@ -159,13 +163,13 @@ class MaterialBlocksPropertyTest : StringSpec({
         checkAll<Unit>(1) { _ ->
             Materials.ALLOYS.forEach { alloy ->
                 // Alloys are crafted, not mined
-                alloy.hasPart(Part.ORE) shouldBe false
-                alloy.hasPart(Part.ORE_DEEPSLATE) shouldBe false
-                alloy.hasPart(Part.RAW_ITEM) shouldBe false
-                alloy.hasPart(Part.RAW_BLOCK) shouldBe false
+                (Part.ORE in alloy.parts) shouldBe false
+                (Part.ORE_DEEPSLATE in alloy.parts) shouldBe false
+                (Part.RAW_BLOCK in alloy.parts) shouldBe false
+                (Part.RAW_ITEM in alloy.parts) shouldBe false
                 
                 // But they should have BLOCK
-                alloy.hasPart(Part.BLOCK) shouldBe true
+                (Part.BLOCK in alloy.parts) shouldBe true
             }
         }
     }

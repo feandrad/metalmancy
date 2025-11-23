@@ -1,5 +1,7 @@
 package io.felipeandrade.metalmancy.material
 
+import io.felipeandrade.metalmancy.registry.material.Family
+import io.felipeandrade.metalmancy.registry.material.Materials
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.property.checkAll
@@ -47,9 +49,9 @@ class MaterialGroupingPropertyTest : StringSpec({
     
     // Feature: material-system, Property 4: Completude da lista ALL
     // Validates: Requirements 10.5
-    "Property 4: ALL is union of GEMS, SALTS, METALS, and ALLOYS" {
+    "Property 4: ALL is union of GEMS, SALTS, STONES, METALS, and ALLOYS" {
         checkAll<Unit>(1) { _ ->
-            val expected = (Materials.GEMS + Materials.SALTS + Materials.METALS + Materials.ALLOYS).toSet()
+            val expected = (Materials.GEMS + Materials.SALTS + Materials.STONES + Materials.METALS + Materials.ALLOYS).toSet()
             val actual = Materials.ALL.toSet()
             
             actual shouldBe expected

@@ -1,5 +1,8 @@
 package io.felipeandrade.metalmancy.material
 
+import io.felipeandrade.metalmancy.items.MaterialItems
+import io.felipeandrade.metalmancy.registry.material.Materials
+
 /**
  * Simple verification that MaterialItems is structured correctly.
  * This verifies the implementation without requiring Minecraft runtime.
