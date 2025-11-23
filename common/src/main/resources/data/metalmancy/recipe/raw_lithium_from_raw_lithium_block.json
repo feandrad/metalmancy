@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "raw_lithium",
+  "ingredients": [
+    {
+      "item": "metalmancy:raw_lithium_block"
+    }
+  ],
+  "result": {
+    "id": "metalmancy:raw_lithium",
+    "count": 9
+  }
+}

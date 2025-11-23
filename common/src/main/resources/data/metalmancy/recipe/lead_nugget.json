@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "lead_nugget",
+  "ingredients": [
+    {
+      "item": "metalmancy:lead_ingot"
+    }
+  ],
+  "result": {
+    "id": "metalmancy:lead_nugget",
+    "count": 9
+  }
+}

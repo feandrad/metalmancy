@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "uranium_block",
+  "key": {
+    "#": {
+      "item": "metalmancy:uranium_ingot"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "id": "metalmancy:uranium_block"
+  }
+}

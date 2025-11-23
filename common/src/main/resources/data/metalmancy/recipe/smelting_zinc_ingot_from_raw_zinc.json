@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "zinc_ingot",
+  "ingredient": "metalmancy:raw_zinc",
+  "result": {
+    "id": "metalmancy:zinc_ingot"
+  }
+}

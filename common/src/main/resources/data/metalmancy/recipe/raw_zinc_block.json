@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "raw_zinc_block",
+  "key": {
+    "#": {
+      "item": "metalmancy:raw_zinc"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "id": "metalmancy:raw_zinc_block"
+  }
+}

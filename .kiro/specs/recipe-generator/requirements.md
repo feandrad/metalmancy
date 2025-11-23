@@ -72,3 +72,15 @@ The Recipe Generator is a build-time tool that automatically creates Minecraft r
 3. WHEN recipes are copied to resources THEN the system SHALL log each file copied
 4. WHEN a hardcoded recipe overrides a generated recipe THEN the system SHALL log a warning message with both filenames
 5. WHEN the generator completes THEN the system SHALL print a summary with total files generated, copied, and overridden
+
+### Requirement 6: Recipe JSON Structure Validation
+
+**User Story:** As a mod developer, I want generated recipes to follow the correct JSON structure for each recipe type, so that Minecraft can properly load and use them.
+
+#### Acceptance Criteria
+
+1. WHEN generating a smelting recipe THEN the system SHALL include `type`, `category`, `cookingtime`, `experience`, `ingredient`, and `result` fields as defined in the datapack structure reference
+2. WHEN generating a blasting recipe THEN the system SHALL include `type`, `category`, `cookingtime`, `experience`, `ingredient`, and `result` fields as defined in the datapack structure reference
+3. WHEN generating a shapeless crafting recipe THEN the system SHALL include `type`, `category`, `ingredients`, and `result` fields as defined in the datapack structure reference
+4. WHEN generating a shaped crafting recipe THEN the system SHALL include `type`, `category`, `key`, `pattern`, and `result` fields as defined in the datapack structure reference
+5. WHEN generating any recipe THEN the system SHALL use the correct recipe type identifier (e.g., `minecraft:smelting`, `minecraft:blasting`, `minecraft:crafting_shaped`, `minecraft:crafting_shapeless`)

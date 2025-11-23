@@ -190,13 +190,83 @@ private fun Gson.writeJson(dir: File, fileName: String, json: JsonObject) {
 
 ## Data Models
 
-No changes to data models. The existing classes remain unchanged:
+The existing recipe classes must generate JSON that matches the datapack structure specification:
 
-- `GeneratedRecipe` - Abstract base class
-- `SmeltingRecipe` - Smelting recipe type
-- `BlastingRecipe` - Blasting recipe type
-- `ShapedRecipe` - Shaped crafting recipe type
-- `ShapelessRecipe` - Shapeless crafting recipe type
+### GeneratedRecipe (Abstract Base)
+- Defines common interface for all recipe types
+- `generateRecipe()` returns JsonObject
+
+### SmeltingRecipe
+Must generate JSON with these fields:
+```json
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "optional_group_name",
+  "ingredient": "namespace:item_id",
+  "result": {
+    "id": "namespace:item_id"
+  }
+}
+```
+
+### BlastingRecipe
+Must generate JSON with these fields:
+```json
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "group": "optional_group_name",
+  "ingredient": "namespace:item_id",
+  "result": {
+    "id": "namespace:item_id"
+  }
+}
+```
+
+### ShapelessRecipe
+Must generate JSON with these fields:
+```json
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "optional_group_name",
+  "ingredients": ["namespace:item_id"],
+  "result": {
+    "count": 9,
+    "id": "namespace:item_id"
+  }
+}
+```
+
+### ShapedRecipe
+Must generate JSON with these fields:
+```json
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "optional_group_name",
+  "key": {
+    "#": "namespace:item_id"
+  },
+  "pattern": ["###", "###", "###"],
+  "result": {
+    "count": 1,
+    "id": "namespace:item_id"
+  }
+}
+```
+
+**Validation Requirements:**
+- All recipe types must include the correct `type` field
+- All recipes should include `category` (defaults to `misc`)
+- Result objects must have `id` field
+- Result objects may have optional `count` field
+- Ingredient fields can reference tags using `#` prefix
 
 ## Correctness Properties
 
@@ -304,6 +374,26 @@ Testable: yes - example
 Thoughts: This is about the final summary output. We can verify the message format and counts.
 Testable: yes - example
 
+6.1 WHEN generating a smelting recipe THEN the system SHALL include `type`, `category`, `cookingtime`, `experience`, `ingredient`, and `result` fields as defined in the datapack structure reference
+Thoughts: This is about validating the JSON structure of generated smelting recipes. We can test by generating a smelting recipe and verifying all required fields are present with correct types.
+Testable: yes - example
+
+6.2 WHEN generating a blasting recipe THEN the system SHALL include `type`, `category`, `cookingtime`, `experience`, `ingredient`, and `result` fields as defined in the datapack structure reference
+Thoughts: This is about validating the JSON structure of generated blasting recipes. We can test by generating a blasting recipe and verifying all required fields are present with correct types.
+Testable: yes - example
+
+6.3 WHEN generating a shapeless crafting recipe THEN the system SHALL include `type`, `category`, `ingredients`, and `result` fields as defined in the datapack structure reference
+Thoughts: This is about validating the JSON structure of generated shapeless recipes. We can test by generating a shapeless recipe and verifying all required fields are present with correct types.
+Testable: yes - example
+
+6.4 WHEN generating a shaped crafting recipe THEN the system SHALL include `type`, `category`, `key`, `pattern`, and `result` fields as defined in the datapack structure reference
+Thoughts: This is about validating the JSON structure of generated shaped recipes. We can test by generating a shaped recipe and verifying all required fields are present with correct types.
+Testable: yes - example
+
+6.5 WHEN generating any recipe THEN the system SHALL use the correct recipe type identifier (e.g., `minecraft:smelting`, `minecraft:blasting`, `minecraft:crafting_shaped`, `minecraft:crafting_shapeless`)
+Thoughts: This is about validating that the `type` field has the correct value for each recipe type. We can test by checking the type field in generated recipes.
+Testable: yes - example
+
 ### Property Reflection
 
 After reviewing all testable criteria, most are specific examples of expected behavior rather than universal properties. The criteria fall into these categories:
@@ -351,6 +441,22 @@ Since this is a file I/O and build tool, we'll focus on example-based tests that
 **Example 8: Summary is printed on completion**
 *For the specific case* of running RecipeGen, the final log message should contain a summary with counts of files generated, copied, and overridden
 **Validates: Requirements 5.5**
+
+**Example 9: Smelting recipes have correct JSON structure**
+*For the specific case* of generating a smelting recipe, the output JSON should contain all required fields (`type`, `category`, `cookingtime`, `experience`, `ingredient`, `result`) with correct types and the type field should be `minecraft:smelting`
+**Validates: Requirements 6.1, 6.5**
+
+**Example 10: Blasting recipes have correct JSON structure**
+*For the specific case* of generating a blasting recipe, the output JSON should contain all required fields (`type`, `category`, `cookingtime`, `experience`, `ingredient`, `result`) with correct types and the type field should be `minecraft:blasting`
+**Validates: Requirements 6.2, 6.5**
+
+**Example 11: Shapeless recipes have correct JSON structure**
+*For the specific case* of generating a shapeless crafting recipe, the output JSON should contain all required fields (`type`, `category`, `ingredients`, `result`) with correct types and the type field should be `minecraft:crafting_shapeless`
+**Validates: Requirements 6.3, 6.5**
+
+**Example 12: Shaped recipes have correct JSON structure**
+*For the specific case* of generating a shaped crafting recipe, the output JSON should contain all required fields (`type`, `category`, `key`, `pattern`, `result`) with correct types and the type field should be `minecraft:crafting_shaped`
+**Validates: Requirements 6.4, 6.5**
 
 ## Error Handling
 

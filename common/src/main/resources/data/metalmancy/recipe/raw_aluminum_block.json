@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "raw_aluminum_block",
+  "key": {
+    "#": {
+      "item": "metalmancy:raw_aluminum"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "id": "metalmancy:raw_aluminum_block"
+  }
+}

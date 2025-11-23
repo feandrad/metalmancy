@@ -85,7 +85,7 @@ class ShapedRecipe(
         pattern.forEach { patternArray.add(it) }
         json.add("pattern", patternArray)
         val resultJson = JsonObject()
-        resultJson.addProperty("item", result)
+        resultJson.addProperty("id", result)
         if (count > 1) {
             resultJson.addProperty("count", count)
         }
@@ -121,7 +121,7 @@ class ShapelessRecipe(
         }
         json.add("ingredients", ingredientsArray)
         val resultJson = JsonObject()
-        resultJson.addProperty("item", result)
+        resultJson.addProperty("id", result)
         if (count > 1) {
             resultJson.addProperty("count", count)
         }

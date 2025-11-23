@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "raw_orichalcum",
+  "ingredients": [
+    {
+      "item": "metalmancy:raw_orichalcum_block"
+    }
+  ],
+  "result": {
+    "id": "metalmancy:raw_orichalcum",
+    "count": 9
+  }
+}

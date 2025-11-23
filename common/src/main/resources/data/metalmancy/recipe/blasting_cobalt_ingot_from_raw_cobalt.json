@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "group": "cobalt_ingot",
+  "ingredient": "metalmancy:raw_cobalt",
+  "result": {
+    "id": "metalmancy:cobalt_ingot"
+  }
+}

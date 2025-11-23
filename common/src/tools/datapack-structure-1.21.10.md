@@ -95,6 +95,122 @@ Pack format now includes minor versions, which are incremented instead of the ma
 - **File Extension:** `.json`
 - **Reloadable:** Yes (use `/reload` command)
 - **Experimental:** No
+- **Structure:** Flat - all recipe files directly in `recipe/` folder, NO subdirectories
+
+#### Recipe Types
+
+**1. Smelting Recipe (`minecraft:smelting`)**
+```json
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "copper_ingot",
+  "ingredient": "minecraft:copper_ore",
+  "result": {
+    "id": "minecraft:copper_ingot"
+  }
+}
+```
+- `cookingtime`: Ticks to smelt (200 = 10 seconds)
+- `experience`: XP awarded per item
+- `group`: Recipe book grouping (optional)
+- `ingredient`: Input item (can be tag with `#` prefix)
+
+**2. Blasting Recipe (`minecraft:blasting`)**
+```json
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "group": "copper_ingot",
+  "ingredient": "minecraft:raw_copper",
+  "result": {
+    "id": "minecraft:copper_ingot"
+  }
+}
+```
+- Same structure as smelting
+- `cookingtime`: Typically half of smelting time (100 = 5 seconds)
+
+**3. Shapeless Crafting (`minecraft:crafting_shapeless`)**
+```json
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "copper_ingot",
+  "ingredients": [
+    "minecraft:copper_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "minecraft:copper_ingot"
+  }
+}
+```
+- `ingredients`: Array of items (can be tags with `#` prefix)
+- `result.count`: Number of items produced
+
+**4. Shaped Crafting (`minecraft:crafting_shaped`)**
+```json
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "copper_ingot",
+  "key": {
+    "#": "minecraft:copper_nugget"
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:copper_ingot"
+  }
+}
+```
+- `pattern`: 1-3 strings representing crafting grid rows
+- `key`: Maps pattern characters to items/tags
+- `show_notification`: Optional, defaults to true
+
+**5. Shaped Crafting with Tags**
+```json
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "#minecraft:planks"
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:crafting_table"
+  },
+  "show_notification": false
+}
+```
+- Tags use `#` prefix in key values
+- `show_notification`: Hides recipe unlock notification
+
+#### Recipe Categories
+- `misc` - Miscellaneous items
+- `building` - Building blocks
+- `redstone` - Redstone components
+- `equipment` - Tools and armor
+- `food` - Food items
+
+#### Common Fields
+- `type`: Recipe type (required)
+- `category`: Recipe book category (optional, defaults to `misc`)
+- `group`: Groups similar recipes in recipe book (optional)
+- `result`: Output item with optional count (required)
 
 ### Loot Table Generator
 - **Output Path:** `data/<namespace>/loot_table/`

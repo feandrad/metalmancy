@@ -23,7 +23,7 @@ object Recipes {
             val ingot = "${Metalmancy.MOD_ID}:${material.unlocalizedName(Part.INGOT)}"
 
             recipes.add(SmeltingRecipe(
-                unlocalizedName = "smelting/${material.unlocalizedName(Part.INGOT)}_from_${material.unlocalizedName(Part.ORE)}",
+                unlocalizedName = "smelting_${material.unlocalizedName(Part.INGOT)}_from_${material.unlocalizedName(Part.ORE)}",
                 ingredient = ore,
                 result = ingot,
                 group = material.unlocalizedName(Part.INGOT),
@@ -31,7 +31,7 @@ object Recipes {
             ))
 
             recipes.add(BlastingRecipe(
-                unlocalizedName = "blasting/${material.unlocalizedName(Part.INGOT)}_from_${material.unlocalizedName(Part.ORE)}",
+                unlocalizedName = "blasting_${material.unlocalizedName(Part.INGOT)}_from_${material.unlocalizedName(Part.ORE)}",
                 ingredient = ore,
                 result = ingot,
                 group = material.unlocalizedName(Part.INGOT),
@@ -45,7 +45,7 @@ object Recipes {
             val ingot = "${Metalmancy.MOD_ID}:${material.unlocalizedName(Part.INGOT)}"
 
             recipes.add(SmeltingRecipe(
-                unlocalizedName = "smelting/${material.unlocalizedName(Part.INGOT)}_from_${material.unlocalizedName(Part.ORE_DEEPSLATE)}",
+                unlocalizedName = "smelting_${material.unlocalizedName(Part.INGOT)}_from_${material.unlocalizedName(Part.ORE_DEEPSLATE)}",
                 ingredient = ore,
                 result = ingot,
                 group = material.unlocalizedName(Part.INGOT),
@@ -53,7 +53,7 @@ object Recipes {
             ))
 
             recipes.add(BlastingRecipe(
-                unlocalizedName = "blasting/${material.unlocalizedName(Part.INGOT)}_from_${material.unlocalizedName(Part.ORE_DEEPSLATE)}",
+                unlocalizedName = "blasting_${material.unlocalizedName(Part.INGOT)}_from_${material.unlocalizedName(Part.ORE_DEEPSLATE)}",
                 ingredient = ore,
                 result = ingot,
                 group = material.unlocalizedName(Part.INGOT),
@@ -67,7 +67,7 @@ object Recipes {
             val ingot = "${Metalmancy.MOD_ID}:${material.unlocalizedName(Part.INGOT)}"
 
             recipes.add(SmeltingRecipe(
-                unlocalizedName = "smelting/${material.unlocalizedName(Part.INGOT)}_from_${material.unlocalizedName(Part.RAW_ITEM)}",
+                unlocalizedName = "smelting_${material.unlocalizedName(Part.INGOT)}_from_${material.unlocalizedName(Part.RAW_ITEM)}",
                 ingredient = raw,
                 result = ingot,
                 group = material.unlocalizedName(Part.INGOT),
@@ -75,7 +75,7 @@ object Recipes {
             ))
 
             recipes.add(BlastingRecipe(
-                unlocalizedName = "blasting/${material.unlocalizedName(Part.INGOT)}_from_${material.unlocalizedName(Part.RAW_ITEM)}",
+                unlocalizedName = "blasting_${material.unlocalizedName(Part.INGOT)}_from_${material.unlocalizedName(Part.RAW_ITEM)}",
                 ingredient = raw,
                 result = ingot,
                 group = material.unlocalizedName(Part.INGOT),
@@ -187,7 +187,7 @@ object Recipes {
             val gem = "${Metalmancy.MOD_ID}:${material.unlocalizedName(Part.GEM)}"
 
             recipes.add(SmeltingRecipe(
-                unlocalizedName = "smelting/${material.unlocalizedName(Part.GEM)}_from_${material.unlocalizedName(Part.ORE)}",
+                unlocalizedName = "smelting_${material.unlocalizedName(Part.GEM)}_from_${material.unlocalizedName(Part.ORE)}",
                 ingredient = ore,
                 result = gem,
                 group = material.unlocalizedName(Part.GEM),
@@ -200,7 +200,7 @@ object Recipes {
             val gem = "${Metalmancy.MOD_ID}:${material.unlocalizedName(Part.GEM)}"
 
             recipes.add(SmeltingRecipe(
-                unlocalizedName = "smelting/${material.unlocalizedName(Part.GEM)}_from_${material.unlocalizedName(Part.ORE_DEEPSLATE)}",
+                unlocalizedName = "smelting_${material.unlocalizedName(Part.GEM)}_from_${material.unlocalizedName(Part.ORE_DEEPSLATE)}",
                 ingredient = ore,
                 result = gem,
                 group = material.unlocalizedName(Part.GEM),

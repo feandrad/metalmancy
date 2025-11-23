@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "nickel_ingot",
+  "ingredients": [
+    {
+      "item": "metalmancy:nickel_block"
+    }
+  ],
+  "result": {
+    "id": "metalmancy:nickel_ingot",
+    "count": 9
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "blocks",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "group": "lithium_ingot",
+  "ingredient": "metalmancy:lithium_deepslate_ore",
+  "result": {
+    "id": "metalmancy:lithium_ingot"
+  }
+}

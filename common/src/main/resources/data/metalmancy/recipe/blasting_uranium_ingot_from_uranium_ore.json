@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "blocks",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "group": "uranium_ingot",
+  "ingredient": "metalmancy:uranium_ore",
+  "result": {
+    "id": "metalmancy:uranium_ingot"
+  }
+}

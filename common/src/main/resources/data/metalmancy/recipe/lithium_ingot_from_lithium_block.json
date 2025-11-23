@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "lithium_ingot",
+  "ingredients": [
+    {
+      "item": "metalmancy:lithium_block"
+    }
+  ],
+  "result": {
+    "id": "metalmancy:lithium_ingot",
+    "count": 9
+  }
+}

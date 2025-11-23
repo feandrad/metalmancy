@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "raw_aluminum",
+  "ingredients": [
+    {
+      "item": "metalmancy:raw_aluminum_block"
+    }
+  ],
+  "result": {
+    "id": "metalmancy:raw_aluminum",
+    "count": 9
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "raw_manganese_block",
+  "key": {
+    "#": {
+      "item": "metalmancy:raw_manganese"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "id": "metalmancy:raw_manganese_block"
+  }
+}

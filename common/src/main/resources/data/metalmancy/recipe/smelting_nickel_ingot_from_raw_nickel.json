@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "nickel_ingot",
+  "ingredient": "metalmancy:raw_nickel",
+  "result": {
+    "id": "metalmancy:nickel_ingot"
+  }
+}

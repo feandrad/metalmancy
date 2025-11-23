@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "blocks",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "group": "cobalt_ingot",
+  "ingredient": "metalmancy:cobalt_deepslate_ore",
+  "result": {
+    "id": "metalmancy:cobalt_ingot"
+  }
+}

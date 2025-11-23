@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "platinum_ingot",
+  "ingredient": "metalmancy:platinum_deepslate_ore",
+  "result": {
+    "id": "metalmancy:platinum_ingot"
+  }
+}
