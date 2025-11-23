@@ -3,9 +3,7 @@
   "category": "building",
   "group": "mithril_block",
   "key": {
-    "#": {
-      "item": "metalmancy:mithril_ingot"
-    }
+    "#": "metalmancy:mithril_ingot"
   },
   "pattern": [
     "###",
@@ -13,6 +11,7 @@
     "###"
   ],
   "result": {
+    "count": 1,
     "id": "metalmancy:mithril_block"
   }
 }

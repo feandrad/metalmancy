@@ -3,12 +3,10 @@
   "category": "misc",
   "group": "aluminum_ingot",
   "ingredients": [
-    {
-      "item": "metalmancy:aluminum_block"
-    }
+    "metalmancy:aluminum_block"
   ],
   "result": {
-    "id": "metalmancy:aluminum_ingot",
-    "count": 9
+    "count": 9,
+    "id": "metalmancy:aluminum_ingot"
   }
 }

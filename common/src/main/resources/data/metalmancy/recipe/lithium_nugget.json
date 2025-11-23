@@ -3,12 +3,10 @@
   "category": "misc",
   "group": "lithium_nugget",
   "ingredients": [
-    {
-      "item": "metalmancy:lithium_ingot"
-    }
+    "metalmancy:lithium_ingot"
   ],
   "result": {
-    "id": "metalmancy:lithium_nugget",
-    "count": 9
+    "count": 9,
+    "id": "metalmancy:lithium_nugget"
   }
 }

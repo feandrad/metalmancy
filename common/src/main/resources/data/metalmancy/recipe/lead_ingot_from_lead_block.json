@@ -3,12 +3,10 @@
   "category": "misc",
   "group": "lead_ingot",
   "ingredients": [
-    {
-      "item": "metalmancy:lead_block"
-    }
+    "metalmancy:lead_block"
   ],
   "result": {
-    "id": "metalmancy:lead_ingot",
-    "count": 9
+    "count": 9,
+    "id": "metalmancy:lead_ingot"
   }
 }

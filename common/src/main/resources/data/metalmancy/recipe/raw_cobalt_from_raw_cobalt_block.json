@@ -3,12 +3,10 @@
   "category": "misc",
   "group": "raw_cobalt",
   "ingredients": [
-    {
-      "item": "metalmancy:raw_cobalt_block"
-    }
+    "metalmancy:raw_cobalt_block"
   ],
   "result": {
-    "id": "metalmancy:raw_cobalt",
-    "count": 9
+    "count": 9,
+    "id": "metalmancy:raw_cobalt"
   }
 }

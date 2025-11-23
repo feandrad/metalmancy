@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "titanium_ingot",
   "key": {
-    "#": {
-      "item": "metalmancy:titanium_nugget"
-    }
+    "#": "metalmancy:titanium_nugget"
   },
   "pattern": [
     "###",
@@ -13,6 +11,7 @@
     "###"
   ],
   "result": {
+    "count": 1,
     "id": "metalmancy:titanium_ingot"
   }
 }

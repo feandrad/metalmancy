@@ -3,12 +3,10 @@
   "category": "misc",
   "group": "nickel_nugget",
   "ingredients": [
-    {
-      "item": "metalmancy:nickel_ingot"
-    }
+    "metalmancy:nickel_ingot"
   ],
   "result": {
-    "id": "metalmancy:nickel_nugget",
-    "count": 9
+    "count": 9,
+    "id": "metalmancy:nickel_nugget"
   }
 }

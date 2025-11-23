@@ -3,9 +3,7 @@
   "category": "building",
   "group": "raw_manganese_block",
   "key": {
-    "#": {
-      "item": "metalmancy:raw_manganese"
-    }
+    "#": "metalmancy:raw_manganese"
   },
   "pattern": [
     "###",
@@ -13,6 +11,7 @@
     "###"
   ],
   "result": {
+    "count": 1,
     "id": "metalmancy:raw_manganese_block"
   }
 }

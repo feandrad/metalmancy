@@ -3,12 +3,10 @@
   "category": "misc",
   "group": "raw_titanium",
   "ingredients": [
-    {
-      "item": "metalmancy:raw_titanium_block"
-    }
+    "metalmancy:raw_titanium_block"
   ],
   "result": {
-    "id": "metalmancy:raw_titanium",
-    "count": 9
+    "count": 9,
+    "id": "metalmancy:raw_titanium"
   }
 }

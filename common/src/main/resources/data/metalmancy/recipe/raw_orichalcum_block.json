@@ -3,9 +3,7 @@
   "category": "building",
   "group": "raw_orichalcum_block",
   "key": {
-    "#": {
-      "item": "metalmancy:raw_orichalcum"
-    }
+    "#": "metalmancy:raw_orichalcum"
   },
   "pattern": [
     "###",
@@ -13,6 +11,7 @@
     "###"
   ],
   "result": {
+    "count": 1,
     "id": "metalmancy:raw_orichalcum_block"
   }
 }

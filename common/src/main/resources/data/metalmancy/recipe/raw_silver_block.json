@@ -3,9 +3,7 @@
   "category": "building",
   "group": "raw_silver_block",
   "key": {
-    "#": {
-      "item": "metalmancy:raw_silver"
-    }
+    "#": "metalmancy:raw_silver"
   },
   "pattern": [
     "###",
@@ -13,6 +11,7 @@
     "###"
   ],
   "result": {
+    "count": 1,
     "id": "metalmancy:raw_silver_block"
   }
 }

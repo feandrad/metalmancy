@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "uranium_ingot",
   "key": {
-    "#": {
-      "item": "metalmancy:uranium_nugget"
-    }
+    "#": "metalmancy:uranium_nugget"
   },
   "pattern": [
     "###",
@@ -13,6 +11,7 @@
     "###"
   ],
   "result": {
+    "count": 1,
     "id": "metalmancy:uranium_ingot"
   }
 }

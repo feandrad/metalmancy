@@ -3,12 +3,10 @@
   "category": "misc",
   "group": "raw_tin",
   "ingredients": [
-    {
-      "item": "metalmancy:raw_tin_block"
-    }
+    "metalmancy:raw_tin_block"
   ],
   "result": {
-    "id": "metalmancy:raw_tin",
-    "count": 9
+    "count": 9,
+    "id": "metalmancy:raw_tin"
   }
 }

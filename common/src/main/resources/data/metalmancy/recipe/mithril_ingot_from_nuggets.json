@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "mithril_ingot",
   "key": {
-    "#": {
-      "item": "metalmancy:mithril_nugget"
-    }
+    "#": "metalmancy:mithril_nugget"
   },
   "pattern": [
     "###",
@@ -13,6 +11,7 @@
     "###"
   ],
   "result": {
+    "count": 1,
     "id": "metalmancy:mithril_ingot"
   }
 }

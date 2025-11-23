@@ -3,12 +3,10 @@
   "category": "misc",
   "group": "raw_orichalcum",
   "ingredients": [
-    {
-      "item": "metalmancy:raw_orichalcum_block"
-    }
+    "metalmancy:raw_orichalcum_block"
   ],
   "result": {
-    "id": "metalmancy:raw_orichalcum",
-    "count": 9
+    "count": 9,
+    "id": "metalmancy:raw_orichalcum"
   }
 }

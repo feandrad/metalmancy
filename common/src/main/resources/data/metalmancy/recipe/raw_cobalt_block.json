@@ -3,9 +3,7 @@
   "category": "building",
   "group": "raw_cobalt_block",
   "key": {
-    "#": {
-      "item": "metalmancy:raw_cobalt"
-    }
+    "#": "metalmancy:raw_cobalt"
   },
   "pattern": [
     "###",
@@ -13,6 +11,7 @@
     "###"
   ],
   "result": {
+    "count": 1,
     "id": "metalmancy:raw_cobalt_block"
   }
 }

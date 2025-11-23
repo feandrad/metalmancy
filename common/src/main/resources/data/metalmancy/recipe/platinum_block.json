@@ -3,9 +3,7 @@
   "category": "building",
   "group": "platinum_block",
   "key": {
-    "#": {
-      "item": "metalmancy:platinum_ingot"
-    }
+    "#": "metalmancy:platinum_ingot"
   },
   "pattern": [
     "###",
@@ -13,6 +11,7 @@
     "###"
   ],
   "result": {
+    "count": 1,
     "id": "metalmancy:platinum_block"
   }
 }

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "zinc_block",
   "key": {
-    "#": {
-      "item": "metalmancy:zinc_ingot"
-    }
+    "#": "metalmancy:zinc_ingot"
   },
   "pattern": [
     "###",
@@ -13,6 +11,7 @@
     "###"
   ],
   "result": {
+    "count": 1,
     "id": "metalmancy:zinc_block"
   }
 }

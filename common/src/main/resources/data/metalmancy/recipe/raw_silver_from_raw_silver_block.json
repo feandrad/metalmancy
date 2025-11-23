@@ -3,12 +3,10 @@
   "category": "misc",
   "group": "raw_silver",
   "ingredients": [
-    {
-      "item": "metalmancy:raw_silver_block"
-    }
+    "metalmancy:raw_silver_block"
   ],
   "result": {
-    "id": "metalmancy:raw_silver",
-    "count": 9
+    "count": 9,
+    "id": "metalmancy:raw_silver"
   }
 }

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "raw_tin_block",
   "key": {
-    "#": {
-      "item": "metalmancy:raw_tin"
-    }
+    "#": "metalmancy:raw_tin"
   },
   "pattern": [
     "###",
@@ -13,6 +11,7 @@
     "###"
   ],
   "result": {
+    "count": 1,
     "id": "metalmancy:raw_tin_block"
   }
 }

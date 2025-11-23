@@ -3,12 +3,10 @@
   "category": "misc",
   "group": "mithril_nugget",
   "ingredients": [
-    {
-      "item": "metalmancy:mithril_ingot"
-    }
+    "metalmancy:mithril_ingot"
   ],
   "result": {
-    "id": "metalmancy:mithril_nugget",
-    "count": 9
+    "count": 9,
+    "id": "metalmancy:mithril_nugget"
   }
 }

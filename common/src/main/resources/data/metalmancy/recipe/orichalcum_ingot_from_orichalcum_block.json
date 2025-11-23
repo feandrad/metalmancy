@@ -3,12 +3,10 @@
   "category": "misc",
   "group": "orichalcum_ingot",
   "ingredients": [
-    {
-      "item": "metalmancy:orichalcum_block"
-    }
+    "metalmancy:orichalcum_block"
   ],
   "result": {
-    "id": "metalmancy:orichalcum_ingot",
-    "count": 9
+    "count": 9,
+    "id": "metalmancy:orichalcum_ingot"
   }
 }

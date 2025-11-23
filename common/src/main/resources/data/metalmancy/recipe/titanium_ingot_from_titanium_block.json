@@ -3,12 +3,10 @@
   "category": "misc",
   "group": "titanium_ingot",
   "ingredients": [
-    {
-      "item": "metalmancy:titanium_block"
-    }
+    "metalmancy:titanium_block"
   ],
   "result": {
-    "id": "metalmancy:titanium_ingot",
-    "count": 9
+    "count": 9,
+    "id": "metalmancy:titanium_ingot"
   }
 }

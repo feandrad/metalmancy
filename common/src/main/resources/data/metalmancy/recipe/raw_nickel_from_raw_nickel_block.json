@@ -3,12 +3,10 @@
   "category": "misc",
   "group": "raw_nickel",
   "ingredients": [
-    {
-      "item": "metalmancy:raw_nickel_block"
-    }
+    "metalmancy:raw_nickel_block"
   ],
   "result": {
-    "id": "metalmancy:raw_nickel",
-    "count": 9
+    "count": 9,
+    "id": "metalmancy:raw_nickel"
   }
 }

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "raw_uranium_block",
   "key": {
-    "#": {
-      "item": "metalmancy:raw_uranium"
-    }
+    "#": "metalmancy:raw_uranium"
   },
   "pattern": [
     "###",
@@ -13,6 +11,7 @@
     "###"
   ],
   "result": {
+    "count": 1,
     "id": "metalmancy:raw_uranium_block"
   }
 }

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "raw_nickel_block",
   "key": {
-    "#": {
-      "item": "metalmancy:raw_nickel"
-    }
+    "#": "metalmancy:raw_nickel"
   },
   "pattern": [
     "###",
@@ -13,6 +11,7 @@
     "###"
   ],
   "result": {
+    "count": 1,
     "id": "metalmancy:raw_nickel_block"
   }
 }

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "lithium_block",
   "key": {
-    "#": {
-      "item": "metalmancy:lithium_ingot"
-    }
+    "#": "metalmancy:lithium_ingot"
   },
   "pattern": [
     "###",
@@ -13,6 +11,7 @@
     "###"
   ],
   "result": {
+    "count": 1,
     "id": "metalmancy:lithium_block"
   }
 }

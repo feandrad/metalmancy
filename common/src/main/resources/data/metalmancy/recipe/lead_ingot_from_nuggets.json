@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "lead_ingot",
   "key": {
-    "#": {
-      "item": "metalmancy:lead_nugget"
-    }
+    "#": "metalmancy:lead_nugget"
   },
   "pattern": [
     "###",
@@ -13,6 +11,7 @@
     "###"
   ],
   "result": {
+    "count": 1,
     "id": "metalmancy:lead_ingot"
   }
 }

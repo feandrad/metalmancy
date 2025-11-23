@@ -3,9 +3,7 @@
   "category": "building",
   "group": "lead_block",
   "key": {
-    "#": {
-      "item": "metalmancy:lead_ingot"
-    }
+    "#": "metalmancy:lead_ingot"
   },
   "pattern": [
     "###",
@@ -13,6 +11,7 @@
     "###"
   ],
   "result": {
+    "count": 1,
     "id": "metalmancy:lead_block"
   }
 }

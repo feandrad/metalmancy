@@ -3,12 +3,10 @@
   "category": "misc",
   "group": "manganese_nugget",
   "ingredients": [
-    {
-      "item": "metalmancy:manganese_ingot"
-    }
+    "metalmancy:manganese_ingot"
   ],
   "result": {
-    "id": "metalmancy:manganese_nugget",
-    "count": 9
+    "count": 9,
+    "id": "metalmancy:manganese_nugget"
   }
 }

@@ -72,23 +72,15 @@ class ShapedRecipe(
         }
         val keyJson = JsonObject()
         key.forEach { (char, item) ->
-            val itemJson = JsonObject()
-            if (item.startsWith("#")) {
-                itemJson.addProperty("tag", item.substring(1))
-            } else {
-                itemJson.addProperty("item", item)
-            }
-            keyJson.add(char.toString(), itemJson)
+            keyJson.addProperty(char.toString(), item)
         }
         json.add("key", keyJson)
         val patternArray = com.google.gson.JsonArray()
         pattern.forEach { patternArray.add(it) }
         json.add("pattern", patternArray)
         val resultJson = JsonObject()
+        resultJson.addProperty("count", count)
         resultJson.addProperty("id", result)
-        if (count > 1) {
-            resultJson.addProperty("count", count)
-        }
         json.add("result", resultJson)
         return json
     }
@@ -111,20 +103,12 @@ class ShapelessRecipe(
         }
         val ingredientsArray = com.google.gson.JsonArray()
         ingredients.forEach { ingredient ->
-            val ingredientJson = JsonObject()
-            if (ingredient.startsWith("#")) {
-                ingredientJson.addProperty("tag", ingredient.substring(1))
-            } else {
-                ingredientJson.addProperty("item", ingredient)
-            }
-            ingredientsArray.add(ingredientJson)
+            ingredientsArray.add(ingredient)
         }
         json.add("ingredients", ingredientsArray)
         val resultJson = JsonObject()
+        resultJson.addProperty("count", count)
         resultJson.addProperty("id", result)
-        if (count > 1) {
-            resultJson.addProperty("count", count)
-        }
         json.add("result", resultJson)
         return json
     }

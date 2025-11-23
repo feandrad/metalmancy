@@ -3,9 +3,7 @@
   "category": "building",
   "group": "aluminum_block",
   "key": {
-    "#": {
-      "item": "metalmancy:aluminum_ingot"
-    }
+    "#": "metalmancy:aluminum_ingot"
   },
   "pattern": [
     "###",
@@ -13,6 +11,7 @@
     "###"
   ],
   "result": {
+    "count": 1,
     "id": "metalmancy:aluminum_block"
   }
 }

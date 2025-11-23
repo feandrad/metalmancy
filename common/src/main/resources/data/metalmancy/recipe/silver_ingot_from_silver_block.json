@@ -3,12 +3,10 @@
   "category": "misc",
   "group": "silver_ingot",
   "ingredients": [
-    {
-      "item": "metalmancy:silver_block"
-    }
+    "metalmancy:silver_block"
   ],
   "result": {
-    "id": "metalmancy:silver_ingot",
-    "count": 9
+    "count": 9,
+    "id": "metalmancy:silver_ingot"
   }
 }

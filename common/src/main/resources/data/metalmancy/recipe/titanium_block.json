@@ -3,9 +3,7 @@
   "category": "building",
   "group": "titanium_block",
   "key": {
-    "#": {
-      "item": "metalmancy:titanium_ingot"
-    }
+    "#": "metalmancy:titanium_ingot"
   },
   "pattern": [
     "###",
@@ -13,6 +11,7 @@
     "###"
   ],
   "result": {
+    "count": 1,
     "id": "metalmancy:titanium_block"
   }
 }

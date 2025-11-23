@@ -3,12 +3,10 @@
   "category": "misc",
   "group": "manganese_ingot",
   "ingredients": [
-    {
-      "item": "metalmancy:manganese_block"
-    }
+    "metalmancy:manganese_block"
   ],
   "result": {
-    "id": "metalmancy:manganese_ingot",
-    "count": 9
+    "count": 9,
+    "id": "metalmancy:manganese_ingot"
   }
 }

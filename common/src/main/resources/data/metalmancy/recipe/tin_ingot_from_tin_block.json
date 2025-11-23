@@ -3,12 +3,10 @@
   "category": "misc",
   "group": "tin_ingot",
   "ingredients": [
-    {
-      "item": "metalmancy:tin_block"
-    }
+    "metalmancy:tin_block"
   ],
   "result": {
-    "id": "metalmancy:tin_ingot",
-    "count": 9
+    "count": 9,
+    "id": "metalmancy:tin_ingot"
   }
 }

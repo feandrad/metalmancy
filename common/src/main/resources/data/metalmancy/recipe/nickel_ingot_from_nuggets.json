@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "nickel_ingot",
   "key": {
-    "#": {
-      "item": "metalmancy:nickel_nugget"
-    }
+    "#": "metalmancy:nickel_nugget"
   },
   "pattern": [
     "###",
@@ -13,6 +11,7 @@
     "###"
   ],
   "result": {
+    "count": 1,
     "id": "metalmancy:nickel_ingot"
   }
 }

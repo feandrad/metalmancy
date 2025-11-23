@@ -3,12 +3,10 @@
   "category": "misc",
   "group": "mithril_ingot",
   "ingredients": [
-    {
-      "item": "metalmancy:mithril_block"
-    }
+    "metalmancy:mithril_block"
   ],
   "result": {
-    "id": "metalmancy:mithril_ingot",
-    "count": 9
+    "count": 9,
+    "id": "metalmancy:mithril_ingot"
   }
 }

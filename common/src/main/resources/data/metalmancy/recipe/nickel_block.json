@@ -3,9 +3,7 @@
   "category": "building",
   "group": "nickel_block",
   "key": {
-    "#": {
-      "item": "metalmancy:nickel_ingot"
-    }
+    "#": "metalmancy:nickel_ingot"
   },
   "pattern": [
     "###",
@@ -13,6 +11,7 @@
     "###"
   ],
   "result": {
+    "count": 1,
     "id": "metalmancy:nickel_block"
   }
 }

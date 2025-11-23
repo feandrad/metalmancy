@@ -3,12 +3,10 @@
   "category": "misc",
   "group": "titanium_nugget",
   "ingredients": [
-    {
-      "item": "metalmancy:titanium_ingot"
-    }
+    "metalmancy:titanium_ingot"
   ],
   "result": {
-    "id": "metalmancy:titanium_nugget",
-    "count": 9
+    "count": 9,
+    "id": "metalmancy:titanium_nugget"
   }
 }
