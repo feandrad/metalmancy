@@ -24,4 +24,14 @@ object Metalmancy {
 
     fun <T> resourceKey(path: String, key: ResourceKey<Registry<T>>) =
         ResourceKey.create(key, asResource(path))
+
+    /**
+     * Constructs a standardized unlocalized name (resource ID) by joining all non-blank
+     * parts with an underscore, first converting any internal spaces within the parts to underscores.
+     * * @param parts A variable number of strings (vararg) that form the name components.
+     * @return The finalized name string (e.g., "deepslate_uranium_ore").
+     */
+    fun unlocalizedName(vararg parts: String): String = parts
+        .filter { it.isNotBlank() }
+        .joinToString(separator = "_") { it.replace(' ', '_') }
 }
