@@ -120,3 +120,4 @@ runs/
 /.kotlin/
 /common/logs/
 /.architectury-transformer/
+/.vscode/
