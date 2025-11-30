@@ -1,0 +1,1 @@
+aseprite -b aluminum.aseprite --save-as ./export/{title}_{slice}.png
