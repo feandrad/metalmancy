@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "##",
+    "#S",
+    " S"
+  ],
+  "key": {
+    "#": "metalmancy:aluminum_ingot",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "metalmancy:aluminum_axe",
+    "count": 1
+  }
+}

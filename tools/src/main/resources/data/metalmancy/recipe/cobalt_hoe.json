@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "##",
+    " S",
+    " S"
+  ],
+  "key": {
+    "#": "metalmancy:cobalt_ingot",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "metalmancy:cobalt_hoe",
+    "count": 1
+  }
+}

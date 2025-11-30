@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "metalmancy:platinum_sword",
+  "result": {
+    "id": "metalmancy:platinum_nugget",
+    "count": 2
+  },
+  "experience": 0.2,
+  "cookingtime": 200
+}

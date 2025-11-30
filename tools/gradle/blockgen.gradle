@@ -1,0 +1,37 @@
+tasks.register('generateBlocks', JavaExec) {
+    group = 'blockgen'
+    description = 'Gera assets de blocos a partir da lista BlockEntries'
+    mainClass = 'tools.blockgen.BlockGenKt'
+    classpath = sourceSets.main.runtimeClasspath
+    args '--out', "$buildDir/generated/assets"
+    doFirst { println "→ Gerando assets de blocos em $buildDir/generated/assets …" }
+}
+
+tasks.register('syncGeneratedBlocks', Copy) {
+    group = 'blockgen'
+    description = 'Copia os assets gerados para resources'
+    from "$buildDir/generated/assets"
+    into '../common/src/main/resources/assets'
+    dependsOn 'generateBlocks'
+}
+
+tasks.named('generateBlocks') {
+    dependsOn 'cleanGeneratedAssets'
+}
+
+tasks.register('cleanBlockgenResources', Delete) {
+    group = 'blockgen'
+    description = 'Remove assets antigos já copiados em src/main/resources/assets'
+    delete("../common/src/main/resources/assets/${rootProject.name.toLowerCase()}/blockstates")
+    delete("../common/src/main/resources/assets/${rootProject.name.toLowerCase()}/models/block")
+}
+
+tasks.register('forceRecreateBlocks') {
+    group = 'blockgen'
+    description = 'Força recriação completa dos assets de blocos: limpa resources, limpa generated, gera JSONs e sincroniza.'
+
+    dependsOn 'cleanBlockgenResources'
+    dependsOn 'cleanBlockgen'
+    dependsOn 'generateBlocks'
+    dependsOn 'syncGeneratedBlocks'
+}

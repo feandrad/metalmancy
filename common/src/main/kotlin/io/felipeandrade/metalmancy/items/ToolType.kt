@@ -1,7 +1,6 @@
 package io.felipeandrade.metalmancy.items
 
 import net.minecraft.world.item.Item
-import tools.toolgen.ToolStats
 
 /**
  * Represents the five tool types that can be crafted from tool-enabled materials.
@@ -11,21 +10,23 @@ import tools.toolgen.ToolStats
 enum class ToolType(
     val unlocalizedSuffix: String,
     val ingotCount: Int,
+    val attackDamage: Float,
+    val attackSpeed: Float,
     val toolProperties: (Item.Properties, ToolStats) -> Item.Properties
 ) {
-    SWORD("sword", 2, { prop, stats ->
+    SWORD("sword", 2, 3.0f, -2.4f, { prop, stats ->
         prop.sword(stats.tier, stats.damage, stats.speed)
     }),
-    AXE("axe", 3, { prop, stats ->
+    AXE("axe", 3, 6.0f, -3.1f, { prop, stats ->
         prop.axe(stats.tier, stats.damage, stats.speed)
     }),
-    PICKAXE("pickaxe", 3, { prop, stats ->
+    PICKAXE("pickaxe", 3, 1.0f, -2.8f, { prop, stats ->
         prop.pickaxe(stats.tier, stats.damage, stats.speed)
     }),
-    SHOVEL("shovel", 1, { prop, stats ->
+    SHOVEL("shovel", 1, 1.5f, -3.0f, { prop, stats ->
         prop.shovel(stats.tier, stats.damage, stats.speed)
     }),
-    HOE("hoe", 2, { prop, stats ->
+    HOE("hoe", 2, 0.0f, -3.0f, { prop, stats ->
         prop.hoe(stats.tier, stats.damage, stats.speed)
     });
 

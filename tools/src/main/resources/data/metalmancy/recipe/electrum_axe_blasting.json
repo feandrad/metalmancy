@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "ingredient": "metalmancy:electrum_axe",
+  "result": {
+    "id": "metalmancy:electrum_nugget",
+    "count": 3
+  },
+  "experience": 0.3,
+  "cookingtime": 100
+}

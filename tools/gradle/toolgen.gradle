@@ -1,0 +1,60 @@
+tasks.register('generateTools', JavaExec) {
+    group = 'toolgen'
+    description = 'Generates tool items, models, and recipes from tool-enabled materials'
+    mainClass = 'tools.toolgen.ToolGenKt'
+    classpath = sourceSets.main.runtimeClasspath
+    args '--out', "$buildDir/generated"
+    doFirst { println "→ Generating tool assets at $buildDir/generated ..." }
+}
+
+tasks.register('syncGeneratedTools', Copy) {
+    group = 'toolgen'
+    description = 'Copies the generated tool assets to resources'
+    from "$buildDir/generated/assets"
+    into '../common/src/main/resources/assets'
+    from "$buildDir/generated/data"
+    into '../common/src/main/resources/data'
+    dependsOn 'generateTools'
+}
+
+tasks.named('generateTools') {
+    dependsOn 'cleanGeneratedAssets'
+}
+
+tasks.register('cleanToolgenResources', Delete) {
+    group = 'toolgen'
+    description = 'Removes old tool assets already copied in src/main/resources'
+    delete("../common/src/main/resources/assets/${rootProject.name.toLowerCase()}/models/item/*_sword.json")
+    delete("../common/src/main/resources/assets/${rootProject.name.toLowerCase()}/models/item/*_axe.json")
+    delete("../common/src/main/resources/assets/${rootProject.name.toLowerCase()}/models/item/*_pickaxe.json")
+    delete("../common/src/main/resources/assets/${rootProject.name.toLowerCase()}/models/item/*_shovel.json")
+    delete("../common/src/main/resources/assets/${rootProject.name.toLowerCase()}/models/item/*_hoe.json")
+    delete("../common/src/main/resources/data/${rootProject.name.toLowerCase()}/recipe/*_sword*.json")
+    delete("../common/src/main/resources/data/${rootProject.name.toLowerCase()}/recipe/*_axe*.json")
+    delete("../common/src/main/resources/data/${rootProject.name.toLowerCase()}/recipe/*_pickaxe*.json")
+    delete("../common/src/main/resources/data/${rootProject.name.toLowerCase()}/recipe/*_shovel*.json")
+    delete("../common/src/main/resources/data/${rootProject.name.toLowerCase()}/recipe/*_hoe*.json")
+    delete("../common/src/main/resources/data/${rootProject.name.toLowerCase()}/advancement/recipe/*_sword*.json")
+    delete("../common/src/main/resources/data/${rootProject.name.toLowerCase()}/advancement/recipe/*_axe*.json")
+    delete("../common/src/main/resources/data/${rootProject.name.toLowerCase()}/advancement/recipe/*_pickaxe*.json")
+    delete("../common/src/main/resources/data/${rootProject.name.toLowerCase()}/advancement/recipe/*_shovel*.json")
+    delete("../common/src/main/resources/data/${rootProject.name.toLowerCase()}/advancement/recipe/*_hoe*.json")
+}
+
+tasks.register('forceRecreateTools') {
+    group = 'toolgen'
+    description = 'Forces complete recreation of tool assets: cleans resources, cleans generated, generates JSONs and syncs.'
+
+    dependsOn 'cleanToolgenResources'
+    dependsOn 'cleanGeneratedAssets'
+    dependsOn 'generateTools'
+    dependsOn 'syncGeneratedTools'
+}
+
+tasks.named('generateAll') {
+    dependsOn 'generateTools'
+}
+
+tasks.named('syncGeneratedAll') {
+    dependsOn 'syncGeneratedTools'
+}

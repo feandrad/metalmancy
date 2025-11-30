@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "ingredient": "metalmancy:orichalcum_hoe",
+  "result": {
+    "id": "metalmancy:orichalcum_nugget",
+    "count": 2
+  },
+  "experience": 0.2,
+  "cookingtime": 100
+}

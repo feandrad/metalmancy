@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "ingredient": "metalmancy:silver_pickaxe",
+  "result": {
+    "id": "metalmancy:silver_nugget",
+    "count": 3
+  },
+  "experience": 0.3,
+  "cookingtime": 100
+}

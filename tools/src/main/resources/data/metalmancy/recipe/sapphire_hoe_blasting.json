@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "ingredient": "metalmancy:sapphire_hoe",
+  "result": {
+    "id": "metalmancy:sapphire_gem_shard",
+    "count": 2
+  },
+  "experience": 0.2,
+  "cookingtime": 100
+}

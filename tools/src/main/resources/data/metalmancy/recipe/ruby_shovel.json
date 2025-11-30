@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "#",
+    "S",
+    "S"
+  ],
+  "key": {
+    "#": "metalmancy:ruby_gem",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "metalmancy:ruby_shovel",
+    "count": 1
+  }
+}

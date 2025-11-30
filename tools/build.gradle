@@ -1,0 +1,62 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(path: ':common', configuration: 'namedElements')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation "com.google.code.gson:gson:2.10.1"
+    implementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+    implementation "dev.architectury:architectury:$rootProject.architectury_api_version"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.10.2"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.10.2"
+    testImplementation "org.jetbrains.kotlin:kotlin-test"
+    
+    // Kotest for property-based testing
+    testImplementation "io.kotest:kotest-runner-junit5:5.8.0"
+    testImplementation "io.kotest:kotest-assertions-core:5.8.0"
+    testImplementation "io.kotest:kotest-property:5.8.0"
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+    testLogging {
+        showStandardStreams = true
+    }
+}
+
+kotlin {
+    jvmToolchain(21)
+}
+
+
+tasks.register('cleanGeneratedAssets', Delete) {
+    group = 'datagen'
+    description = 'Remove old generated JSONs in build/generated'
+    delete("$buildDir/generated/data")
+    delete("$buildDir/generated/assets")
+}
+
+tasks.register('generateAll') {
+    group = 'datagen'
+    description = 'Generates all assets'
+    dependsOn 'cleanGeneratedAssets'
+}
+
+tasks.register('syncGeneratedAll') {
+    group = 'datagen'
+    description = 'Syncs all generated assets'
+}
+
+apply from: "$projectDir/gradle/worldgen.gradle"
+apply from: "$projectDir/gradle/lootgen.gradle"
+apply from: "$projectDir/gradle/blockgen.gradle"
+apply from: "$projectDir/gradle/itemgen.gradle"
+apply from: "$projectDir/gradle/recipegen.gradle"
+apply from: "$projectDir/gradle/texturereport.gradle"
+apply from: "$projectDir/gradle/toolgen.gradle"

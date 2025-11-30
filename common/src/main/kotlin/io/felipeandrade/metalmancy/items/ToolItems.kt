@@ -7,7 +7,6 @@ import net.minecraft.core.registries.Registries
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.Items.registerItem
 import net.minecraft.world.item.ToolMaterial
-import tools.toolgen.ToolStats
 
 object ToolItems {
 
@@ -42,7 +41,7 @@ object ToolItems {
     }
 
     fun registerTool(type: ToolType, stats: ToolStats): Item {
-        val unlocalizedName = Metalmancy.unlocalizedName(stats.material.name, type.name)
+        val unlocalizedName = Metalmancy.unlocalizedName(stats.material.name, type.unlocalizedSuffix)
         val key = resourceKey(unlocalizedName, Registries.ITEM)
         val properties: Item.Properties = Item.Properties().setId(key)
 

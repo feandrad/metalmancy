@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "metalmancy:orichalcum_shovel",
+  "result": {
+    "id": "metalmancy:orichalcum_nugget",
+    "count": 1
+  },
+  "experience": 0.1,
+  "cookingtime": 200
+}

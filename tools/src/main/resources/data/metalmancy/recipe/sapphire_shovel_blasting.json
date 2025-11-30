@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "ingredient": "metalmancy:sapphire_shovel",
+  "result": {
+    "id": "metalmancy:sapphire_gem_shard",
+    "count": 1
+  },
+  "experience": 0.1,
+  "cookingtime": 100
+}
