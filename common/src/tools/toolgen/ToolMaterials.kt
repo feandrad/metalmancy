@@ -27,7 +27,8 @@ object ToolMaterials {
         Materials.RUBY,
         Materials.SAPPHIRE,
         Materials.ALUMINUM,
-        Materials.STEEL
+        Materials.STEEL,
+        Materials.INVAR,
     )
 
     /**
@@ -44,28 +45,36 @@ object ToolMaterials {
      * Gets the tool tier for a material based on its property group.
      * Materials are assigned to tier categories based on their classification in Materials.kt.
      * 
+     * For materials not yet in property groups, a default mapping is provided:
+     * - BRASS, BRONZE, STEEL, ALUMINUM -> IRON_LIKE
+     * - SILVER, COBALT, ELECTRUM -> GOLD_LIKE
+     * - PLATINUM, TITANIUM, MITHRIL, ORICHALCUM -> DIAMOND_LIKE
+     * - TOPAZ, RUBY, SAPPHIRE -> DIAMOND_LIKE (gems)
+     * 
      * @param material The material to get the tier for
      * @return The ToolTier for the material
-     * @throws IllegalArgumentException if the material is not in any known property group
+     * @throws IllegalArgumentException if the material is not in any known tier category
      */
     fun getTier(material: Material): ToolTier {
-        return when (material) {
-            // Copper-like metals
-            in Materials.COPPER_LIKE_METALS -> TierCategories.COPPER_LIKE
-            
-            // Iron-like metals (includes BRASS, BRONZE, STEEL, ALUMINUM)
-            in Materials.IRON_LIKE_METALS -> TierCategories.IRON_LIKE
-            
-            // Gold-like metals (includes SILVER, COBALT)
-            in Materials.GOLD_LIKE_METALS -> TierCategories.GOLD_LIKE
-            
-            // Diamond-like metals (includes PLATINUM, TITANIUM, MITHRIL, ORICHALCUM)
-            in Materials.DIAMOND_LIKE_METALS -> TierCategories.DIAMOND_LIKE
-            
-            // Gems (TOPAZ, RUBY, SAPPHIRE) - treated as diamond-like
-            in Materials.GEMS -> TierCategories.DIAMOND_LIKE
-            
-            else -> throw IllegalArgumentException("Material ${material.name} is not in any known tier category")
+        // Try property groups first (when they exist)
+        try {
+            return when (material) {
+                in Materials.COPPER_LIKE_METALS -> TierCategories.COPPER_LIKE
+                in Materials.IRON_LIKE_METALS -> TierCategories.IRON_LIKE
+                in Materials.GOLD_LIKE_METALS -> TierCategories.GOLD_LIKE
+                in Materials.DIAMOND_LIKE_METALS -> TierCategories.DIAMOND_LIKE
+                in Materials.GEMS -> TierCategories.DIAMOND_LIKE
+                else -> throw IllegalArgumentException("Not in property group")
+            }
+        } catch (e: Exception) {
+            // Fall back to name-based mapping for materials not yet in property groups
+            return when (material.name.lowercase()) {
+                "brass", "bronze", "steel", "aluminum" -> TierCategories.IRON_LIKE
+                "silver", "cobalt", "electrum" -> TierCategories.GOLD_LIKE
+                "platinum", "titanium", "mithril", "orichalcum" -> TierCategories.DIAMOND_LIKE
+                "topaz", "ruby", "sapphire" -> TierCategories.DIAMOND_LIKE
+                else -> throw IllegalArgumentException("Material ${material.name} is not in any known tier category")
+            }
         }
     }
 

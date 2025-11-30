@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "metalmancy:bronze_sword",
+  "result": {
+    "id": "metalmancy:bronze_nugget",
+    "count": 2
+  },
+  "experience": 0.2,
+  "cookingtime": 200
+}

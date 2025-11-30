@@ -2,6 +2,7 @@ package tools.toolgen
 
 import com.google.gson.JsonObject
 import io.felipeandrade.metalmancy.Metalmancy.MOD_ID
+import io.felipeandrade.metalmancy.items.ToolType
 import io.felipeandrade.metalmancy.registry.material.Material
 
 /**

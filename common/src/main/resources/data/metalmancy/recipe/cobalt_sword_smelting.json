@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "metalmancy:cobalt_sword",
+  "result": {
+    "id": "metalmancy:cobalt_nugget",
+    "count": 2
+  },
+  "experience": 0.2,
+  "cookingtime": 200
+}

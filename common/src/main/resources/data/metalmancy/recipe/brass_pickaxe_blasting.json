@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "ingredient": "metalmancy:brass_pickaxe",
+  "result": {
+    "id": "metalmancy:brass_nugget",
+    "count": 3
+  },
+  "experience": 0.3,
+  "cookingtime": 100
+}

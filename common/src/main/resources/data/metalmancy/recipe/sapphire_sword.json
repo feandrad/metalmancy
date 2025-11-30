@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "#",
+    "#",
+    "S"
+  ],
+  "key": {
+    "#": "metalmancy:sapphire_gem",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "metalmancy:sapphire_sword",
+    "count": 1
+  }
+}

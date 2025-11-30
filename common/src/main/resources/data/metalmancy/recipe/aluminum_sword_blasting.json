@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "ingredient": "metalmancy:aluminum_sword",
+  "result": {
+    "id": "metalmancy:aluminum_nugget",
+    "count": 2
+  },
+  "experience": 0.2,
+  "cookingtime": 100
+}

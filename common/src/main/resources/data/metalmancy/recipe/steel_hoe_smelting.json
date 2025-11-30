@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "metalmancy:steel_hoe",
+  "result": {
+    "id": "metalmancy:steel_nugget",
+    "count": 2
+  },
+  "experience": 0.2,
+  "cookingtime": 200
+}

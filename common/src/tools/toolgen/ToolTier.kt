@@ -1,6 +1,7 @@
 package tools.toolgen
 
 import io.felipeandrade.metalmancy.registry.material.Material
+import net.minecraft.world.item.ToolMaterial
 
 /**
  * Represents the properties of a tool tier, including mining level, durability,
@@ -12,6 +13,15 @@ data class ToolTier(
     val efficiency: Float,
     val attackDamageBonus: Float,
     val enchantability: Int
+)
+
+data class ToolStats(
+    val material: Material,
+    val tier: ToolMaterial,
+    val durability: Int,
+    val speed: Float,
+    val damage: Float,
+    val enchantment: Int,
 )
 
 /**

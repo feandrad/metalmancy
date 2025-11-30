@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "metalmancy:ruby_axe",
+  "result": {
+    "id": "metalmancy:ruby_gem_shard",
+    "count": 3
+  },
+  "experience": 0.3,
+  "cookingtime": 200
+}

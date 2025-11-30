@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "metalmancy:mithril_shovel",
+  "result": {
+    "id": "metalmancy:mithril_nugget",
+    "count": 1
+  },
+  "experience": 0.1,
+  "cookingtime": 200
+}

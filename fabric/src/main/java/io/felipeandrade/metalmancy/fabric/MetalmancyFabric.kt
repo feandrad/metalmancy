@@ -13,6 +13,7 @@ class MetalmancyFabric : ModInitializer {
         Metalmancy.init(FabricPlatformHelper())
         MaterialBlocks.registerAll()
         MaterialItems.registerAll()
+        FabricToolItems.registerAll()
         WorldGen.register()
         CreativeTabs.register()
     }

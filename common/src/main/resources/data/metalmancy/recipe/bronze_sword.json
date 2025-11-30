@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "#",
+    "#",
+    "S"
+  ],
+  "key": {
+    "#": "metalmancy:bronze_ingot",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "metalmancy:bronze_sword",
+    "count": 1
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "ingredient": "metalmancy:cobalt_axe",
+  "result": {
+    "id": "metalmancy:cobalt_nugget",
+    "count": 3
+  },
+  "experience": 0.3,
+  "cookingtime": 100
+}

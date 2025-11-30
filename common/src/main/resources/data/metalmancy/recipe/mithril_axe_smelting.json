@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "metalmancy:mithril_axe",
+  "result": {
+    "id": "metalmancy:mithril_nugget",
+    "count": 3
+  },
+  "experience": 0.3,
+  "cookingtime": 200
+}

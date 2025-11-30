@@ -27,6 +27,7 @@ object ModRegistryEvents {
     fun registerContent(event: RegisterEvent) {
         register(event, Registries.BLOCK, MaterialBlocks::registerAll)
         register(event, Registries.ITEM, MaterialItems::registerAll)
+        register(event, Registries.ITEM, NeoForgeToolItems::registerAll)
     }
 }
 

@@ -10,6 +10,7 @@ import tools.toolgen.TierCategories
 import tools.toolgen.TierOverride
 import tools.toolgen.ToolMaterials
 import tools.toolgen.ToolTier
+import tools.toolgen.ToolType
 
 /**
  * Custom generators (Arb) for property-based testing of the ToolTier system.
@@ -146,4 +147,20 @@ fun Arb.Companion.materialWithoutRequiredParts(): Arb<Material> = arbitrary {
     val parts = validParts.shuffled().take(partCount).toSet()
     
     Material(name, family, parts)
+}
+
+/**
+ * Generates random ToolType values.
+ */
+fun Arb.Companion.toolType(): Arb<ToolType> = arbitrary {
+    ToolType.entries.random()
+}
+
+/**
+ * Generates pairs of (Material, ToolType) for tool generation testing.
+ */
+fun Arb.Companion.materialAndToolType(): Arb<Pair<Material, ToolType>> = arbitrary {
+    val material = Arb.actualToolEnabledMaterial().bind()
+    val toolType = Arb.toolType().bind()
+    Pair(material, toolType)
 }

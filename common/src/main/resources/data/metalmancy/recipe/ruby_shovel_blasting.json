@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "ingredient": "metalmancy:ruby_shovel",
+  "result": {
+    "id": "metalmancy:ruby_gem_shard",
+    "count": 1
+  },
+  "experience": 0.1,
+  "cookingtime": 100
+}

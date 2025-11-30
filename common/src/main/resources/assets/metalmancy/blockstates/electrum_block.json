@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "metalmancy:block/electrum_block"
+    }
+  }
+}
