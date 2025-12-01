@@ -18,6 +18,14 @@ object Metalmancy {
     @JvmStatic
     fun init(helper: PlatformHelper) {
         this.helper = helper
+        
+        io.felipeandrade.metalmancy.registry.ModItems.register()
+        io.felipeandrade.metalmancy.registry.ModBlocks.register()
+        io.felipeandrade.metalmancy.registry.ModBlockEntities.register()
+        io.felipeandrade.metalmancy.registry.ModMenus.register()
+        io.felipeandrade.metalmancy.registry.ModRecipes.register()
+        io.felipeandrade.metalmancy.fluid.ModFluids.register()
+        io.felipeandrade.metalmancy.network.ModNetwork.register()
     }
 
     fun asResource(path: String): ResourceLocation = ResourceLocation.fromNamespaceAndPath(MOD_ID, path)
