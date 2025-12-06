@@ -3,7 +3,7 @@ package io.felipeandrade.metalmancy.network
 object ModNetwork {
     // val CHANNEL: NetworkChannel = NetworkManager.createNetworkChannel(Metalmancy.asResource("main"))
 
-    fun register() {
+    fun registerAll() {
         // CHANNEL.register(FluidSyncPacket::class.java, FluidSyncPacket::encode, FluidSyncPacket::decode, FluidSyncPacket::apply)
     }
 

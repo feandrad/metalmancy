@@ -1,9 +1,13 @@
 package io.felipeandrade.metalmancy.recipe
 
+// Add specific imports if star import doesn't cover them or they are in different packages
+// RecipeBookCategory is in net.minecraft.world.item.crafting
+// PlacementInfo is in net.minecraft.world.item.crafting
+// But let's explicit import to be safe if they are recently moved
 import com.mojang.serialization.Codec
 import com.mojang.serialization.MapCodec
 import com.mojang.serialization.codecs.RecordCodecBuilder
-import io.felipeandrade.metalmancy.registry.ModBlocks
+import io.felipeandrade.metalmancy.blocks.ModBlocks
 import net.minecraft.core.HolderLookup
 import net.minecraft.network.RegistryFriendlyByteBuf
 import net.minecraft.network.codec.StreamCodec
@@ -29,7 +33,7 @@ class CalcinatingRecipe(
 
     fun getResultItem(registries: HolderLookup.Provider): ItemStack = output
 
-    fun getToastSymbol(): ItemStack = ItemStack(ModBlocks.CALCINATOR.get())
+    fun getToastSymbol(): ItemStack = ItemStack(ModBlocks.CALCINATOR)
     
     override fun isSpecial(): Boolean = true
     
@@ -37,15 +41,16 @@ class CalcinatingRecipe(
     
     override fun placementInfo(): PlacementInfo? = null
 
-    override fun getSerializer(): RecipeSerializer<*> = Serializer.INSTANCE as RecipeSerializer<CalcinatingRecipe>
+    override fun getSerializer(): RecipeSerializer<CalcinatingRecipe> = Serializer.INSTANCE
 
-    override fun getType(): RecipeType<*> = Type.INSTANCE as RecipeType<CalcinatingRecipe>
+    override fun getType(): RecipeType<CalcinatingRecipe> = Type.INSTANCE
 
     class Type : RecipeType<CalcinatingRecipe> {
         companion object {
             val INSTANCE = Type()
             const val ID = "calcinating"
         }
+        override fun toString(): String = ID
     }
 
     class Serializer : RecipeSerializer<CalcinatingRecipe> {

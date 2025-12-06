@@ -1,6 +1,16 @@
 package io.felipeandrade.metalmancy
 
+import io.felipeandrade.metalmancy.blocks.MaterialBlocks
+import io.felipeandrade.metalmancy.blocks.ModBlocks
+import io.felipeandrade.metalmancy.blocks.entity.ModBlockEntities
+import io.felipeandrade.metalmancy.fluid.ModFluids
+import io.felipeandrade.metalmancy.items.MaterialItems
+import io.felipeandrade.metalmancy.items.ToolItems
+import io.felipeandrade.metalmancy.network.ModNetwork
 import io.felipeandrade.metalmancy.platform.PlatformHelper
+import io.felipeandrade.metalmancy.registry.ModItems
+import io.felipeandrade.metalmancy.registry.ModMenus
+import io.felipeandrade.metalmancy.registry.ModRecipes
 import net.minecraft.core.Registry
 import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.ResourceLocation
@@ -16,21 +26,24 @@ object Metalmancy {
         private set
 
     @JvmStatic
-    fun init(helper: PlatformHelper) {
-        this.helper = helper
-        
-        io.felipeandrade.metalmancy.registry.ModItems.register()
-        io.felipeandrade.metalmancy.registry.ModBlocks.register()
-        io.felipeandrade.metalmancy.registry.ModBlockEntities.register()
-        io.felipeandrade.metalmancy.registry.ModMenus.register()
-        io.felipeandrade.metalmancy.registry.ModRecipes.register()
-        io.felipeandrade.metalmancy.fluid.ModFluids.register()
-        io.felipeandrade.metalmancy.network.ModNetwork.register()
+    fun init(platformHelper: PlatformHelper) {
+        this.helper = platformHelper
+
+        ModItems.registerAll()
+        ModBlocks.registerAll()
+        ModBlockEntities.registerAll()
+        ModMenus.registerAll()
+        ModRecipes.registerAll()
+        ModFluids.registerAll()
+        ModNetwork.registerAll()
+        MaterialBlocks.registerAll()
+        MaterialItems.registerAll()
+        ToolItems.registerAll()
     }
 
     fun asResource(path: String): ResourceLocation = ResourceLocation.fromNamespaceAndPath(MOD_ID, path)
 
-    fun <T> resourceKey(path: String, key: ResourceKey<Registry<T>>) =
+    fun <T> resourceKey(path: String, key: ResourceKey<Registry<T>>): ResourceKey<T> =
         ResourceKey.create(key, asResource(path))
 
     /**

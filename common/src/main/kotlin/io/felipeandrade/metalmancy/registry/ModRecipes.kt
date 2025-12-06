@@ -20,7 +20,7 @@ object ModRecipes {
     val CALCINATING_TYPE: RegistrySupplier<RecipeType<*>> =
         RECIPE_TYPES.register(CalcinatingRecipe.Type.ID) { CalcinatingRecipe.Type.INSTANCE }
 
-    fun register() {
+    fun registerAll() {
         RECIPE_SERIALIZERS.register()
         RECIPE_TYPES.register()
     }

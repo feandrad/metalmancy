@@ -25,16 +25,29 @@ class CalcinatorScreen(menu: CalcinatorMenu, inventory: Inventory, title: Compon
     override fun renderBg(graphics: GuiGraphics, partialTick: Float, mouseX: Int, mouseY: Int) {
         val x = (width - imageWidth) / 2
         val y = (height - imageHeight) / 2
-        graphics.blit(TEXTURE, x, y, 0, 0, imageWidth, imageHeight)
+        
+        // Try blit(res, x, y, w, h, u, v, texW, texH) based on candidate analysis (2 ints, 2 ints, 4 floats)
+        // graphics.blit(TEXTURE, x, y, 0, 0, imageWidth, imageHeight) -> OLD
+        // Candidate: blit(res, i, j, k, l, f, g, h, m)
+        // i,j = x,y (int)
+        // k,l = width, height (int)
+        // f,g = u,v (float)
+        // h,m = texW, texH (float)
+        
+        graphics.blit(TEXTURE, x, y, imageWidth, imageHeight, 0f, 0f, 256f, 256f)
 
         if (menu.isBurning()) {
             val h = menu.getBurnProgress()
-            graphics.blit(TEXTURE, x + 26, y + 37 + 14 - h, 176, 14 - h, 14, h + 1)
+            // graphics.blit(TEXTURE, x + 26, y + 37 + 14 - h, 176, 14 - h, 14, h + 1)
+            // u=176, v=14-h, w=14, h=h+1
+            graphics.blit(TEXTURE, x + 26, y + 37 + 14 - h, 14, h + 1, 176f, (14 - h).toFloat(), 256f, 256f)
         }
 
         if (menu.isCrafting()) {
             val w = menu.getCraftProgress()
-            graphics.blit(TEXTURE, x + 49, y + 35, 176, 16, w + 1, 16)
+            // graphics.blit(TEXTURE, x + 49, y + 35, 176, 16, w + 1, 16)
+            // u=176, v=16, w=w+1, h=16
+            graphics.blit(TEXTURE, x + 49, y + 35, w + 1, 16, 176f, 16f, 256f, 256f)
         }
         
         // TODO: Render Fluid

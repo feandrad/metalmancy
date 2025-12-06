@@ -15,7 +15,7 @@ object ModMenus {
         MenuRegistry.ofExtended(::CalcinatorMenu)
     }
 
-    fun register() {
+    fun registerAll() {
         MENUS.register()
     }
 }

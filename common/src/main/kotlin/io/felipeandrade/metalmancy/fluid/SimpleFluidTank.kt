@@ -8,10 +8,6 @@ class SimpleFluidTank(val capacity: Long) {
 
     fun getFluidAmount(): Long = fluid.amount
 
-    fun setFluid(stack: FluidStack) {
-        this.fluid = stack
-    }
-
     fun isEmpty(): Boolean = fluid.isEmpty
 
     fun isFull(): Boolean = fluid.amount >= capacity

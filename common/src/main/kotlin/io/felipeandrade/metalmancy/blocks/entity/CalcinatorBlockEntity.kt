@@ -2,30 +2,32 @@ package io.felipeandrade.metalmancy.blocks.entity
 
 import dev.architectury.fluid.FluidStack
 import dev.architectury.registry.menu.ExtendedMenuProvider
+// import dev.architectury.networking.PlayerLookup
 import io.felipeandrade.metalmancy.fluid.ModFluids
 import io.felipeandrade.metalmancy.menu.CalcinatorMenu
 import io.felipeandrade.metalmancy.recipe.CalcinatingRecipe
-import io.felipeandrade.metalmancy.registry.ModBlockEntities
 import io.felipeandrade.metalmancy.registry.ModRecipes
 import io.felipeandrade.metalmancy.util.SimpleFluidTank
 import net.minecraft.core.BlockPos
-import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.network.chat.Component
+import net.minecraft.server.level.ServerLevel
 import net.minecraft.world.Container
 import net.minecraft.world.SimpleContainer
-import net.minecraft.world.World
 import net.minecraft.world.entity.player.Inventory
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.inventory.AbstractContainerMenu
 import net.minecraft.world.inventory.ContainerData
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.crafting.RecipeHolder
+import net.minecraft.world.item.crafting.RecipeType
 import net.minecraft.world.level.block.AbstractFurnaceBlock
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
 
-class CalcinatorBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(ModBlockEntities.CALCINATOR.get(), pos, state), ExtendedMenuProvider, Container {
+class CalcinatorBlockEntity(pos: BlockPos, state: BlockState) : 
+    BlockEntity(ModBlockEntities.CALCINATOR, pos, state),
+    ExtendedMenuProvider, Container {
 
     // Inventory: 0=Input, 1=Fuel, 2=ContainerInput, 3=ContainerOutput, 4=Output
     private val inventory = SimpleContainer(5)
@@ -57,29 +59,50 @@ class CalcinatorBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(ModB
         override fun getCount(): Int = 4
     }
 
-    override fun saveAdditional(tag: CompoundTag) {
-        super.saveAdditional(tag)
+/*
+    override fun saveAdditional(tag: CompoundTag, registries: net.minecraft.core.HolderLookup.Provider) {
+        super.saveAdditional(tag, registries)
         tag.putInt("BurnTime", burnTime)
         tag.putInt("MaxBurnTime", maxBurnTime)
         tag.putInt("Progress", progress)
-        tag.put("Inventory", inventory.createTag())
+        val itemsTag = net.minecraft.nbt.ListTag()
+        for (i in 0 until inventory.containerSize) {
+            val stack = inventory.getItem(i)
+            if (!stack.isEmpty) {
+                val itemTag = CompoundTag()
+                itemTag.putByte("Slot", i.toByte())
+                stack.save(registries, itemTag)
+                itemsTag.add(itemTag)
+            }
+        }
+        tag.put("Inventory", itemsTag)
         val fluidTag = CompoundTag()
         fluidTank.write(fluidTag)
         tag.put("Fluid", fluidTag)
     }
 
-    override fun loadAdditional(tag: CompoundTag) {
-        super.loadAdditional(tag)
+    override fun loadAdditional(tag: CompoundTag, registries: net.minecraft.core.HolderLookup.Provider) {
+        super.loadAdditional(tag, registries)
         burnTime = tag.getInt("BurnTime")
         maxBurnTime = tag.getInt("MaxBurnTime")
         progress = tag.getInt("Progress")
-        inventory.fromTag(tag.getList("Inventory", 10))
+        if (tag.contains("Inventory")) {
+            val itemsTag = tag.getList("Inventory", 10)
+            for (i in 0 until itemsTag.size) {
+                val itemTag = itemsTag.getCompound(i)
+                val slot = itemTag.getByte("Slot").toInt()
+                if (slot in 0 until inventory.containerSize) {
+                    inventory.setItem(slot, ItemStack.parseOptional(registries, itemTag))
+                }
+            }
+        }
         if (tag.contains("Fluid")) {
             fluidTank.read(tag.getCompound("Fluid"))
         }
     }
+*/
 
-    fun tick(level: World, pos: BlockPos, state: BlockState) {
+    fun tick(level: net.minecraft.world.level.Level, pos: BlockPos, state: BlockState) {
         if (level.isClientSide) return
 
         var isDirty = false
@@ -136,10 +159,20 @@ class CalcinatorBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(ModB
 
     private fun getCurrentRecipe(): RecipeHolder<CalcinatingRecipe>? {
         val input = inventory.getItem(0)
-        if (input.isEmpty) return null
-        val recipeManager = level!!.recipeManager
-        return recipeManager.getRecipeFor(ModRecipes.CALCINATING_TYPE.get(), this.asRecipeInput(), level!!).orElse(null) as? RecipeHolder<CalcinatingRecipe>
+        if (input.isEmpty || level !is ServerLevel) return null
+
+        val serverLevel = level as ServerLevel
+        val recipeManager = serverLevel.server.recipeManager
+
+        return recipeManager
+            .getRecipeFor(
+                ModRecipes.CALCINATING_TYPE.get() as RecipeType<CalcinatingRecipe>,
+                asRecipeInput(),
+                serverLevel
+            )
+            .orElse(null)
     }
+
 
     private fun canCraft(recipe: CalcinatingRecipe): Boolean {
         val result = recipe.output
@@ -162,7 +195,7 @@ class CalcinatorBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(ModB
         // Add Essence
         val fluidToAdd = FluidStack.create(ModFluids.STILL_ESSENCE.get(), recipe.essence)
         if (fluidTank.fluid.isEmpty) {
-            fluidTank.setFluid(fluidToAdd)
+            fluidTank.fluid = fluidToAdd
         } else if (fluidTank.fluid.isFluidEqual(fluidToAdd)) {
             fluidTank.fluid.amount += fluidToAdd.amount
         }
@@ -183,13 +216,13 @@ class CalcinatorBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(ModB
 
     fun syncFluid() {
         if (level != null && !level!!.isClientSide) {
-            // val players = dev.architectury.networking.PlayerLookup.tracking(this)
-            // ModNetwork.CHANNEL.sendToPlayers(ModNetwork.FluidSyncPacket(blockPos, fluidTank.getFluidAmount(), fluidTank.fluid), players)
+             // val players = dev.architectury.networking.PlayerLookup.tracking(this)
+             // ModNetwork.CHANNEL.sendToPlayers(ModNetwork.FluidSyncPacket(blockPos, fluidTank.getFluidAmount(), fluidTank.fluid), players)
         }
     }
 
     fun setFluidLevel(variant: FluidStack, amount: Long) {
-        fluidTank.setFluid(variant)
+        fluidTank.fluid = variant
         fluidTank.fluid.amount = amount
     }
 
@@ -213,6 +246,6 @@ class CalcinatorBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(ModB
     // ExtendedMenuProvider
     override fun saveExtraData(buf: FriendlyByteBuf) {
         buf.writeBlockPos(blockPos)
-        fluidTank.fluid.write(buf)
+        // fluidTank.fluid.write(buf)
     }
 }

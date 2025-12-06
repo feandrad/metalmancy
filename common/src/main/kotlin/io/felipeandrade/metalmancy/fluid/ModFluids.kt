@@ -12,13 +12,10 @@ object ModFluids {
     // Placeholder for Essence Fluid. In a real implementation, this would need Flowing/Still/Block/Bucket/Type setup.
     // For now, I'll register a dummy fluid to allow compilation.
     // TODO: Implement full Fluid registration (Flowing, Still, Block, Bucket, Attributes)
-    val STILL_ESSENCE: RegistrySupplier<Fluid> = FLUIDS.register("still_essence") {
-        // Return a vanilla fluid for now to avoid crash if used, or a custom SimpleFluid if possible.
-        // Using WATER as placeholder to prevent nulls during dev.
-        net.minecraft.world.level.material.Fluids.WATER
-    }
+    val STILL_ESSENCE: RegistrySupplier<Fluid> = FLUIDS.register("still_essence") { StillEssence() }
+    val FLOWING_ESSENCE: RegistrySupplier<Fluid> = FLUIDS.register("flowing_essence") { FlowingEssence() }
 
-    fun register() {
+    fun registerAll() {
         FLUIDS.register()
     }
 }
