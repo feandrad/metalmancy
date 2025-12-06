@@ -47,7 +47,7 @@ A Minecraft mod that adds an extensible material system with new metals, gems, a
 - **Orichalcum** - Ancient powerful metal (found in End)
 
 ### Alloys (6)
-- **Pewter** - Tin-based alloy
+- **Pewter** - Tin and lead alloy
 - **Brass** - Copper and zinc alloy
 - **Bronze** - Copper and tin alloy
 - **Steel** - Iron and carbon alloy
