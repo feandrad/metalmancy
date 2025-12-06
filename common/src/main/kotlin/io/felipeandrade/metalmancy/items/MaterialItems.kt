@@ -113,6 +113,6 @@ object MaterialItems {
         properties: Item.Properties = Item.Properties()
     ): Item {
         val key = resourceKey(path, Registries.ITEM)
-        return registerItem(key, factory, properties)
+        return registerItem(key, factory, properties.setId(key))
     }
 }
