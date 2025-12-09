@@ -13,6 +13,13 @@ dependencies {
     implementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
     implementation "dev.architectury:architectury:$rootProject.architectury_api_version"
 
+    // Fix for missing ASM in Datagen
+    implementation "org.ow2.asm:asm:9.7"
+    implementation "org.ow2.asm:asm-tree:9.7"
+    implementation "org.ow2.asm:asm-commons:9.7"
+    implementation "org.ow2.asm:asm-util:9.7"
+    implementation "org.ow2.asm:asm-analysis:9.7"
+
     testImplementation "org.junit.jupiter:junit-jupiter-api:5.10.2"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.10.2"
     testImplementation "org.jetbrains.kotlin:kotlin-test"

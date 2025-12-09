@@ -1,5 +1,6 @@
 package io.felipeandrade.metalmancy.items
 
+import io.felipeandrade.metalmancy.Metalmancy
 import net.minecraft.world.item.Item
 
 /**
@@ -12,22 +13,22 @@ enum class ToolType(
     val ingotCount: Int,
     val attackDamage: Float,
     val attackSpeed: Float,
-    val toolProperties: (Item.Properties, ToolStats) -> Item.Properties
+    val factory: (Item.Properties, ToolStats) -> Item
 ) {
     SWORD("sword", 2, 3.0f, -2.4f, { prop, stats ->
-        prop.sword(stats.tier, stats.damage, stats.speed)
+        Metalmancy.helper.createSword(stats.tier, 3, -2.4f, prop.durability(stats.durability))
     }),
     AXE("axe", 3, 6.0f, -3.1f, { prop, stats ->
-        prop.axe(stats.tier, stats.damage, stats.speed)
+        Metalmancy.helper.createAxe(stats.tier, 6.0f, -3.1f, prop.durability(stats.durability))
     }),
     PICKAXE("pickaxe", 3, 1.0f, -2.8f, { prop, stats ->
-        prop.pickaxe(stats.tier, stats.damage, stats.speed)
+        Metalmancy.helper.createPickaxe(stats.tier, 1, -2.8f, prop.durability(stats.durability))
     }),
     SHOVEL("shovel", 1, 1.5f, -3.0f, { prop, stats ->
-        prop.shovel(stats.tier, stats.damage, stats.speed)
+        Metalmancy.helper.createShovel(stats.tier, 1.5f, -3.0f, prop.durability(stats.durability))
     }),
     HOE("hoe", 2, 0.0f, -3.0f, { prop, stats ->
-        prop.hoe(stats.tier, stats.damage, stats.speed)
+        Metalmancy.helper.createHoe(stats.tier, 0, -3.0f, prop.durability(stats.durability))
     });
 
     fun getUnlocalizedName(materialName: String): String {

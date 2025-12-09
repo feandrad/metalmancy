@@ -30,9 +30,7 @@ class CalcinatingRecipe(
     }
 
     fun canCraftInDimensions(width: Int, height: Int): Boolean = true
-
     fun getResultItem(registries: HolderLookup.Provider): ItemStack = output
-
     fun getToastSymbol(): ItemStack = ItemStack(ModBlocks.CALCINATOR)
     
     override fun isSpecial(): Boolean = true

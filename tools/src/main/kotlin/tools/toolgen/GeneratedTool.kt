@@ -42,15 +42,21 @@ data class GeneratedTool(
         val textures = JsonObject()
         
         // Handle texture mapping by tool type
-        val handleTexture = when (toolType) {
-            ToolType.SWORD -> "$MOD_ID:item/wooden_sword_handle"
-            ToolType.SHOVEL -> "$MOD_ID:item/wooden_shovel_handle"
-            ToolType.AXE, ToolType.PICKAXE, ToolType.HOE -> "$MOD_ID:item/wooden_handle"
+        if (toolType == ToolType.SWORD) {
+            textures.addProperty("layer0", "$MOD_ID:item/wooden_sword_handle")
+            textures.addProperty("layer1", "$MOD_ID:item/${material.name}_blade")
+            textures.addProperty("layer2", "$MOD_ID:item/${material.name}_pommel")
+            textures.addProperty("layer3", "$MOD_ID:item/${material.name}_guard")
+        } else {
+            val handleTexture = when (toolType) {
+                ToolType.SHOVEL -> "$MOD_ID:item/wooden_shovel_handle"
+                ToolType.AXE, ToolType.PICKAXE, ToolType.HOE -> "$MOD_ID:item/wooden_handle"
+                else -> "$MOD_ID:item/wooden_handle" // Fallback
+            }
+            textures.addProperty("layer0", handleTexture)
+            // Tool head texture (material-specific)
+            textures.addProperty("layer1", "$MOD_ID:item/$unlocalizedName")
         }
-        textures.addProperty("layer0", handleTexture)
-        
-        // Tool head texture (material-specific)
-        textures.addProperty("layer1", "$MOD_ID:item/$unlocalizedName")
         
         json.add("textures", textures)
         return json

@@ -153,6 +153,7 @@ object ToolRecipes {
         val json = JsonObject()
         json.addProperty("type", "minecraft:crafting_shaped")
         json.addProperty("category", "equipment")
+        json.addProperty("show_notification", false)
         
         val pattern = JsonArray()
         pattern.add("##")
@@ -277,6 +278,7 @@ object ToolRecipes {
         val json = JsonObject()
         json.addProperty("type", "minecraft:crafting_shaped")
         json.addProperty("category", "equipment")
+        json.addProperty("show_notification", false)
         
         val pattern = JsonArray()
         pattern.add("##")

@@ -5,8 +5,9 @@ import io.felipeandrade.metalmancy.Metalmancy.resourceKey
 import io.felipeandrade.metalmancy.registry.material.Materials
 import net.minecraft.core.registries.Registries
 import net.minecraft.world.item.Item
-import net.minecraft.world.item.Items.registerItem
 import net.minecraft.world.item.ToolMaterial
+import net.minecraft.core.Registry
+import net.minecraft.core.registries.BuiltInRegistries
 
 object ToolItems {
 
@@ -43,9 +44,11 @@ object ToolItems {
     fun registerTool(type: ToolType, stats: ToolStats): Item {
         val unlocalizedName = Metalmancy.unlocalizedName(stats.material.name, type.unlocalizedSuffix)
         val key = resourceKey(unlocalizedName, Registries.ITEM)
-        val properties: Item.Properties = Item.Properties().setId(key)
+        val properties = Item.Properties().setId(key)
 
-        return register( unlocalizedName, type.toolProperties(properties, stats))
+        return register(unlocalizedName, properties) { prop ->
+            type.factory(prop, stats)
+        }
     }
 
     fun registerAll() = Unit
@@ -56,6 +59,8 @@ object ToolItems {
         factory: (Item.Properties) -> Item = { prop -> Item(prop) },
     ): Item {
         val key = resourceKey(path, Registries.ITEM)
-        return registerItem(key, factory, properties)
+        val item = factory(properties)
+        Registry.register(BuiltInRegistries.ITEM, key, item)
+        return item
     }
 }

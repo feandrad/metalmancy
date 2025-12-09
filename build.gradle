@@ -76,6 +76,20 @@ subprojects {
             // retrieving dependencies.
         }
     }
+    
+    // Disable Loom Run Configurations for 'tools' project to prevent duplicate clients
+    if (project.name == 'tools') {
+        loom {
+            runs {
+                 configureEach {
+                     ideConfigGenerated = false
+                 }
+                 // Remove default client/server runs
+                 if (findByName("client") != null) remove(findByName("client"))
+                 if (findByName("server") != null) remove(findByName("server"))
+            }
+        }
+    }
 }
 repositories {
     mavenCentral()
