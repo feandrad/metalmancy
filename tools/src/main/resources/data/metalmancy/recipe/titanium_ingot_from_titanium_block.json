@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "titanium_ingot",
+  "ingredients": [
+    "metalmancy:titanium_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "metalmancy:titanium_ingot"
+  }
+}

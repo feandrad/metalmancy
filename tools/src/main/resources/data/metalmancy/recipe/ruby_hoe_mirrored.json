@@ -1,13 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
+  "show_notification": false,
   "pattern": [
     "##",
     "S ",
     "S "
   ],
   "key": {
-    "#": "metalmancy:ruby_gem",
+    "#": "metalmancy:ruby",
     "S": "minecraft:stick"
   },
   "result": {

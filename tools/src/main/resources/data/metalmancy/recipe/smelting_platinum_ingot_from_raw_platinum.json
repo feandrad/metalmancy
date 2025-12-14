@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "platinum_ingot",
+  "ingredient": "metalmancy:raw_platinum",
+  "result": {
+    "id": "metalmancy:platinum_ingot"
+  }
+}

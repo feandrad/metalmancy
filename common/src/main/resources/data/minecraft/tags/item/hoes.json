@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "metalmancy:brass_hoe",
+    "metalmancy:bronze_hoe",
+    "metalmancy:silver_hoe",
+    "metalmancy:cobalt_hoe",
+    "metalmancy:orichalcum_hoe",
+    "metalmancy:mithril_hoe",
+    "metalmancy:platinum_hoe",
+    "metalmancy:titanium_hoe",
+    "metalmancy:electrum_hoe",
+    "metalmancy:topaz_hoe",
+    "metalmancy:ruby_hoe",
+    "metalmancy:sapphire_hoe",
+    "metalmancy:aluminum_hoe",
+    "metalmancy:steel_hoe"
+  ]
+}

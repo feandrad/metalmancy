@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "raw_mithril",
+  "ingredients": [
+    "metalmancy:raw_mithril_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "metalmancy:raw_mithril"
+  }
+}

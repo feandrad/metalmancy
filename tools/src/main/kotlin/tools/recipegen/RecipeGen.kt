@@ -2,6 +2,10 @@ package tools.recipegen
 
 import com.google.gson.GsonBuilder
 import io.felipeandrade.metalmancy.Metalmancy.MOD_ID
+import io.felipeandrade.metalmancy.items.ToolType
+import io.felipeandrade.metalmancy.registry.material.Part
+import tools.toolgen.ToolMaterials
+import tools.toolgen.ToolRecipes
 import java.io.File
 import java.io.FileWriter
 
@@ -25,10 +29,59 @@ fun main(args: Array<String>) {
     val gson = GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create()
     // Path follows datapack structure defined in common/src/tools/datapack-structure-1.21.10.md
     val recipesDir = dir(outDir, MOD_ID, "recipe")
+    val advancementsDir = dir(outDir, MOD_ID, "advancement", "recipe")
 
+    var recipesGenerated = 0
+    var advancementsGenerated = 0
+
+    // Standard Recipes
+    println("[RecipeGen] Generating standard recipes...")
     for (recipe in RecipeEntries.recipes) {
         val recipeJson = recipe.generateRecipe()
         gson.writeJson(recipesDir, "${recipe.unlocalizedName}.json", recipeJson)
+        recipesGenerated++
+    }
+
+    // Tool Recipes
+    println("[RecipeGen] Generating tool recipes...")
+    val validMaterials = ToolMaterials.TOOL_ENABLED.filter { material ->
+        ToolMaterials.hasRequiredParts(material) && ToolMaterials.getTierWithValidation(material) != null
+    }
+
+    for (material in validMaterials) {
+        for (toolType in ToolType.entries) {
+            val unlocalizedName = toolType.getUnlocalizedName(material.name)
+
+            // Generate crafting recipe
+            val craftingRecipe = ToolRecipes.generateCraftingRecipe(material, toolType)
+            gson.writeJson(recipesDir, "$unlocalizedName.json", craftingRecipe)
+            recipesGenerated++
+
+            // Generate mirrored recipe for axes and hoes
+            if (toolType == ToolType.AXE || toolType == ToolType.HOE) {
+                val mirroredRecipe = ToolRecipes.generateMirroredRecipe(material, toolType)
+                gson.writeJson(recipesDir, "${unlocalizedName}_mirrored.json", mirroredRecipe)
+                recipesGenerated++
+            }
+
+            // Generate smelting/blasting recipes only for metal tools (those with INGOT part)
+            if (material.parts.contains(Part.INGOT)) {
+                // Generate smelting recipe
+                val smeltingRecipe = ToolRecipes.generateSmeltingRecipe(material, toolType)
+                gson.writeJson(recipesDir, "${unlocalizedName}_smelting.json", smeltingRecipe)
+                recipesGenerated++
+
+                // Generate blasting recipe
+                val blastingRecipe = ToolRecipes.generateBlastingRecipe(material, toolType)
+                gson.writeJson(recipesDir, "${unlocalizedName}_blasting.json", blastingRecipe)
+                recipesGenerated++
+            }
+
+            // Generate recipe advancement
+            val advancement = ToolRecipes.generateRecipeAdvancement(material, toolType)
+            gson.writeJson(advancementsDir, "$unlocalizedName.json", advancement)
+            advancementsGenerated++
+        }
     }
 
     // Phase 3: Copy to Resources

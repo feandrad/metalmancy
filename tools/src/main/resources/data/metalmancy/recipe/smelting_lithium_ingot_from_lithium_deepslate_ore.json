@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "lithium_ingot",
+  "ingredient": "metalmancy:lithium_deepslate_ore",
+  "result": {
+    "id": "metalmancy:lithium_ingot"
+  }
+}

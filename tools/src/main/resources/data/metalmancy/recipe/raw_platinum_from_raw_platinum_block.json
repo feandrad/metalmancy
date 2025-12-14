@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "raw_platinum",
+  "ingredients": [
+    "metalmancy:raw_platinum_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "metalmancy:raw_platinum"
+  }
+}

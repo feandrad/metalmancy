@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "metalmancy:brass_sword",
+    "metalmancy:bronze_sword",
+    "metalmancy:silver_sword",
+    "metalmancy:cobalt_sword",
+    "metalmancy:orichalcum_sword",
+    "metalmancy:mithril_sword",
+    "metalmancy:platinum_sword",
+    "metalmancy:titanium_sword",
+    "metalmancy:electrum_sword",
+    "metalmancy:topaz_sword",
+    "metalmancy:ruby_sword",
+    "metalmancy:sapphire_sword",
+    "metalmancy:aluminum_sword",
+    "metalmancy:steel_sword"
+  ]
+}

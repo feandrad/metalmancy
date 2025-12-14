@@ -493,8 +493,8 @@ class ToolRecipesPropertyTest : StringSpec({
             resultId shouldContain "metalmancy:"
             resultId shouldContain material.name
             
-            // Result should be nugget or gem_shard
-            val isNuggetOrShard = resultId.contains("_nugget") || resultId.contains("_gem_shard")
+            // Result should be nugget or gem
+            val isNuggetOrShard = resultId.contains("_nugget") || resultId.contains("_gem")
             isNuggetOrShard shouldBe true
             
             // Should have cooking time

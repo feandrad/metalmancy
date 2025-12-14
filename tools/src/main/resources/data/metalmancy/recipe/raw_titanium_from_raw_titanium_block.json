@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "raw_titanium",
+  "ingredients": [
+    "metalmancy:raw_titanium_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "metalmancy:raw_titanium"
+  }
+}

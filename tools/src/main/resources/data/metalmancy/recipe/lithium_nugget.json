@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "lithium_nugget",
+  "ingredients": [
+    "metalmancy:lithium_ingot"
+  ],
+  "result": {
+    "count": 9,
+    "id": "metalmancy:lithium_nugget"
+  }
+}

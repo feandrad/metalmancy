@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "metalmancy:brass_shovel",
+    "metalmancy:bronze_shovel",
+    "metalmancy:silver_shovel",
+    "metalmancy:cobalt_shovel",
+    "metalmancy:orichalcum_shovel",
+    "metalmancy:mithril_shovel",
+    "metalmancy:platinum_shovel",
+    "metalmancy:titanium_shovel",
+    "metalmancy:electrum_shovel",
+    "metalmancy:topaz_shovel",
+    "metalmancy:ruby_shovel",
+    "metalmancy:sapphire_shovel",
+    "metalmancy:aluminum_shovel",
+    "metalmancy:steel_shovel"
+  ]
+}

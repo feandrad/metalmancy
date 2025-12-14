@@ -1,0 +1,38 @@
+tasks.register('generateTags', JavaExec) {
+    group = 'taggen'
+    description = 'Generates item tags from ToolMaterials list'
+    mainClass = 'tools.taggen.TagGenKt'
+    classpath = sourceSets.main.runtimeClasspath
+    args '--out', "$buildDir/generated/data"
+    doFirst { println "→ Generating tags at $buildDir/generated/data ..." }
+}
+
+tasks.register('syncGeneratedTags', Copy) {
+    group = 'taggen'
+    description = 'Copies generated tags to resources'
+    from "$buildDir/generated/data"
+    into '../common/src/main/resources/data'
+    dependsOn 'generateTags'
+}
+
+tasks.named('generateTags') {
+    dependsOn 'cleanGeneratedAssets'
+}
+
+tasks.register('cleanTaggenResources', Delete) {
+    group = 'taggen'
+    description = 'Removes old tag assets already copied in src/main/resources/data'
+    delete("../common/src/main/resources/data/minecraft/tags/item/swords.json")
+    delete("../common/src/main/resources/data/minecraft/tags/item/axes.json")
+    delete("../common/src/main/resources/data/minecraft/tags/item/pickaxes.json")
+    delete("../common/src/main/resources/data/minecraft/tags/item/shovels.json")
+    delete("../common/src/main/resources/data/minecraft/tags/item/hoes.json")
+}
+
+tasks.named('generateAll') {
+    dependsOn 'generateTags'
+}
+
+tasks.named('syncGeneratedAll') {
+    dependsOn 'syncGeneratedTags'
+}

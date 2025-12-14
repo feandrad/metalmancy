@@ -74,7 +74,8 @@ object ToolRecipes {
         return if (material.parts.contains(Part.INGOT)) {
             "$MOD_ID:${material.name}_ingot"
         } else if (material.parts.contains(Part.GEM)) {
-            "$MOD_ID:${material.name}_gem"
+            // Part.GEM unlocalized name is just the material name (e.g. "ruby"), per Material.kt
+            "$MOD_ID:${material.name}"
         } else {
             throw IllegalArgumentException("Material ${material.name} has no INGOT or GEM part")
         }
@@ -377,7 +378,7 @@ object ToolRecipes {
         return if (material.parts.contains(Part.INGOT)) {
             "$MOD_ID:${material.name}_nugget"
         } else if (material.parts.contains(Part.GEM)) {
-            "$MOD_ID:${material.name}_gem_shard"
+            "$MOD_ID:${material.name}_gem"
         } else {
             throw IllegalArgumentException("Material ${material.name} has no INGOT or GEM part")
         }

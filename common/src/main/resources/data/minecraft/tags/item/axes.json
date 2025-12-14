@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "metalmancy:brass_axe",
+    "metalmancy:bronze_axe",
+    "metalmancy:silver_axe",
+    "metalmancy:cobalt_axe",
+    "metalmancy:orichalcum_axe",
+    "metalmancy:mithril_axe",
+    "metalmancy:platinum_axe",
+    "metalmancy:titanium_axe",
+    "metalmancy:electrum_axe",
+    "metalmancy:topaz_axe",
+    "metalmancy:ruby_axe",
+    "metalmancy:sapphire_axe",
+    "metalmancy:aluminum_axe",
+    "metalmancy:steel_axe"
+  ]
+}

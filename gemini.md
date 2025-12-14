@@ -68,3 +68,12 @@ The project relies heavily on code generation to maintain consistency and reduce
 ## 6. Important Notes
 - **NeoForge Status**: The NeoForge module is currently in development. Focus on `common` and `fabric` unless specifically asked to work on NeoForge porting.
 - **Data-Driven**: The project prioritizes data-driven design. Logic should often derive from the `Material` objects defined in `Materials.kt`.
+
+## 7. Recipe JSON Format
+This format is not used anymore! You are doing all the time breking and then adding again!:     "#": {
+      "item": "metalmancy:brass_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    } the correct is     "#": "metalmancy:brass_ingot",
+    "S": "minecraft:stick"
