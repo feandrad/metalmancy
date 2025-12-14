@@ -57,13 +57,6 @@ fun main(args: Array<String>) {
             gson.writeJson(recipesDir, "$unlocalizedName.json", craftingRecipe)
             recipesGenerated++
 
-            // Generate mirrored recipe for axes and hoes
-            if (toolType == ToolType.AXE || toolType == ToolType.HOE) {
-                val mirroredRecipe = ToolRecipes.generateMirroredRecipe(material, toolType)
-                gson.writeJson(recipesDir, "${unlocalizedName}_mirrored.json", mirroredRecipe)
-                recipesGenerated++
-            }
-
             // Generate smelting/blasting recipes only for metal tools (those with INGOT part)
             if (material.parts.contains(Part.INGOT)) {
                 // Generate smelting recipe

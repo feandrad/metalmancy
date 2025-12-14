@@ -95,13 +95,6 @@ fun main(args: Array<String>) {
             gson.writeJson(recipesDir, "${tool.unlocalizedName}.json", craftingRecipe)
             recipesGenerated++
 
-            // Generate mirrored recipe for axes and hoes
-            if (toolType == ToolType.AXE || toolType == ToolType.HOE) {
-                val mirroredRecipe = ToolRecipes.generateMirroredRecipe(material, toolType)
-                gson.writeJson(recipesDir, "${tool.unlocalizedName}_mirrored.json", mirroredRecipe)
-                recipesGenerated++
-            }
-
             // Generate smelting recipe
             val smeltingRecipe = ToolRecipes.generateSmeltingRecipe(material, toolType)
             gson.writeJson(recipesDir, "${tool.unlocalizedName}_smelting.json", smeltingRecipe)

@@ -45,29 +45,6 @@ object ToolRecipes {
     }
     
     /**
-     * Generates a mirrored variant of a crafting recipe (for axes and hoes).
-     * 
-     * @param material The material the tool is made from
-     * @param toolType The type of tool to generate a recipe for (must be AXE or HOE)
-     * @return JsonObject representing the mirrored crafting recipe
-     * @throws IllegalArgumentException if toolType is not AXE or HOE
-     */
-    fun generateMirroredRecipe(material: Material, toolType: ToolType): JsonObject {
-        require(toolType == ToolType.AXE || toolType == ToolType.HOE) {
-            "Only axes and hoes have mirrored recipes"
-        }
-        
-        val unlocalizedName = "${toolType.getUnlocalizedName(material.name)}_mirrored"
-        val ingredientItem = getIngredientItem(material)
-        
-        return when (toolType) {
-            ToolType.AXE -> generateAxeRecipeMirrored(unlocalizedName, ingredientItem, material)
-            ToolType.HOE -> generateHoeRecipeMirrored(unlocalizedName, ingredientItem, material)
-            else -> throw IllegalArgumentException("Unsupported tool type for mirrored recipe")
-        }
-    }
-    
-    /**
      * Gets the ingredient item ID for a material (ingot or gem).
      */
     private fun getIngredientItem(material: Material): String {
@@ -137,38 +114,6 @@ object ToolRecipes {
         
         val result = JsonObject()
         result.addProperty("id", "$MOD_ID:$unlocalizedName")
-        result.addProperty("count", 1)
-        json.add("result", result)
-        
-        return json
-    }
-    
-    /**
-     * Generates a mirrored axe recipe: 3 ingots + 2 sticks
-     * Pattern:
-     *   ##
-     *   S#
-     *   S
-     */
-    private fun generateAxeRecipeMirrored(unlocalizedName: String, ingredientItem: String, material: Material): JsonObject {
-        val json = JsonObject()
-        json.addProperty("type", "minecraft:crafting_shaped")
-        json.addProperty("category", "equipment")
-        json.addProperty("show_notification", false)
-        
-        val pattern = JsonArray()
-        pattern.add("##")
-        pattern.add("S#")
-        pattern.add("S ")
-        json.add("pattern", pattern)
-        
-        val key = JsonObject()
-        key.addProperty("#", ingredientItem)
-        key.addProperty("S", "minecraft:stick")
-        json.add("key", key)
-        
-        val result = JsonObject()
-        result.addProperty("id", "$MOD_ID:${ToolType.AXE.getUnlocalizedName(material.name)}")
         result.addProperty("count", 1)
         json.add("result", result)
         
@@ -262,38 +207,6 @@ object ToolRecipes {
         
         val result = JsonObject()
         result.addProperty("id", "$MOD_ID:$unlocalizedName")
-        result.addProperty("count", 1)
-        json.add("result", result)
-        
-        return json
-    }
-    
-    /**
-     * Generates a mirrored hoe recipe: 2 ingots + 2 sticks
-     * Pattern:
-     *   ##
-     *   S
-     *   S
-     */
-    private fun generateHoeRecipeMirrored(unlocalizedName: String, ingredientItem: String, material: Material): JsonObject {
-        val json = JsonObject()
-        json.addProperty("type", "minecraft:crafting_shaped")
-        json.addProperty("category", "equipment")
-        json.addProperty("show_notification", false)
-        
-        val pattern = JsonArray()
-        pattern.add("##")
-        pattern.add("S ")
-        pattern.add("S ")
-        json.add("pattern", pattern)
-        
-        val key = JsonObject()
-        key.addProperty("#", ingredientItem)
-        key.addProperty("S", "minecraft:stick")
-        json.add("key", key)
-        
-        val result = JsonObject()
-        result.addProperty("id", "$MOD_ID:${ToolType.HOE.getUnlocalizedName(material.name)}")
         result.addProperty("count", 1)
         json.add("result", result)
         
