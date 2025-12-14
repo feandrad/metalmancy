@@ -2,6 +2,8 @@
   "parent": "minecraft:item/handheld",
   "textures": {
     "layer0": "metalmancy:item/wooden_sword_handle",
-    "layer1": "metalmancy:item/bronze_sword"
+    "layer1": "metalmancy:item/bronze_blade",
+    "layer2": "metalmancy:item/bronze_pommel",
+    "layer3": "metalmancy:item/bronze_guard"
   }
 }

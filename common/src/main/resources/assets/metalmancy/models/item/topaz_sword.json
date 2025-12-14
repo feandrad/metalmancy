@@ -2,6 +2,8 @@
   "parent": "minecraft:item/handheld",
   "textures": {
     "layer0": "metalmancy:item/wooden_sword_handle",
-    "layer1": "metalmancy:item/topaz_sword"
+    "layer1": "metalmancy:item/topaz_blade",
+    "layer2": "metalmancy:item/topaz_pommel",
+    "layer3": "metalmancy:item/topaz_guard"
   }
 }
