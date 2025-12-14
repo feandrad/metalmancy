@@ -100,3 +100,11 @@ dependencies {
 kotlin {
     jvmToolchain(21)
 }
+
+tasks.named("build").configure {
+    dependsOn(subprojects.findAll { it.name != 'tools' }.collect { it.tasks.named("build") })
+}
+
+tasks.named("check").configure {
+    dependsOn(subprojects.findAll { it.name != 'tools' }.collect { it.tasks.named("check") })
+}

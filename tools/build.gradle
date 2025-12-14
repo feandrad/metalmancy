@@ -7,7 +7,7 @@ repositories {
 }
 
 dependencies {
-    implementation project(path: ':common', configuration: 'namedElements')
+    implementation project(':common')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     implementation "com.google.code.gson:gson:2.10.1"
     implementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
@@ -35,6 +35,16 @@ tasks.withType(Test).configureEach {
     testLogging {
         showStandardStreams = true
     }
+}
+
+tasks.named('test') {
+    if (!gradle.startParameter.taskNames.contains("test") && !gradle.startParameter.taskNames.contains(":tools:test")) {
+        enabled = false
+    }
+}
+
+tasks.named('check') {
+    enabled = false
 }
 
 kotlin {

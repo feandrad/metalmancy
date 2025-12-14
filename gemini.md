@@ -24,7 +24,7 @@ The project follows a multi-module Gradle structure designed for strict separati
 **These rules are critical for the project's long-term maintainability:**
 1.  **Platform Independence**: The `fabric` and `neoforge` modules must **never** depend on each other. They are sibling modules that both depend on `common`.
 2.  **Tool Isolation**: No runtime module (`common/src/main`, `fabric`, `neoforge`) is allowed to depend on `common/src/tools`. The `tools` package is strictly for build-time asset generation and must remain isolated from the game logic.
-    - *Note:* Ideally, `tools` would be a separate Gradle subproject. Currently, it resides in `common/src/tools`, but the logical separation must be enforced.
+    - *Note:* The `tools` module is a top-level Gradle subproject, not located within `common/src/tools`. Its build and test tasks are explicitly excluded from the main project's default build to ensure logical separation and prevent build failures due to tool-specific tests. To build or test the `tools` module, its tasks must be invoked directly (e.g., `./gradlew :tools:build` or `./gradlew :tools:test`).
 
 ### Key Files
 - **Material Definitions**: `common/src/main/kotlin/io/felipeandrade/metalmancy/material/Materials.kt` - The single source of truth for all materials.

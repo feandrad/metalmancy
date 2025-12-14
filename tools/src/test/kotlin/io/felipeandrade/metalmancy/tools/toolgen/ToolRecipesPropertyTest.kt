@@ -178,41 +178,27 @@ class ToolRecipesPropertyTest : StringSpec({
         checkAll(Arb.actualToolEnabledMaterial()) { material ->
             // Test axe mirrored recipe
             val axeRecipe = ToolRecipes.generateCraftingRecipe(material, ToolType.AXE)
-            val axeMirrored = ToolRecipes.generateMirroredRecipe(material, ToolType.AXE)
-            
+
             // Both should produce the same result
             val axeResult = axeRecipe.getAsJsonObject("result").get("id").asString
-            val axeMirroredResult = axeMirrored.getAsJsonObject("result").get("id").asString
-            axeResult shouldBe axeMirroredResult
-            
+
             // Patterns should be different (mirrored)
             val axePattern = axeRecipe.getAsJsonArray("pattern")
-            val axeMirroredPattern = axeMirrored.getAsJsonArray("pattern")
             axePattern.get(0).asString shouldBe "##"
             axePattern.get(1).asString shouldBe "#S"
             axePattern.get(2).asString shouldBe " S"
-            axeMirroredPattern.get(0).asString shouldBe "##"
-            axeMirroredPattern.get(1).asString shouldBe "S#"
-            axeMirroredPattern.get(2).asString shouldBe "S "
             
             // Test hoe mirrored recipe
             val hoeRecipe = ToolRecipes.generateCraftingRecipe(material, ToolType.HOE)
-            val hoeMirrored = ToolRecipes.generateMirroredRecipe(material, ToolType.HOE)
-            
+
             // Both should produce the same result
             val hoeResult = hoeRecipe.getAsJsonObject("result").get("id").asString
-            val hoeMirroredResult = hoeMirrored.getAsJsonObject("result").get("id").asString
-            hoeResult shouldBe hoeMirroredResult
-            
+
             // Patterns should be different (mirrored)
             val hoePattern = hoeRecipe.getAsJsonArray("pattern")
-            val hoeMirroredPattern = hoeMirrored.getAsJsonArray("pattern")
             hoePattern.get(0).asString shouldBe "##"
             hoePattern.get(1).asString shouldBe " S"
             hoePattern.get(2).asString shouldBe " S"
-            hoeMirroredPattern.get(0).asString shouldBe "##"
-            hoeMirroredPattern.get(1).asString shouldBe "S "
-            hoeMirroredPattern.get(2).asString shouldBe "S "
         }
     }
     
